@@ -2964,16 +2964,18 @@
       }
 
       // Gestion des clics sur les images de banque
+      // Utiliser la phase de capture pour intercepter les clics avant le gestionnaire de popup
       document.addEventListener('click', function(e) {
         const imageLink = e.target.closest('.unique-image[data-bank]');
         if (imageLink) {
           e.preventDefault();
+          e.stopPropagation();
           const bankId = imageLink.getAttribute('data-bank');
           if (bankId) {
             openFlipbook(bankId);
           }
         }
-      });
+      }, true); // true = phase de capture (s'exécute avant la phase de bubbling)
 
       // Fermer le flipbook
       if (closeFlipbookBtn) {
@@ -3002,9 +3004,16 @@
       const closeBtn = popup.querySelector('.close-btn');
       const images = document.querySelectorAll('.unique-ipad .unique-image img');
 
-      // Ouvrir la popup au clic sur une image
+      // Ouvrir la popup au clic sur une image (seulement si pas de data-bank)
       images.forEach(img => {
         img.addEventListener('click', function(e) {
+          // Vérifier si l'image parente a un attribut data-bank
+          const parentLink = this.closest('.unique-image[data-bank]');
+          if (parentLink) {
+            // Si oui, ne pas ouvrir la popup (le flipbook sera géré par l'autre gestionnaire)
+            return;
+          }
+          // Sinon, ouvrir la popup comme avant
           e.preventDefault();
           e.stopPropagation();
           popupImage.src = this.src;
