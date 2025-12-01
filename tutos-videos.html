@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutoriels Vidéo - Pratiques Bancaires</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .glass-effect-blue {
+      background: rgba(59, 130, 246, 0.1);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8, #0ea5e9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Hero section avec diaporama d'images */
+    .tutos-hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 150px 0 140px;
+      color: #0f172a;
+      background: linear-gradient(135deg, rgba(248, 250, 252, 0.85) 0%, rgba(219, 234, 254, 0.85) 50%, rgba(236, 254, 255, 0.85) 100%);
+    }
+
+    .tutos-hero-slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1.2s ease-in-out, transform 8s ease;
+      z-index: 0;
+    }
+
+    .tutos-hero-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .tutos-hero-slide-1 {
+      background-image: url('Sources%20Image/EMEFA/Assise en pagne (1).png');
+    }
+
+    .tutos-hero-slide-2 {
+      background-image: url('AFFICHES%20BANQUE%20PAYS/alimenter/excited-african-girl-pink-casual-clothes-point-index-finger-credit-bank-card-isolated-blue.jpg');
+    }
+    
+    .tutos-hero-slide-3 {
+      background-image: url('Sources%20Image/EMEFA/En chemise Beige débout.jpeg');
+    }
+
+    .tutos-hero-slide-4 {
+      background-image: url('AFFICHES%20BANQUE%20PAYS/alimenter/medium-shot-senior-man-education-concept.jpg');
+    }
+    
+    .tutos-hero-slide-5 {
+      background-image: url('Sources%20Image/EMEFA/En pagne débout (1).png');
+    }
+
+    .tutos-hero-slide-6 {
+      background-image: url('AFFICHES%20BANQUE%20PAYS/alimenter/stack-coins-with-graduation-cap-top-them-with-blue-background.jpg');
+    }
+    
+    .tutos-hero-slide-7 {
+      background-image: url('Sources%20Image/EMEFA/En chemise Marron débout  (2).jpeg');
+    }
+
+    .tutos-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .tutos-hero {
+        padding: 140px 0 120px;
+        min-height: 75vh;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tutos-hero {
+        padding: 130px 0 110px;
+        min-height: 70vh;
+      }
+    }
+    .video-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .video-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+    .video-thumbnail {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+    }
+    .video-thumbnail img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Styles pour l'intégration Vimeo */
+    .vimeo-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .vimeo-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    .play-button:hover {
+      background: rgba(0, 0, 0, 0.85);
+      transform: translate(-50%, -50%) scale(1.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    }
+    .play-button svg {
+      width: 40px;
+      height: 40px;
+      margin-left: 4px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    .lesson-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+    }
+    
+    .lesson-badge.presentation {
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    }
+    
+    .lesson-badge.lesson-1 {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    }
+    
+    .lesson-badge.lesson-2 {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+    
+    .lesson-badge.lesson-3 {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+    
+    .lesson-badge.lesson-4 {
+      background: linear-gradient(135deg, #ec4899, #db2777);
+    }
+    .duration-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      border-radius: 2px;
+    }
+    
+    /* Styles pour le slider de progression */
+    input[type="range"].slider {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      border-radius: 3px;
+      outline: none;
+      background: linear-gradient(to right, #3b82f6 0%, #3b82f6 0%, #4b5563 0%, #4b5563 100%);
+    }
+    
+    input[type="range"].slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #3b82f6;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    input[type="range"].slider::-webkit-slider-thumb:hover {
+      background: #2563eb;
+      transform: scale(1.2);
+    }
+    
+    input[type="range"].slider::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #3b82f6;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    input[type="range"].slider::-moz-range-thumb:hover {
+      background: #2563eb;
+      transform: scale(1.2);
+    }
+    
+
+    
+    #videoPopupModal {
+      display: none;
+    }
+    
+    #videoPopupModal video {
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Ratio d'aspect vidéo 16:9 */
+    .video-container {
+      padding-bottom: 56.25%;
+    }
+    
+    /* Overlay fin de vidéo style YouTube */
+    #endVideoOverlay {
+      animation: fadeIn 0.3s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* Styles pour la grande popup vidéo des cartes tuto */
+    #tutoVideoPopupModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    #tutoVideoPopupModal.hidden {
+      display: none;
+    }
+    
+    #tutoVideoPopupModal:not(.hidden) {
+      display: flex;
+    }
+    
+    #tutoVideoPlayer {
+      width: 100%;
+      height: auto;
+      max-height: 95vh;
+      background: #000;
+    }
+    
+    .tuto-video-card-clickable {
+      transition: transform 0.2s ease;
+    }
+    
+    .tuto-video-card-clickable:hover {
+      transform: translateY(-4px);
+    }
+    
+    @media (max-width: 768px) {
+      #tutoVideoPopupModal {
+        padding: 10px;
+      }
+      
+      #closeTutoVideoPopupBtn {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+      }
+      
+      #tutoVideoPlayer {
+        max-height: 90vh;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <nav class="fixed top-0 w-full z-50 glass-effect-blue shadow-lg">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center flex-shrink-0 -ml-2">
+          <a href="banque.html" class="flex items-center">
+            <img class="h-10 w-auto" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+            <span class="ml-3 text-xl font-bold">Pratiques Bancaires</span>
+          </a>
+        </div>
+        <div class="hidden lg:flex space-x-6 items-center ml-4">
+          <a href="banque.html" class="text-gray-700 hover:text-blue-400 transition-colors font-medium px-2 py-2 whitespace-nowrap">Retour à l'accueil</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="tutos-hero">
+    <div class="tutos-hero-slide tutos-hero-slide-1 active"></div>
+    <div class="tutos-hero-slide tutos-hero-slide-2"></div>
+    <div class="tutos-hero-slide tutos-hero-slide-3"></div>
+    <div class="tutos-hero-slide tutos-hero-slide-4"></div>
+    <div class="tutos-hero-slide tutos-hero-slide-5"></div>
+    <div class="tutos-hero-slide tutos-hero-slide-6"></div>
+    <div class="tutos-hero-slide tutos-hero-slide-7"></div>
+
+    <div class="tutos-hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center text-white" data-aos="fade-up">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-2xl">Tutoriels Vidéo</h1>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 drop-shadow-lg">Apprenez les services bancaires étape par étape avec nos tutoriels vidéo</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Section Présentation Emefa -->
+    <section class="mb-20" data-aos="fade-up">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+          <span class="text-gradient">Présentation de votre Formatrice</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Découvrez Emefa, votre formatrice qui vous accompagnera dans votre apprentissage des services bancaires
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="video-card" id="presentationCard">
+          <div class="relative bg-black rounded-t-2xl overflow-hidden video-container">
+            <video 
+              id="emefaVideo" 
+              class="absolute top-0 left-0 w-full h-full"
+              style="object-fit: contain;"
+              preload="metadata"
+              controls
+              playsinline
+            >
+              <source src="Sources%20Image/EMEFA/Tutos Léçon/Présentation/Présentation Emefa.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+            
+            <!-- Overlay contrôles personnalisés - Gros bouton central -->
+            <div id="customControls" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 hover:bg-opacity-30 transition-opacity duration-300 pointer-events-none z-20">
+              <button id="playPauseBtn" class="play-button pointer-events-auto" aria-label="Play/Pause">
+                <svg id="centerPlayIcon" class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+                <svg id="centerPauseIcon" class="w-16 h-16 text-white hidden" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Barre de contrôles personnalisée -->
+            <div id="videoControls" class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 opacity-0 hover:opacity-100 transition-opacity duration-300 z-30">
+              <div class="flex items-center space-x-4">
+                <!-- Play/Pause -->
+                <button id="controlsPlayPause" class="text-white hover:text-blue-400 transition-colors" aria-label="Play/Pause">
+                  <svg id="controlsPlayIcon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                  <svg id="controlsPauseIcon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                  </svg>
+                </button>
+                
+                <!-- Barre de progression -->
+                <div class="flex-1 relative">
+                                    <input 
+                    type="range" 
+                    id="progressBar" 
+                    min="0"
+                    max="100"
+                    value="0"
+                    aria-label="Barre de progression vidéo"
+                    class="w-full h-2 bg-gray-600 rounded-lg appearance-none cursor-pointer slider"
+                  >
+                  <div id="progressTooltip" class="absolute bottom-full mb-2 hidden bg-black text-white text-xs py-1 px-2 rounded whitespace-nowrap transform -translate-x-1/2"></div>
+                </div>
+                
+                <!-- Temps -->
+                <span id="timeDisplay" class="text-white text-sm font-mono min-w-[100px]">0:00 / 0:00</span>
+                
+                <!-- Mute/Unmute -->
+                <button id="muteBtn" class="text-white hover:text-blue-400 transition-colors" aria-label="Mute/Unmute">
+                  <svg id="volumeIcon" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                  </svg>
+                  <svg id="mutedIcon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+                  </svg>
+                </button>
+                
+                <!-- Popup -->
+                <button id="popupBtn" class="text-white hover:text-blue-400 transition-colors" aria-label="Ouvrir en popup">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                  </svg>
+                </button>
+                
+                <!-- Plein écran -->
+                <button id="fullscreenBtn" class="text-white hover:text-blue-400 transition-colors" aria-label="Plein écran">
+                  <svg id="fullscreenIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+                  </svg>
+                  <svg id="exitFullscreenIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                                 </button>
+               </div>
+             </div>
+             
+             <!-- Overlay fin de vidéo style YouTube -->
+             <div id="endVideoOverlay" class="absolute inset-0 bg-black bg-opacity-70 z-40 hidden flex items-center justify-center">
+               <div class="text-center max-w-2xl px-6">
+                 <div class="mb-6">
+                   <svg class="w-16 h-16 mx-auto text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                   </svg>
+                   <h3 class="text-3xl font-bold text-white mb-2">Présentation terminée !</h3>
+                   <p class="text-gray-300 text-lg">Que souhaitez-vous faire maintenant ?</p>
+                 </div>
+                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                   <button id="replayBtn" type="button" class="px-8 py-4 bg-white bg-opacity-90 text-gray-800 rounded-lg font-semibold hover:bg-opacity-100 transition-all transform hover:scale-105 flex items-center justify-center">
+                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                     </svg>
+                     Revoir
+                   </button>
+                   <button id="continueBtn" type="button" class="px-8 py-4 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-all transform hover:scale-105 flex items-center justify-center">
+                     <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                     </svg>
+                     Leçons suivantes
+                   </button>
+                 </div>
+               </div>
+             </div>
+           </div>
+           
+           <div class="p-6 bg-white">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <span class="lesson-badge presentation mb-3 block">Présentation</span>
+                <h3 class="text-2xl font-bold text-gray-800">Rencontrez Emefa</h3>
+              </div>
+            </div>
+            <p class="text-gray-600">Découvrez votre formatrice qui vous guidera à travers tous nos tutoriels sur les services bancaires dans l'espace UEMOA.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal popup vidéo (pour la vidéo Emefa) -->
+    <div id="videoPopupModal" class="fixed inset-0 bg-black bg-opacity-95 z-50 hidden items-center justify-center">
+      <div class="relative w-full h-full flex items-center justify-center p-4">
+        <button id="closePopupBtn" class="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors z-10 bg-black bg-opacity-50 rounded-full p-2">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+                 <video 
+           id="popupVideo" 
+           class="max-w-full max-h-full"
+           style="object-fit: contain;"
+           controls
+           playsinline
+         >
+          <source src="Sources%20Image/EMEFA/Tutos Léçon/Présentation/Présentation Emefa.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    
+    <!-- Grande popup vidéo pour les cartes vidéo de la page -->
+    <div id="tutoVideoPopupModal" class="fixed inset-0 bg-black bg-opacity-95 z-[9999] hidden items-center justify-center">
+      <div class="relative w-full h-full flex items-center justify-center p-4">
+        <!-- Bouton fermer -->
+        <button id="closeTutoVideoPopupBtn" class="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors z-10 bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        
+        <!-- Container vidéo -->
+        <div class="relative w-full max-w-7xl max-h-[95vh] bg-black rounded-lg overflow-hidden shadow-2xl">
+          <video 
+            id="tutoVideoPlayer" 
+            class="w-full h-auto max-h-[95vh]"
+            style="object-fit: contain;"
+            controls
+            playsinline
+            preload="auto"
+          >
+            Votre navigateur ne supporte pas la lecture de vidéos.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <section id="lecon-1" class="mb-20" data-aos="fade-up">
+      <h2 class="section-title text-gradient mb-8">Leçon 1 : Introduction aux Comptes Bancaires</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="video-card tuto-video-card-clickable" data-video-src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 1/Chapitre 1 Définition et Utilité d'un compte bancaire.mp4" style="cursor: pointer;">
+          <div class="video-thumbnail">
+            <img src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 1/Chapitre 1 Définition et Utilité d'un compte bancaire -Couverture.jpg" alt="Définition et Utilité">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">5:30</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-1 mb-3 block">Chapitre 1</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Définition et Utilité</h3>
+            <p class="text-gray-600 text-sm mb-4">Découvrez ce qu'est un compte bancaire et son utilité dans votre quotidien.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center tuto-watch-link" data-video-src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 1/Chapitre 1 Définition et Utilité d'un compte bancaire.mp4" onclick="event.stopPropagation();">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card tuto-video-card-clickable" data-video-src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 2/Chapitre 2 Types de Comptes Bancaires.mp4" style="cursor: pointer;">
+          <div class="video-thumbnail">
+            <img src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 2/Chapitre 2 Types de Comptes Bancaires-Couverture.jpg" alt="Les Différents Types de Comptes">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">7:15</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-1 mb-3 block">Chapitre 2</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Les Différents Types de Comptes</h3>
+            <p class="text-gray-600 text-sm mb-4">Explorez les différents types de comptes disponibles dans l'espace UEMOA.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center tuto-watch-link" data-video-src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 2/Chapitre 2 Types de Comptes Bancaires.mp4" onclick="event.stopPropagation();">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card tuto-video-card-clickable" data-video-src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 3/Chapitre 3 Comment crée un compte .mp4" style="cursor: pointer;">
+          <div class="video-thumbnail">
+            <img src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 3/Chapitre 3 Comment crée un compte -Couverture.jpg" alt="Comment Créer un Compte">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">6:45</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-1 mb-3 block">Chapitre 3</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Comment Créer un Compte</h3>
+            <p class="text-gray-600 text-sm mb-4">Guide complet pour créer votre premier compte bancaire en toute simplicité.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center tuto-watch-link" data-video-src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 3/Chapitre 3 Comment crée un compte .mp4" onclick="event.stopPropagation();">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="paiements" class="mb-20" data-aos="fade-up" data-aos-delay="100">
+      <h2 class="section-title text-gradient mb-8">Leçon 2 : Services de Paiement</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="video-card tuto-video-card-clickable" style="cursor: pointer;">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800" alt="Cartes bancaires">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">8:20</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-2 mb-3 block">Leçon 2.1</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Utiliser une Carte Bancaire</h3>
+            <p class="text-gray-600 text-sm mb-4">Maîtrisez l'utilisation des cartes bancaires GIM, VISA et Mastercard.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center tuto-watch-link" onclick="event.stopPropagation();">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800" alt="Mobile money">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">6:30</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-2 mb-3 block">Leçon 2.2</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Paiements Mobile Money</h3>
+            <p class="text-gray-600 text-sm mb-4">Découvrez comment effectuer des paiements via votre téléphone mobile.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <div class="vimeo-wrapper">
+              <iframe src="https://player.vimeo.com/video/760586610?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" class="vimeo-iframe" title="Wallet mobile app"></iframe>
+            </div>
+            <div class="duration-badge">9:10</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-2 mb-3 block">Leçon 2.3</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Effectuer des Transferts</h3>
+            <p class="text-gray-600 text-sm mb-4">Apprenez à transférer de l'argent en toute sécurité entre comptes.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-20" data-aos="fade-up" data-aos-delay="200">
+      <h2 class="section-title text-gradient mb-8">Leçon 3 : Crédits et Financements</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800" alt="Crédits">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">10:00</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-3 mb-3 block">Leçon 3.1</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Comprendre les Crédits</h3>
+            <p class="text-gray-600 text-sm mb-4">Tout savoir sur les différents types de crédits disponibles.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800" alt="Demande de crédit">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">7:45</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-3 mb-3 block">Leçon 3.2</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Demander un Crédit</h3>
+            <p class="text-gray-600 text-sm mb-4">Guide étape par étape pour faire une demande de crédit.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800" alt="Financement projets">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">8:50</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-3 mb-3 block">Leçon 3.3</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Financement de Projets</h3>
+            <p class="text-gray-600 text-sm mb-4">Comment obtenir un financement pour vos projets personnels ou professionnels.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-20" data-aos="fade-up" data-aos-delay="300">
+      <h2 class="section-title text-gradient mb-8">Leçon 4 : Assurances</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800" alt="Assurances">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">6:15</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-4 mb-3 block">Leçon 4.1</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Types d'Assurances</h3>
+            <p class="text-gray-600 text-sm mb-4">Découvrez les différents types d'assurances disponibles.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800" alt="Assurance vie">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">7:30</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-4 mb-3 block">Leçon 4.2</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Assurance Vie</h3>
+            <p class="text-gray-600 text-sm mb-4">Protégez votre famille avec une assurance vie adaptée à vos besoins.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-thumbnail">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800" alt="Sécurité financière">
+            <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="duration-badge">8:00</div>
+          </div>
+          <div class="p-6">
+            <span class="lesson-badge lesson-4 mb-3 block">Leçon 4.3</span>
+            <h3 class="text-xl font-bold mb-2 text-gray-800">Sécurité Financière</h3>
+            <p class="text-gray-600 text-sm mb-4">Apprenez à protéger vos finances et vos biens efficacement.</p>
+            <a href="#" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center">
+              Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-400">© 2024 Pratiques Bancaires. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    AOS.init({ duration: 1000, once: true, offset: 100 });
+
+    // Diaporama pour le hero Tutoriels Vidéo
+    (function() {
+      const slides = document.querySelectorAll('.tutos-hero-slide');
+      if (!slides.length) return;
+
+      let current = 0;
+      slides[0].classList.add('active');
+
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 7000);
+    })();
+
+    // Gestion du lecteur vidéo Emefa
+    const video = document.getElementById('emefaVideo');
+    const popupVideo = document.getElementById('popupVideo');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const controlsPlayPause = document.getElementById('controlsPlayPause');
+    const centerPlayIcon = document.getElementById('centerPlayIcon');
+    const centerPauseIcon = document.getElementById('centerPauseIcon');
+    const controlsPlayIcon = document.getElementById('controlsPlayIcon');
+    const controlsPauseIcon = document.getElementById('controlsPauseIcon');
+    const muteBtn = document.getElementById('muteBtn');
+    const volumeIcon = document.getElementById('volumeIcon');
+    const mutedIcon = document.getElementById('mutedIcon');
+    const progressBar = document.getElementById('progressBar');
+    const timeDisplay = document.getElementById('timeDisplay');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+    const fullscreenIcon = document.getElementById('fullscreenIcon');
+    const exitFullscreenIcon = document.getElementById('exitFullscreenIcon');
+    const popupBtn = document.getElementById('popupBtn');
+    const videoControls = document.getElementById('videoControls');
+    const customControls = document.getElementById('customControls');
+    const endVideoOverlay = document.getElementById('endVideoOverlay');
+    const replayBtn = document.getElementById('replayBtn');
+    const continueBtn = document.getElementById('continueBtn');
+    const videoPopupModal = document.getElementById('videoPopupModal');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+
+    // Format du temps
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Mise à jour de la barre de progression
+    function updateProgress() {
+      if (video.duration) {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressBar.value = progress;
+        progressBar.style.background = `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${progress}%, #4b5563 ${progress}%, #4b5563 100%)`;
+        timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+      }
+    }
+
+    // Mise à jour des icônes play/pause
+    function updatePlayPauseIcons() {
+      const isPlaying = !video.paused;
+      // Bouton central
+      centerPlayIcon.classList.toggle('hidden', isPlaying);
+      centerPauseIcon.classList.toggle('hidden', !isPlaying);
+      // Bouton barre de contrôles
+      controlsPlayIcon.classList.toggle('hidden', isPlaying);
+      controlsPauseIcon.classList.toggle('hidden', !isPlaying);
+    }
+
+    // Mise à jour des icônes volume
+    function updateVolumeIcons() {
+      const isMuted = video.muted;
+      volumeIcon.classList.toggle('hidden', isMuted);
+      mutedIcon.classList.toggle('hidden', !isMuted);
+    }
+
+    // Toggle play/pause
+    function togglePlayPause() {
+      if (video.paused) {
+        video.play();
+        customControls.style.opacity = '0';
+        customControls.style.pointerEvents = 'none';
+      } else {
+        video.pause();
+        customControls.style.opacity = '1';
+        customControls.style.pointerEvents = 'auto';
+      }
+      updatePlayPauseIcons();
+    }
+
+    // Afficher le bouton central quand la vidéo est en pause
+    function updateCenterButtonVisibility() {
+      if (video.paused) {
+        customControls.style.opacity = '1';
+        customControls.style.pointerEvents = 'auto';
+      } else {
+        customControls.style.opacity = '0';
+        customControls.style.pointerEvents = 'none';
+      }
+    }
+
+    // Événements vidéo
+    video.addEventListener('loadedmetadata', () => {
+      updateProgress();
+      updateCenterButtonVisibility();
+    });
+
+    video.addEventListener('timeupdate', updateProgress);
+
+    video.addEventListener('play', () => {
+      updatePlayPauseIcons();
+      updateCenterButtonVisibility();
+    });
+    video.addEventListener('pause', () => {
+      updatePlayPauseIcons();
+      updateCenterButtonVisibility();
+    });
+
+    video.addEventListener('ended', () => {
+      updatePlayPauseIcons();
+      endVideoOverlay.classList.remove('hidden');
+      // Masquer les contrôles natifs
+      video.controls = false;
+    });
+
+    video.addEventListener('volumechange', updateVolumeIcons);
+
+    // Événements boutons
+    playPauseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlayPause();
+    });
+
+    controlsPlayPause.addEventListener('click', togglePlayPause);
+
+    // Barre de progression
+    progressBar.addEventListener('input', (e) => {
+      const seekTime = (e.target.value / 100) * video.duration;
+      video.currentTime = seekTime;
+    });
+
+    progressBar.addEventListener('mousemove', (e) => {
+      const rect = progressBar.getBoundingClientRect();
+      const percent = ((e.clientX - rect.left) / rect.width) * 100;
+      const tooltip = document.getElementById('progressTooltip');
+      const seekTime = (percent / 100) * video.duration;
+      tooltip.textContent = formatTime(seekTime);
+      tooltip.style.left = percent + '%';
+      tooltip.classList.remove('hidden');
+    });
+
+    progressBar.addEventListener('mouseleave', () => {
+      document.getElementById('progressTooltip').classList.add('hidden');
+    });
+
+    // Mute/Unmute
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      updateVolumeIcons();
+    });
+
+    // Plein écran
+    fullscreenBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        video.requestFullscreen().catch(err => {
+          console.log('Erreur plein écran:', err);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      const isFullscreen = !!document.fullscreenElement;
+      fullscreenIcon.classList.toggle('hidden', isFullscreen);
+      exitFullscreenIcon.classList.toggle('hidden', !isFullscreen);
+    });
+
+    // Popup
+    popupBtn.addEventListener('click', () => {
+      const currentTime = video.currentTime;
+      const wasPlaying = !video.paused;
+      
+      video.pause();
+      videoPopupModal.classList.remove('hidden');
+      videoPopupModal.style.display = 'flex';
+      
+      popupVideo.currentTime = currentTime;
+      if (wasPlaying) {
+        setTimeout(() => popupVideo.play(), 100);
+      }
+    });
+
+    closePopupBtn.addEventListener('click', () => {
+      const currentTime = popupVideo.currentTime;
+      const wasPlaying = !popupVideo.paused;
+      
+      popupVideo.pause();
+      videoPopupModal.classList.add('hidden');
+      videoPopupModal.style.display = 'none';
+      
+      video.currentTime = currentTime;
+      if (wasPlaying) {
+        video.play();
+      }
+    });
+
+    // Overlay fin de vidéo
+    replayBtn.addEventListener('click', () => {
+      endVideoOverlay.classList.add('hidden');
+      video.controls = true;
+      video.currentTime = 0;
+      video.play();
+    });
+
+    continueBtn.addEventListener('click', () => {
+      endVideoOverlay.classList.add('hidden');
+      video.controls = true;
+      // Scroll vers les leçons
+      document.querySelector('section[data-aos="fade-up"]:nth-of-type(2)').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+
+    // Afficher les contrôles au survol
+    const videoContainer = video.closest('.relative');
+    videoContainer.addEventListener('mouseenter', () => {
+      videoControls.style.opacity = '1';
+    });
+    videoContainer.addEventListener('mouseleave', () => {
+      if (!video.paused) {
+        videoControls.style.opacity = '0';
+      }
+    });
+
+    // Clic sur la vidéo pour play/pause
+    video.addEventListener('click', (e) => {
+      if (e.target === video) {
+        togglePlayPause();
+      }
+    });
+
+    // Gestion vidéo popup
+    popupVideo.addEventListener('loadedmetadata', () => {
+      if (video.currentTime) {
+        popupVideo.currentTime = video.currentTime;
+      }
+    });
+
+    // Boutons play des autres vidéos
+    document.querySelectorAll('.play-button').forEach(button => {
+      if (button !== playPauseBtn) {
+        button.addEventListener('click', function() {
+          const card = this.closest('.video-card');
+          const link = card.querySelector('a[href="#"]');
+          if (link) {
+            console.log('Lecture de la vidéo:', card.querySelector('h3').textContent);
+          }
+        });
+      }
+    });
+    
+    // Gestion des clics sur les cartes vidéo de la page tutos-videos
+    (function() {
+      const tutoPopupModal = document.getElementById('tutoVideoPopupModal');
+      const tutoVideoPlayer = document.getElementById('tutoVideoPlayer');
+      const closeTutoPopupBtn = document.getElementById('closeTutoVideoPopupBtn');
+      
+      // Fonction pour ouvrir la popup vidéo
+      function openTutoVideoPopup(videoSrc) {
+        if (!tutoPopupModal || !tutoVideoPlayer) return;
+        
+        // Charger et jouer la vidéo
+        tutoVideoPlayer.src = videoSrc;
+        tutoVideoPlayer.load();
+        tutoPopupModal.classList.remove('hidden');
+        tutoPopupModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Jouer automatiquement
+        tutoVideoPlayer.play().catch(err => {
+          console.log('Lecture automatique bloquée:', err);
+        });
+      }
+      
+      // Fonction pour fermer la popup vidéo
+      function closeTutoVideoPopup() {
+        if (!tutoPopupModal || !tutoVideoPlayer) return;
+        
+        tutoVideoPlayer.pause();
+        tutoVideoPlayer.src = '';
+        tutoPopupModal.classList.add('hidden');
+        tutoPopupModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      
+      // Gestionnaire de fermeture
+      if (closeTutoPopupBtn) {
+        closeTutoPopupBtn.addEventListener('click', closeTutoVideoPopup);
+      }
+      
+      // Fermer en cliquant à l'extérieur
+      if (tutoPopupModal) {
+        tutoPopupModal.addEventListener('click', function(e) {
+          if (e.target === tutoPopupModal) {
+            closeTutoVideoPopup();
+          }
+        });
+      }
+      
+      // Fermer avec la touche Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && tutoPopupModal && !tutoPopupModal.classList.contains('hidden')) {
+          closeTutoVideoPopup();
+        }
+      });
+      
+      // Gestion des clics sur les cartes vidéo cliquables
+      document.addEventListener('click', function(e) {
+        // Vérifier si on clique sur une carte vidéo cliquable
+        const videoCard = e.target.closest('.tuto-video-card-clickable');
+        if (videoCard) {
+          const videoSrc = videoCard.getAttribute('data-video-src');
+          if (videoSrc) {
+            e.preventDefault();
+            e.stopPropagation();
+            openTutoVideoPopup(videoSrc);
+          }
+        }
+        
+        // Vérifier si on clique sur un lien "Regarder"
+        const watchLink = e.target.closest('.tuto-watch-link');
+        if (watchLink) {
+          const videoSrc = watchLink.getAttribute('data-video-src');
+          if (videoSrc) {
+            e.preventDefault();
+            e.stopPropagation();
+            openTutoVideoPopup(videoSrc);
+          }
+        }
+      });
+    })();
+
+    // Mise à jour automatique des durées affichées (badges) avec la vraie durée des vidéos
+    (function() {
+      // Réutilise la fonction de formatage si elle existe déjà
+      function formatDuration(seconds) {
+        if (typeof formatTime === 'function') {
+          return formatTime(seconds);
+        }
+        const totalSeconds = Math.floor(seconds || 0);
+        const mins = Math.floor(totalSeconds / 60);
+        const secs = totalSeconds % 60;
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+      }
+
+      // Met à jour un badge de durée à partir d'un élément vidéo HTML5
+      function updateBadgeFromVideoElement(videoEl, badgeEl) {
+        if (!videoEl || !badgeEl) return;
+        const duration = videoEl.duration;
+        if (!isNaN(duration) && duration > 0) {
+          badgeEl.textContent = formatDuration(duration);
+        }
+      }
+
+      // Cartes tutos locales (HTML5 video)
+      document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.tuto-video-card-clickable[data-video-src]');
+        cards.forEach(card => {
+          const src = card.getAttribute('data-video-src');
+          const badge = card.querySelector('.duration-badge');
+          if (!src || !badge) return;
+
+          const tempVideo = document.createElement('video');
+          tempVideo.preload = 'metadata';
+          tempVideo.src = src;
+          tempVideo.style.display = 'none';
+
+          tempVideo.addEventListener('loadedmetadata', function() {
+            updateBadgeFromVideoElement(tempVideo, badge);
+            tempVideo.remove();
+          });
+
+          tempVideo.addEventListener('error', function() {
+            // En cas d'erreur on laisse la valeur par défaut (fictive)
+            tempVideo.remove();
+          });
+
+          document.body.appendChild(tempVideo);
+        });
+
+        // Carte Vimeo : utiliser l'API Vimeo pour récupérer la durée réelle
+        const vimeoIframe = document.querySelector('.vimeo-iframe');
+        if (vimeoIframe && window.Vimeo && typeof window.Vimeo.Player === 'function') {
+          const vimeoBadge = vimeoIframe
+            .closest('.video-thumbnail')
+            ?.querySelector('.duration-badge');
+          if (vimeoBadge) {
+            try {
+              const player = new window.Vimeo.Player(vimeoIframe);
+              player.getDuration().then(function(seconds) {
+                if (!isNaN(seconds) && seconds > 0) {
+                  vimeoBadge.textContent = formatDuration(seconds);
+                }
+              }).catch(function(err) {
+                console.log('Impossible de récupérer la durée Vimeo :', err);
+              });
+            } catch (e) {
+              console.log('Erreur initialisation player Vimeo :', e);
+            }
+          }
+        }
+      });
+    })();
+  </script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+</html>

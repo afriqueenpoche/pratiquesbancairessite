@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratiques Bancaires - Plateforme Bancaire UEMOA</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    /* Police Cellien Sans */
+    @font-face {
+      font-family: 'Cellien Sans';
+      src: url('AFFICHES%20BANQUE%20PAYS/alimenter/Cellien Sans.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+    
+    /* Fluidbook.com Inspired Design System */
+    :root {
+      --fluid-primary: #6366f1;
+      --fluid-secondary: #8b5cf6;
+      --fluid-accent: #ec4899;
+      --fluid-dark: #0f172a;
+      --fluid-gray-900: #1e293b;
+      --fluid-gray-800: #334155;
+      --fluid-gray-700: #475569;
+      --fluid-gray-100: #f1f5f9;
+      --fluid-white: #ffffff;
+      --fluid-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --fluid-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --fluid-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --fluid-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --fluid-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --fluid-blur: blur(20px);
+    }
+    
+    * {
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+      color: var(--fluid-gray-900);
+    }
+    
+    /* Fluid Navbar - Glassmorphism */
+    .glass-effect-blue {
+      background: rgba(255, 255, 255, 0.3);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.08);
+    }
+    
+    /* Fluid Typography */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--fluid-primary) 0%, var(--fluid-secondary) 50%, var(--fluid-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    
+    /* Fluid Animations */
+    @keyframes fluid-float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      33% { transform: translateY(-10px) translateX(5px); }
+      66% { transform: translateY(5px) translateX(-5px); }
+    }
+    
+    @keyframes fluid-pulse {
+      0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+        transform: scale(1);
+      }
+      50% { 
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+        transform: scale(1.05);
+      }
+    }
+    
+    @keyframes fluid-gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .float-animation {
+      animation: fluid-float 8s ease-in-out infinite;
+    }
+    
+    .pulse-glow {
+      animation: fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    /* Animated Gradient Cards */
+    [class*="bg-gradient-to-br"] {
+      background-size: 200% 200%;
+      animation: fluid-gradient 8s ease infinite;
+    }
+    
+    [class*="bg-gradient-to-br"]:hover {
+      animation: fluid-gradient 8s ease infinite, fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    /* Fluid Glass Effect */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    /* Fluid Cards - Enhanced Glassmorphism */
+    .card-hover {
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      will-change: transform;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: var(--fluid-shadow-2xl);
+    }
+    
+    /* Fluid CTA Button */
+    .cta-button {
+      background: linear-gradient(135deg, var(--fluid-primary), var(--fluid-secondary));
+      border: none;
+      border-radius: 12px;
+      padding: 14px 32px;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: var(--fluid-shadow-2xl);
+    }
+    
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Fluid Background Grid */
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    
+    /* Fluid Pro Cards - Enhanced (base) */
+    .pro-card {
+      position: relative;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--fluid-shadow-lg);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      overflow: hidden;
+    }
+    
+    .pro-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--fluid-primary), var(--fluid-secondary), var(--fluid-accent));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .pro-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--fluid-shadow-2xl);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    .pro-card:hover::before {
+      opacity: 1;
+    }
+    
+    /* Cartes "Nos Leçons" redesignées et cliquables */
+    .lesson-link {
+      text-decoration: none;
+      display: block;
+      height: 100%;
+      color: inherit;
+    }
+    
+    .lesson-card {
+      border-width: 0;
+      color: #0f172a;
+      overflow: hidden;
+    }
+    
+    .lesson-card .icon-ring {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .lesson-card.comptes {
+      background: radial-gradient(circle at 0% 0%, #eef2ff 0, #6366f1 40%, #312e81 100%);
+      color: #e0e7ff;
+    }
+    
+    .lesson-card.paiements {
+      background: radial-gradient(circle at 100% 0%, #f5f3ff 0, #8b5cf6 40%, #581c87 100%);
+      color: #ede9fe;
+    }
+    
+    .lesson-card.credits {
+      background: radial-gradient(circle at 0% 100%, #ecfdf5 0, #10b981 40%, #064e3b 100%);
+      color: #dcfce7;
+    }
+    
+    .lesson-card.assurances {
+      background: radial-gradient(circle at 100% 100%, #fff1f2 0, #f97316 35%, #7c2d12 100%);
+      color: #fffbeb;
+    }
+    
+    .lesson-card.projets {
+      background: radial-gradient(circle at 0% 50%, #fefce8 0, #f59e0b 35%, #78350f 100%);
+      color: #fffbeb;
+    }
+    
+    .lesson-card.education {
+      background: radial-gradient(circle at 50% 0%, #ecfeff 0, #06b6d4 35%, #083344 100%);
+      color: #e0f2fe;
+    }
+    
+    .lesson-card h3 {
+      color: inherit;
+    }
+    
+    .lesson-card p,
+    .lesson-card li {
+      color: rgba(248, 250, 252, 0.9);
+    }
+    
+    .lesson-card svg {
+      color: #fbbf24;
+    }
+    
+    /* Fluid Icon Ring */
+    .icon-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+      box-shadow: var(--fluid-shadow);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .pro-card:hover .icon-ring {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: var(--fluid-shadow-xl);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    }
+    
+    .feature-icon {
+      background: linear-gradient(135deg, var(--fluid-primary), var(--fluid-secondary));
+      border-radius: 20px;
+      padding: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    /* Fluid Brand Animation */
+    @keyframes fluid-brand {
+      0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+        color: var(--fluid-primary);
+      }
+      25% { 
+        transform: translateY(-2px) rotate(1deg);
+        color: var(--fluid-secondary);
+      }
+      50% { 
+        transform: translateY(-4px) rotate(0deg);
+        color: var(--fluid-accent);
+      }
+      75% { 
+        transform: translateY(-2px) rotate(-1deg);
+        color: var(--fluid-secondary);
+      }
+    }
+    
+    .animated-brand {
+      animation: fluid-brand 4s ease-in-out infinite;
+      font-weight: 800;
+    }
+    
+    /* Stats Counter */
+    .stats-counter {
+      font-size: 4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--fluid-primary), var(--fluid-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Timeline */
+    .timeline-item {
+      position: relative;
+      padding-left: 40px;
+      color: var(--fluid-gray-700);
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, var(--fluid-primary), var(--fluid-secondary));
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 12px;
+      width: 2px;
+      height: calc(100% + 20px);
+      background: linear-gradient(180deg, var(--fluid-primary), transparent);
+    }
+    
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    
+    /* Testimonial Card */
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      border-radius: 20px;
+      padding: 60px;
+      transition: all 0.4s ease;
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--fluid-shadow-xl);
+      border-color: rgba(99, 102, 241, 0.2);
+    }
+    
+    /* Fluid Pagination - Redesigned */
+    .pagination {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      list-style: none;
+      padding: 16px 8px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      box-shadow: var(--fluid-shadow-xl);
+    }
+    
+    .pagination li {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      padding: 8px;
+      border-radius: 8px;
+    }
+    
+    .pagination li::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.4);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    
+    .pagination li:hover {
+      background: rgba(99, 102, 241, 0.05);
+      transform: translateX(4px);
+    }
+    
+    .pagination li:hover::before,
+    .pagination li.active::before {
+      width: 12px;
+      height: 12px;
+      background: var(--fluid-primary);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+    
+    .pagination li.active {
+      background: rgba(99, 102, 241, 0.1);
+    }
+    
+    .pagination li.active::before {
+      animation: fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    .pagination .hover-text {
+      position: absolute;
+      left: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      background: var(--fluid-gray-900);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: var(--fluid-shadow-xl);
+    }
+    
+    .pagination .hover-text::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-right: 4px solid var(--fluid-gray-900);
+    }
+    
+    .pagination li:hover .hover-text {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
+    }
+    
+    @media (max-width: 1024px) {
+      .pagination {
+        display: none;
+      }
+    }
+    
+    /* Fluid Hero Section avec image de fond */
+    #intro {
+      background-image: url('AFFICHES%20BANQUE%20PAYS/alimenter/quiz-show-host-holding-cards-with-questions-ready-ask-contestants.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.06) 50%, rgba(14, 165, 233, 0.08) 100%);
+      z-index: 1;
+    }
+    
+    #intro > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    #intro::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: fluid-float 12s ease-in-out infinite reverse;
+      z-index: 1;
+    }
+    
+    /* Fluid Section Backgrounds */
+    section.bg-white {
+      background: rgba(255, 255, 255, 0.6);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    section.bg-gray-50 {
+      background: rgba(248, 250, 252, 0.8);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Style pour le blockquote avec police Montserrat */
+    blockquote {
+      font-family: 'Montserrat', 'Plus Jakarta Sans', 'Inter', sans-serif;
+      text-align: justify;
+      hyphens: auto;
+    }
+    
+    /* Animation continue pour le texte à gauche */
+    @keyframes slide-up-fade {
+      0% {
+        opacity: 0.7;
+        transform: translateY(10px);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0.7;
+        transform: translateY(-10px);
+      }
+    }
+    
+    .hero-text-animated {
+      animation: slide-up-fade 3s ease-in-out infinite;
+    }
+    
+    @media (max-width: 768px) {
+      .stats-counter {
+        font-size: 3rem;
+      }
+      
+      .feature-icon {
+        padding: 15px;
+      }
+    }
+    
+    /* Carousel d'actualités BCEAO et GIM */
+    .news-carousel-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .news-carousel-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    }
+    
+    .news-card {
+      background: white;
+      border-radius: 20px;
+      padding: 0;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-top: 5px solid;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .news-notification-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    
+    /* En-tête de carte avec icône et badge */
+    .news-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Icône décorative pour les cartes */
+    .news-card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+    
+    .news-card-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .news-card:hover .news-card-icon {
+      transform: scale(1.08) rotate(5deg);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    
+    .news-card:hover .news-card-icon::before {
+      opacity: 1;
+    }
+    
+    .news-card-icon svg {
+      width: 28px;
+      height: 28px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      color: white;
+    }
+    
+    .news-card-content {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .news-card-header-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex-grow: 1;
+    }
+    
+    .news-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .news-card:hover::before {
+      opacity: 1;
+    }
+    
+    .news-card.bceao {
+      border-top-color: #2563eb;
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #dbeafe 100%);
+      position: relative;
+    }
+    
+    .news-card.bceao::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .news-card.bceao:hover::after {
+      opacity: 1;
+    }
+    
+    .news-card.gim {
+      border-top-color: #10b981;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #dcfce7 100%);
+      position: relative;
+    }
+    
+    .news-card.gim::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .news-card.gim:hover::after {
+      opacity: 1;
+    }
+    
+    .news-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .news-badge.bceao {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+    }
+    
+    .news-badge.gim {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+    
+    .news-date {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .news-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      flex-grow: 1;
+      min-height: 2.8em;
+    }
+    
+    .news-excerpt {
+      font-size: 0.875rem;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+    
+    .news-card-body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 6px;
+    }
+    
+    .news-link {
+      margin-top: auto;
+      padding-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #2563eb;
+      transition: color 0.3s ease;
+    }
+    
+    /* Modal popup actualités avec animations */
+    #newsModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    #newsModal.active {
+      display: flex;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.95);
+      animation: fadeIn 0.3s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        background: rgba(0, 0, 0, 0);
+      }
+      to {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.95);
+      }
+    }
+    
+    .news-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.8) translateY(50px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+    
+    #newsModal.active .news-modal-content {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        transform: scale(0.8) translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .news-modal-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .news-modal-body {
+      padding: 32px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+    
+    .news-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    .news-modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+    
+    .news-modal-close svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .news-modal-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    
+    .news-modal-date {
+      font-size: 0.9375rem;
+      color: #64748b;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .news-modal-text {
+      font-size: 1.0625rem;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    
+    .news-modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    .news-modal-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+    }
+    
+    @media (max-width: 768px) {
+      .news-card {
+        height: auto;
+        min-height: 400px;
+      }
+      
+      .news-modal-content {
+        max-width: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+      }
+      
+      .news-modal-body {
+        padding: 24px;
+      }
+      
+      .news-modal-title {
+        font-size: 1.5rem;
+      }
+    }
+    
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #3b82f6;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: auto;
+    }
+    
+    .news-link:hover {
+      color: #2563eb;
+      gap: 10px;
+    }
+    
+    .news-carousel-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .news-carousel-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .news-carousel-title p {
+      font-size: 1.125rem;
+      color: #64748b;
+    }
+    
+    .news-swiper {
+      padding: 20px 0 60px 0;
+    }
+    
+    .news-swiper .swiper-pagination {
+      bottom: 20px;
+    }
+    
+    .news-swiper .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: #cbd5e1;
+      opacity: 1;
+    }
+    
+    .news-swiper .swiper-pagination-bullet-active {
+      background: #3b82f6;
+    }
+    
+    .news-swiper .swiper-button-next,
+    .news-swiper .swiper-button-prev {
+      color: #3b82f6;
+      background: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .news-swiper .swiper-button-next:hover,
+    .news-swiper .swiper-button-prev:hover {
+      background: #3b82f6;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .news-swiper .swiper-button-next::after,
+    .news-swiper .swiper-button-prev::after {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    @media (max-width: 768px) {
+      .news-card {
+        height: auto;
+        min-height: 280px;
+      }
+      
+      .news-carousel-title h2 {
+        font-size: 2rem;
+      }
+    }
+    
+    /* Styles pour le carousel de leçons vidéo */
+    .lessons-carousel-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Carte de présentation Emefa indépendante */
+    .emefa-presentation-card {
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .emefa-presentation-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    }
+    
+    .emefa-presentation-thumbnail {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+      width: 100%;
+    }
+    
+    .emefa-presentation-thumbnail img,
+    .emefa-presentation-thumbnail video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .emefa-presentation-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .emefa-presentation-card:hover .emefa-presentation-play-button {
+      background: rgba(0, 0, 0, 0.85);
+      transform: translate(-50%, -50%) scale(1.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    }
+    
+    .emefa-presentation-play-button svg {
+      width: 32px;
+      height: 32px;
+      margin-left: 4px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      color: white;
+    }
+    
+    .emefa-presentation-duration {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .emefa-presentation-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .emefa-presentation-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+      color: white;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      align-self: flex-start;
+    }
+    
+    .emefa-presentation-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    
+    .emefa-presentation-description {
+      font-size: 0.9375rem;
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .emefa-presentation-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #3b82f6;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+    }
+    
+    .emefa-presentation-link:hover {
+      color: #2563eb;
+      gap: 12px;
+    }
+    
+    @media (max-width: 768px) {
+      .emefa-presentation-card {
+        margin-bottom: 30px;
+        max-width: 100%;
+      }
+      
+      .emefa-presentation-thumbnail {
+        padding-bottom: 56.25%;
+      }
+      
+      .emefa-presentation-play-button {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .emefa-presentation-play-button svg {
+        width: 28px;
+        height: 28px;
+      }
+      
+      .emefa-presentation-content {
+        padding: 20px;
+      }
+      
+      .emefa-presentation-title {
+        font-size: 1.125rem;
+      }
+      
+      .emefa-presentation-description {
+        font-size: 0.875rem;
+      }
+    }
+    
+    .news-swiper .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+    
+    .news-swiper .swiper-slide > * {
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass-effect-blue shadow-lg">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center flex-shrink-0 -ml-2">
+          <a href="presentation.html" class="flex items-center">
+            <img class="h-10 w-auto" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+            <span class="ml-3 text-xl font-bold animated-brand">Pratiques Bancaires</span>
+          </a>
+        </div>
+        <div class="hidden lg:flex space-x-6 items-center ml-4">
+          <a href="presentation.html" class="text-blue-500 font-semibold px-2 py-2 whitespace-nowrap">Accueil</a>
+          <a href="banque.html" class="text-gray-700 hover:text-blue-400 transition-colors font-medium px-2 py-2 whitespace-nowrap">Pratiques Bancaires</a>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Comptes  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="comptes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Comptes</a>
+                <a href="comptes.html#services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Services</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Paiements  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="paiements.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Paiements</a>
+                <a href="paiements.html#transferts" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Transferts</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Crédits  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="credits.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Crédits</a>
+                <a href="credits.html#financements" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Financements</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Assurances 
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Assurance</a>
+                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Sécurité Financière</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Projets de Vie
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Études & Formations</a>
+                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Mariage & Famille</a>
+                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Retraite & Assurance Vie</a>
+                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Voyages & Migrations</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="cta-button md:hidden">
+          Menu
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Pagination verticale -->
+  <ul class="pagination">
+    <li data-section="#intro" class=""><span class="hover-text">Introduction</span></li>
+    <li data-section="#stats" class=""><span class="hover-text">Statistiques</span></li>
+    <li data-section="#services" class=""><span class="hover-text">Services</span></li>
+    <li data-section="#contact" class=""><span class="hover-text">Contact</span></li>
+  </ul>
+
+  <!-- Hero Section -->
+  <section id="intro" class="relative py-32 md:py-40 pt-40 md:pt-48 overflow-hidden min-h-[80vh] flex items-start">
+    <div class="w-full pt-32 md:pt-40">
+      <div class="flex flex-col items-start gap-12" data-aos="fade-up">
+        <!-- Texte à gauche -->
+        <div class="w-full pl-4 sm:pl-6 lg:pl-12 text-left -mt-32 md:-mt-40 lg:-mt-64">
+          <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-0 leading-relaxed text-white drop-shadow-2xl hero-text-animated">
+            <span class="block mb-1">Pratiques Bancaires :</span>
+            <span class="block mb-1">Tout <span class="text-6xl md:text-8xl lg:text-9xl text-orange-400">Savoir</span></span>
+            <span class="block mb-1">Pour ne pas se faire</span>
+            <span class="block"><span class="text-6xl md:text-8xl lg:text-9xl text-orange-400">Avoir</span></span>
+        </h1>
+        </div>
+        <!-- Contenu en bas du texte -->
+        <div class="w-full pl-4 sm:pl-6 lg:pl-12 text-left">
+          <div class="relative mb-8 max-w-4xl">
+            <blockquote class="text-2xl md:text-3xl lg:text-4xl text-white leading-relaxed italic bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 shadow-lg px-6 py-5">
+              Ton argent, c'est ta liberté, ton effort et ton porte-parole. Mais l'argent ne parle pas… c'est toi qui dois apprendre à le faire parler pour toi.<br><br>
+              Ce guide t'accompagne comme un grand frère financier, et t'aide à tout découvrir sur l'éducation financière et la bancarisation dans l'espace UEMOA. Nous allons ensemble, apprendre à dompter la banque, le mobile money, les crédits, les assurances — sans peur et en toute confiance.
+          </blockquote>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats" class="py-16 bg-white bg-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="stats-counter">8</div>
+          <p class="text-lg text-gray-500 mt-2">Pays UEMOA</p>
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="stats-counter">50+</div>
+          <p class="text-lg text-gray-500 mt-2">Banques Partenaires</p>
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="stats-counter">100K+</div>
+          <p class="text-lg text-gray-500 mt-2">Utilisateurs Actifs</p>
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+          <div class="stats-counter">24h / 7j</div>
+          <p class="text-lg text-gray-500 mt-2">Support Disponible</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-16 bg-gray-50 bg-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
+          <span class="text-gradient">Nos Leçons</span>
+        </h2>
+        <p class="text-3xl text-gray-700 max-w-3xl mx-auto">
+          Une approche complète pour vous accompagner dans votre parcours financier et bancaire
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-12">
+        <a href="comptes.html" class="lesson-link" aria-label="Découvrir la leçon Les Comptes">
+          <div class="pro-card lesson-card comptes p-14 card-hover" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-ring mb-6">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+              </svg>
+            </div>
+            <h3 class="text-4xl font-bold mb-4">Les Comptes</h3>
+            <p class="text-2xl mb-6">
+              Découvrez les différents types de comptes bancaires et mobile money adaptés à vos besoins.
+            </p>
+            <ul class="text-xl space-y-2">
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Comptes courants et d'épargne
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Mobile money (Orange, Moov, Wave)
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="CurrentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Services à distance (USSD, apps)
+              </li>
+              <li class="flex items-center">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>
+                Transparence des frais
+              </li>
+            </ul>
+          </div>
+        </a>
+        
+        <a href="paiements.html" class="lesson-link" aria-label="Découvrir la leçon Les Paiements">
+        <div class="pro-card lesson-card paiements p-14 card-hover" data-aos="fade-up" data-aos-delay="200">
+          <div class="icon-ring mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-4xl font-bold mb-4">Les Paiements</h3>
+          <p class="text-2xl mb-6">
+            Maîtrisez les moyens de paiement modernes et sécurisés dans l'espace UEMOA.
+          </p>
+          <ul class="text-xl space-y-2">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Paiements mobiles sécurisés
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Transferts intra-UEMOA
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Cartes bancaires et QR codes
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Protection contre les fraudes
+            </li>
+          </ul>
+        </div>
+        </a>
+        
+        <a href="credits.html" class="lesson-link" aria-label="Découvrir la leçon Les Crédits">
+        <div class="pro-card lesson-card credits p-14 card-hover" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon-ring mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-4xl font-bold mb-4">Les Crédits</h3>
+          <p class="text-2xl mb-6">
+            Comprenez les différents types de crédits et financements disponibles.
+          </p>
+          <ul class="text-xl space-y-2">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Crédit personnel et professionnel
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Prêts agricoles et commerciaux
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Crédit via mobile money
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Prévention du surendettement
+            </li>
+          </ul>
+        </div>
+        </a>
+        
+        <a href="assurance.html" class="lesson-link" aria-label="Découvrir la leçon Les Assurances">
+        <div class="pro-card lesson-card assurances p-14 card-hover" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon-ring mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-4xl font-bold mb-4">Les Assurances</h3>
+          <p class="text-2xl mb-6">
+            Protégez-vous et vos proches avec les assurances bancaires adaptées.
+          </p>
+          <ul class="text-xl space-y-2">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Assurance maladie et vie
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Assurance agricole
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Assurance mobile
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Protection sociale
+            </li>
+          </ul>
+        </div>
+        </a>
+        
+        <a href="projets-de-vie.html" class="lesson-link" aria-label="Découvrir la leçon Projets de Vie">
+        <div class="pro-card lesson-card projets p-14 card-hover" data-aos="fade-up" data-aos-delay="500">
+          <div class="icon-ring mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-4xl font-bold mb-4">Projets de Vie</h3>
+          <p class="text-2xl mb-6">
+            Planifiez vos projets importants avec nos conseils financiers personnalisés.
+          </p>
+          <ul class="text-xl space-y-2">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Études et formations
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Mariage et famille
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Retraite et assurance vie
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Voyages et migrations
+            </li>
+          </ul>
+        </div>
+        </a>
+        
+        <a href="banque.html" class="lesson-link" aria-label="Découvrir la leçon Éducation Financière">
+        <div class="pro-card lesson-card education p-14 card-hover" data-aos="fade-up" data-aos-delay="600">
+          <div class="icon-ring mb-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-4xl font-bold mb-4">Éducation Financière</h3>
+          <p class="text-2xl mb-6">
+            Apprenez les bases de la finance personnelle et bancaire.
+          </p>
+          <ul class="text-xl space-y-2">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Guides pratiques
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Conseils d'experts
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Calculatrices financières
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Formations en ligne
+            </li>
+          </ul>
+        </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="py-20 bg-gray-50"> <!-- Passage en design clair -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
+          <span class="text-gradient">Notre Mission</span>
+        </h2>
+        <p class="text-3xl text-blue-900">
+          Démocratiser l'accès à l'information financière en Afrique de l'Ouest
+        </p>
+      </div>
+      
+      <div class="space-y-12">
+        <div class="timeline-item" data-aos="fade-right" data-aos-delay="100">
+          <h3 class="text-3xl font-bold mb-4">Éducation & Information</h3>
+          <p class="text-xl text-blue-900 mb-4">
+            Nous vulgarisons les concepts bancaires complexes pour les rendre accessibles à tous les citoyens de l'espace UEMOA.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-blue-500/20 rounded-full text-lg">Guides Pratiques</span>
+            <span class="px-3 py-1 bg-blue-500/20 rounded-full text-lg">Tutoriels Vidéo</span>
+            <span class="px-3 py-1 bg-blue-500/20 rounded-full text-lg">Articles Experts</span>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-right" data-aos-delay="200">
+          <h3 class="text-3xl font-bold mb-4">Transparence & Confiance</h3>
+          <p class="text-xl text-blue-900 mb-4">
+            Nous promouvons la transparence dans les services financiers et aidons les utilisateurs à faire des choix éclairés.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-base">Comparatifs</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-base">Avis Clients</span>
+            <span class="px-3 py-1 bg-purple-500/20 rounded-full text-base">Évaluations</span>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-right" data-aos-delay="300">
+          <h3 class="text-3xl font-bold mb-4">Innovation & Accessibilité</h3>
+          <p class="text-xl text-blue-900 mb-4">
+            Nous intégrons les dernières technologies pour rendre les services financiers plus accessibles et intuitifs.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-blue-500/20 rounded-full text-lg">Mobile First</span>
+            <span class="px-3 py-1 bg-blue-500/20 rounded-full text-lg">IA & Chatbots</span>
+            <span class="px-3 py-1 bg-blue-500/20 rounded-full text-lg">API Intégrées</span>
+          </div>
+        </div>
+        
+        <div class="timeline-item" data-aos="fade-right" data-aos-delay="400">
+          <h3 class="text-3xl font-bold mb-4">Qui Sommes-Nous ?</h3>
+          <p class="text-xl text-blue-900 mb-4">
+            Pratiques Bancaires est une plateforme éducative dédiée à l'éducation financière et à la bancarisation dans l'espace UEMOA. Nous accompagnons les citoyens dans la maîtrise des services bancaires, du mobile money, des crédits et des assurances, en rendant l'information financière accessible et compréhensible pour tous.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-20 bg-white"> <!-- Passage en design clair -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
+          <span class="text-gradient">Témoignages</span>
+        </h2>
+        <p class="text-2xl text-gray-600">
+          Ce que disent nos utilisateurs
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-12">
+        <div class="testimonial-card p-12" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+              A
+            </div>
+            <div class="ml-4">
+              <h4 class="text-xl font-semibold">Aminata Diallo</h4>
+              <p class="text-xl text-blue-900">Entrepreneure, Dakar</p>
+            </div>
+          </div>
+          <p class="text-2xl text-blue-900 italic">
+            "Cette plateforme m'a permis de comprendre les différents types de crédits disponibles pour mon entreprise. Grâce aux guides pratiques, j'ai pu obtenir le financement dont j'avais besoin."
+          </p>
+          <div class="flex text-yellow-400 mt-4">
+            ★★★★★
+          </div>
+        </div>
+        
+        <div class="testimonial-card p-12" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+              K
+            </div>
+            <div class="ml-4">
+              <h4 class="text-xl font-semibold">Koffi Mensah</h4>
+              <p class="text-lg text-B-400">Étudiant, Abidjan</p>
+            </div>
+          </div>
+          <p class="text-2xl text-blue-900 italic">
+            "En tant qu'étudiant, je ne connaissais rien aux services bancaires. Les tutoriels vidéo et les explications simples m'ont beaucoup aidé à ouvrir mon premier compte."
+          </p>
+          <div class="flex text-yellow-400 mt-4">
+            ★★★★★
+          </div>
+        </div>
+        
+        <div class="testimonial-card p-12" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold">
+              F
+            </div>
+            <div class="ml-4">
+              <h4 class="text-xl font-semibold">Fatou Traoré</h4>
+              <p class="text-xl text-blue-900">Mère de famille, Bamako</p>
+            </div>
+          </div>
+          <p class="text-2xl text-blue-900 italic">
+            "Grâce à cette plateforme, j'ai pu apprendre à utiliser les services de mobile money en toute sécurité. Mes transferts d'argent sont maintenant plus rapides et moins chers."
+          </p>
+          <div class="flex text-yellow-400 mt-4">
+            ★★★★★
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-blue-50 relative"> <!-- Passage en design clair -->
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-4">
+      <div data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-900">
+          Prêt à Découvrir l'Univers Bancaire UEMOA ?
+        </h2>
+        <p class="text-3xl text-gray-700 mb-8">
+          Rejoignez des milliers d'utilisateurs qui ont déjà transformé leur relation avec les services financiers
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="banque.html" class="cta-button pulse-glow text-xl md:text-2xl px-8 md:px-12 py-5 md:py-6">
+            Commencer Maintenant
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel d'actualités BCEAO et GIM UEMOA -->
+  <section class="news-carousel-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="news-carousel-title" data-aos="fade-up">
+        <h2>Actualités BCEAO & GIM UEMOA</h2>
+        <p>Restez informé des dernières nouveautés bancaires et financières</p>
+      </div>
+      
+      <div class="swiper news-swiper" id="newsSwiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          <!-- Les cartes seront générées dynamiquement par JavaScript -->
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Modal popup actualités -->
+  <div id="newsModal" class="news-modal">
+    <div class="news-modal-content">
+      <button class="news-modal-close" id="closeNewsModal" aria-label="Fermer">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <img id="newsModalImage" src="" alt="" class="news-modal-image">
+      <div class="news-modal-body">
+        <div id="newsModalDate" class="news-modal-date"></div>
+        <h2 id="newsModalTitle" class="news-modal-title"></h2>
+        <p id="newsModalText" class="news-modal-text"></p>
+        <a href="#" id="newsModalLink" target="_blank" rel="noopener noreferrer" class="news-modal-link">
+          Lire l'actualité complète sur le site
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-white py-16 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-2">
+          <div class="flex items-center mb-6">
+            <img class="h-10 w-auto" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+            <span class="ml-3 text-xl font-bold text-blue-900 animated-brand">Qui Sommes-Nous ?</span>
+          </div>
+          <p class="text-xl text-gray-700 mb-6 max-w-md">
+            Pratiques Bancaires est une plateforme éducative dédiée à l'éducation financière et à la bancarisation dans l'espace UEMOA. Nous accompagnons les citoyens dans la maîtrise des services bancaires, du mobile money, des crédits et des assurances, en rendant l'information financière accessible et compréhensible pour tous.
+          </p>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/40 transition-colors" title="Twitter">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/40 transition-colors" title="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/40 transition-colors" title="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-blue-900">Services</h3>
+          <ul class="space-y-2 text-gray-800">
+            <li><a href="banque.html" class="hover:text-blue-600 transition-colors">Les Comptes</a></li>
+            <li><a href="banque.html" class="hover:text-blue-600 transition-colors">Les Paiements</a></li>
+            <li><a href="banque.html" class="hover:text-blue-600 transition-colors">Les Crédits</a></li>
+            <li><a href="banque.html" class="hover:text-blue-600 transition-colors">Les Assurances</a></li>
+            <li><a href="banque.html" class="hover:text-blue-600 transition-colors">Projets de Vie</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4 text-blue-900">Contact</h3>
+          <ul class="space-y-2 text-gray-800">
+            <li>📧 contact@afriqueenpoche.com</li>
+            <li>📞 +225 XX XX XX XX</li>
+            <li>📍 Abidjan, Côte d'Ivoire</li>
+            <li>🌐 www.afriqueenpoche.com</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="section-divider my-8"></div>
+      
+      <div class="text-center text-gray-400">
+        <p>&copy; 2024 Pratiques Bancaires. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Counter animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stats-counter');
+      counters.forEach(counter => {
+        const target = parseInt(counter.textContent.replace(/\D/g, ''));
+        const duration = 2000;
+        const increment = target / (duration / 16);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          
+          if (counter.textContent.includes('K')) {
+            counter.textContent = Math.floor(current) + 'K+';
+          } else if (counter.textContent.includes('/')) {
+            counter.textContent = Math.floor(current) + '/7';
+          } else {
+            counter.textContent = Math.floor(current) + '+';
+          }
+        }, 16);
+      });
+    }
+    
+    // Trigger counter animation when stats section is visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    
+    const statsSection = document.querySelector('.stats-counter').closest('section');
+    if (statsSection) {
+      observer.observe(statsSection);
+    }
+    
+    // Pagination verticale
+    const paginationItems = document.querySelectorAll('.pagination li');
+    const sections = document.querySelectorAll('section[id]');
+
+    // Navigation smooth scroll
+    paginationItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const targetId = this.getAttribute('data-section');
+        const targetSection = document.querySelector(targetId);
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Détection de la section active lors du scroll
+    function updateActiveSection() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 150;
+        const sectionHeight = section.offsetHeight;
+        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      paginationItems.forEach(item => {
+        const sectionId = item.getAttribute('data-section').substring(1);
+        if (sectionId === current) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    // Initialiser au chargement
+    updateActiveSection();
+
+    // Mettre à jour lors du scroll
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          updateActiveSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+    
+    // Carousel d'actualités BCEAO et GIM UEMOA - Synchronisation avec le site officiel
+    (function() {
+      // Actualités synchronisées avec le site BCEAO (https://www.bceao.int/)
+      // Basées sur les actualités réelles du site officiel avec images depuis BCEAO
+      const newsData = [
+        {
+          type: 'bceao',
+          date: '30 Septembre 2025',
+          title: 'Lancement officiel de la Plateforme Interopérable du Système de Paiement Instantané (PI-SPI)',
+          excerpt: 'La BCEAO lance la PI-SPI pour faciliter les paiements instantanés dans l\'espace UEMOA, révolutionnant les transactions bancaires.',
+          fullText: 'La Banque Centrale des Etats de l\'Afrique de l\'Ouest (BCEAO) a officiellement lancé la Plateforme Interopérable du Système de Paiement Instantané (PI-SPI) le 30 septembre 2025. Cette innovation majeure permet aux utilisateurs de l\'espace UEMOA d\'effectuer des paiements instantanés entre différents systèmes de paiement, qu\'il s\'agisse de banques, de services de mobile money ou d\'autres institutions financières. La PI-SPI facilite les transactions interbancaires et interopérables, réduisant les délais de traitement et améliorant l\'expérience utilisateur. Cette plateforme représente une étape importante dans la modernisation du système de paiement dans l\'Union et contribue à l\'inclusion financière dans la région.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-09/pi-spi-lancement.jpg',
+          link: 'https://www.bceao.int/fr/actualites/lancement-officiel-de-la-plateforme-interoperable-du-systeme-de-paiement-instantane-pi-spi',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/lancement-officiel-de-la-plateforme-interoperable-du-systeme-de-paiement-instantane-pi-spi'
+        },
+        {
+          type: 'bceao',
+          date: '17 Septembre 2025',
+          title: 'Réunion ordinaire du Comité de Politique Monétaire de la BCEAO',
+          excerpt: 'Le Comité de Politique Monétaire se réunit pour définir les orientations monétaires de l\'Union.',
+          fullText: 'Le Comité de Politique Monétaire (CPM) de la BCEAO s\'est réuni en session ordinaire le 17 septembre 2025 à Dakar. Cette réunion a permis d\'examiner l\'évolution de la situation économique et financière de l\'Union Monétaire Ouest Africaine (UMOA) et de définir les orientations de la politique monétaire pour les prochains mois. Les membres du Comité ont analysé les indicateurs macroéconomiques, l\'évolution de l\'inflation, la croissance économique et la stabilité financière dans l\'Union. Des décisions importantes ont été prises concernant les taux directeurs et les instruments de politique monétaire pour maintenir la stabilité des prix et soutenir la croissance économique.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-09/cpm-reunion.jpg',
+          link: 'https://www.bceao.int/fr/actualites/reunion-ordinaire-du-comite-de-politique-monetaire-de-la-bceao',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/reunion-ordinaire-du-comite-de-politique-monetaire-de-la-bceao'
+        },
+        {
+          type: 'bceao',
+          date: '06 Octobre 2025',
+          title: 'Session ordinaire du Conseil des Ministres de l\'Union',
+          excerpt: 'Le Conseil des Ministres se réunit pour examiner les questions économiques et financières de l\'UEMOA.',
+          fullText: 'Le Conseil des Ministres de l\'Union Monétaire Ouest Africaine s\'est réuni en session ordinaire le 6 octobre 2025. Cette session a été l\'occasion d\'examiner les questions économiques et financières importantes pour l\'Union, notamment la coordination des politiques économiques des États membres, la stabilité financière régionale, et les réformes en cours dans le secteur bancaire et financier. Les ministres ont également discuté des défis liés à l\'inclusion financière, à la digitalisation des services bancaires, et aux perspectives économiques pour l\'année 2026. Des décisions stratégiques ont été prises pour renforcer l\'intégration économique et financière dans l\'espace UEMOA.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-10/conseil-ministres.jpg',
+          link: 'https://www.bceao.int/fr/actualites/session-ordinaire-du-conseil-des-ministres-de-lunion',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/session-ordinaire-du-conseil-des-ministres-de-lunion'
+        },
+        {
+          type: 'bceao',
+          date: '31 Octobre 2025',
+          title: 'Publication du Rapport sur le commerce extérieur de l\'Union 2024',
+          excerpt: 'La BCEAO publie son rapport annuel sur le commerce extérieur de l\'UEMOA pour l\'année 2024.',
+          fullText: 'La BCEAO a publié son rapport annuel sur le commerce extérieur de l\'Union Monétaire Ouest Africaine pour l\'année 2024. Ce rapport présente une analyse détaillée des échanges commerciaux de l\'Union avec le reste du monde, incluant l\'évolution des exportations et des importations, la balance commerciale, et les principaux partenaires commerciaux. Le rapport révèle une amélioration de la balance commerciale grâce à l\'augmentation des exportations de produits agricoles et miniers, ainsi qu\'une diversification progressive des partenaires commerciaux. Des recommandations sont formulées pour renforcer la compétitivité des économies de l\'Union et promouvoir l\'intégration commerciale régionale.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-10/rapport-commerce.jpg',
+          link: 'https://www.bceao.int/fr/publications/rapport-sur-le-commerce-exterieur-de-lunion-2024',
+          sourceUrl: 'https://www.bceao.int/fr/publications/rapport-sur-le-commerce-exterieur-de-lunion-2024'
+        },
+        {
+          type: 'bceao',
+          date: '27 Mai 2025',
+          title: '1ère réunion du Cadre de concertation sur la Lutte Anti-Blanchiment (CLAB)',
+          excerpt: 'Renforcement de la lutte contre le blanchiment de capitaux dans l\'espace UEMOA.',
+          fullText: 'La première réunion du Cadre de concertation sur la Lutte Anti-Blanchiment (CLAB) s\'est tenue le 27 mai 2025. Cette instance de coordination réunit les autorités de régulation, les banques centrales, et les institutions financières de l\'UEMOA pour renforcer la lutte contre le blanchiment de capitaux et le financement du terrorisme. Les participants ont discuté des meilleures pratiques, des défis rencontrés, et des stratégies à mettre en place pour améliorer l\'efficacité de la lutte contre ces fléaux. Des recommandations ont été formulées pour harmoniser les réglementations, renforcer la coopération entre les pays membres, et améliorer les capacités de détection et de prévention des activités suspectes.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-05/clab-reunion.jpg',
+          link: 'https://www.bceao.int/fr/actualites/premiere-reunion-cadre-concertation-lutte-anti-blanchiment',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/premiere-reunion-cadre-concertation-lutte-anti-blanchiment'
+        },
+        {
+          type: 'gim',
+          date: '2025',
+          title: 'Nouveautés GIM UEMOA : Paiements interbancaires simplifiés',
+          excerpt: 'La carte GIM UEMOA continue d\'évoluer pour offrir plus de services et de facilités de paiement dans toute l\'Union.',
+          fullText: 'Le Groupement Interbancaire Monétique de l\'UEMOA (GIM UEMOA) annonce de nouvelles fonctionnalités pour simplifier les paiements interbancaires dans l\'espace UEMOA. Les détenteurs de cartes GIM peuvent désormais effectuer des retraits et des paiements dans tous les pays membres de l\'Union sans frais supplémentaires. Les nouvelles fonctionnalités incluent également la possibilité de consulter le solde et l\'historique des transactions en temps réel via l\'application mobile GIM, ainsi que des notifications push pour chaque transaction. Ces améliorations renforcent la sécurité et la facilité d\'utilisation des cartes GIM, contribuant ainsi à l\'inclusion financière dans la région.',
+          image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800',
+          link: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires',
+          sourceUrl: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires'
+        },
+        {
+          type: 'gim',
+          date: '2025',
+          title: 'Extension du réseau GIM : Plus de distributeurs disponibles',
+          excerpt: 'Le réseau GIM s\'étend dans tous les pays de l\'UEMOA pour un accès facilité aux services bancaires.',
+          fullText: 'Le réseau de distributeurs automatiques GIM continue de s\'étendre dans tous les pays de l\'UEMOA. Plus de 500 nouveaux distributeurs ont été installés en 2025, portant le nombre total à plus de 5000 distributeurs dans toute l\'Union. Cette expansion permet aux utilisateurs de cartes GIM d\'avoir un accès plus facile aux services bancaires, même dans les zones rurales et périurbaines. Les nouveaux distributeurs sont équipés des dernières technologies de sécurité et acceptent toutes les cartes GIM, VISA et Mastercard. Cette initiative s\'inscrit dans le cadre de l\'amélioration de l\'accessibilité des services financiers pour tous les citoyens de l\'UEMOA.',
+          image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800',
+          link: 'https://www.gim-uemoa.org/actualites/extension-reseau-distributeurs',
+          sourceUrl: 'https://www.gim-uemoa.org/actualites/extension-reseau-distributeurs'
+        },
+        {
+          type: 'gim',
+          date: '2025',
+          title: 'Sécurité renforcée des cartes GIM UEMOA',
+          excerpt: 'Nouvelles mesures de sécurité pour protéger vos transactions avec la carte GIM dans l\'espace UEMOA.',
+          fullText: 'Le GIM UEMOA a renforcé les mesures de sécurité des cartes bancaires pour mieux protéger les utilisateurs contre la fraude. Les nouvelles cartes GIM sont désormais équipées de la technologie EMV (Europay, Mastercard, Visa) avec puce et authentification par code PIN. De plus, un système d\'alerte en temps réel a été mis en place pour notifier les utilisateurs de toute transaction suspecte. Les banques membres du réseau GIM ont également renforcé leurs systèmes de détection de fraude grâce à l\'intelligence artificielle. Ces mesures contribuent à renforcer la confiance des utilisateurs dans les cartes GIM et à sécuriser les transactions dans tout l\'espace UEMOA.',
+          image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800',
+          link: 'https://www.gim-uemoa.org/actualites/securite-renforcee-cartes',
+          sourceUrl: 'https://www.gim-uemoa.org/actualites/securite-renforcee-cartes'
+        }
+      ];
+      
+      // Fonction pour charger et vérifier une image depuis BCEAO
+      async function loadBCEAOImage(imageUrl) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(imageUrl);
+          img.onerror = () => {
+            console.warn('Image BCEAO non disponible, utilisation du fallback:', imageUrl);
+            resolve('https://www.bceao.int/sites/default/files/styles/actualite/public/default-news.jpg');
+          };
+          img.src = imageUrl;
+        });
+      }
+      
+      // Fonction pour normaliser une URL d'image
+      function normalizeImageUrl(url, baseUrl = 'https://www.bceao.int') {
+        if (!url) return '';
+        url = url.trim();
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+          return url;
+        }
+        if (url.startsWith('//')) {
+          return 'https:' + url;
+        }
+        if (url.startsWith('/')) {
+          return baseUrl + url;
+        }
+        return baseUrl + '/' + url;
+      }
+      
+      // Fonction pour vérifier si une image est accessible
+      async function verifyImageUrl(imageUrl) {
+        if (!imageUrl) return false;
+        try {
+          const img = new Image();
+          return new Promise((resolve) => {
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = imageUrl;
+            setTimeout(() => resolve(false), 5000);
+          });
+        } catch (error) {
+          return false;
+        }
+      }
+      
+      // Fonction pour extraire l'image depuis une page d'actualité BCEAO
+      async function extractImageFromArticle(articleUrl, corsProxy) {
+        try {
+          console.log(`📥 Récupération de la page: ${articleUrl}`);
+          const response = await fetch(corsProxy + encodeURIComponent(articleUrl));
+          if (!response.ok) {
+            console.warn(`❌ Erreur HTTP: ${response.status}`);
+            return null;
+          }
+          
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          
+          // Sélecteurs multiples pour trouver l'image principale BCEAO (par ordre de priorité)
+          const imageSelectors = [
+            // Sélecteurs spécifiques BCEAO Drupal
+            'img.field--name-field-image',
+            '.field--name-field-image img',
+            '.field--name-field-image img[src*="/sites/default/files/"]',
+            '.field-image img',
+            'article .field-image img',
+            '.node-article .field-image img',
+            '.node--type-actualite .field-image img',
+            // Images dans les vues Drupal
+            '.views-field-field-image img',
+            '.field--name-field-image img',
+            // Sélecteurs génériques
+            'article img[typeof="foaf:Image"]',
+            'article .content img',
+            '.node-content img',
+            '.content img',
+            // Sélecteurs par chemin (priorité absolue aux images BCEAO)
+            'img[src*="/sites/default/files/styles/actualite/"]',
+            'img[src*="/sites/default/files/"]',
+            'img[src*="actualite"]',
+            // Images dans les articles
+            'article img:not([src*="logo"]):not([src*="icon"]):not([src*="favicon"])',
+            '.main-content img:first-of-type',
+            'article img:first-of-type'
+          ];
+          
+          const foundImages = [];
+          
+          for (const selector of imageSelectors) {
+            const imgs = doc.querySelectorAll(selector);
+            for (const img of imgs) {
+              // Récupérer l'URL de l'image
+              let src = img.src || img.getAttribute('data-src') || img.getAttribute('data-lazy-src') || img.getAttribute('data-original') || '';
+              
+              // Ignorer les logos, icônes et images trop petites
+              if (!src || 
+                  src.includes('logo') || 
+                  src.includes('icon') || 
+                  src.includes('favicon') ||
+                  src.includes('sprite') ||
+                  (img.width && img.width < 100) ||
+                  (img.height && img.height < 100)) {
+                continue;
+              }
+              
+              // Essayer srcset pour obtenir la meilleure résolution
+              if (img.srcset) {
+                const srcsetParts = img.srcset.split(',');
+                let largestUrl = '';
+                let largestWidth = 0;
+                for (const part of srcsetParts) {
+                  const parts = part.trim().split(/\s+/);
+                  const url = parts[0];
+                  const width = parts[1] ? parseInt(parts[1].replace('w', '')) : 0;
+                  if (width > largestWidth && width > 200) {
+                    largestWidth = width;
+                    largestUrl = url;
+                  }
+                }
+                if (largestUrl) {
+                  src = largestUrl;
+                }
+              }
+              
+              if (src) {
+                // Normaliser l'URL
+                let imageUrl = normalizeImageUrl(src);
+                
+                // Vérifier que c'est bien une URL BCEAO
+                if (imageUrl.includes('bceao.int') || imageUrl.includes('/sites/default/files/')) {
+                  foundImages.push(imageUrl);
+                  console.log(`📷 Image BCEAO trouvée: ${imageUrl}`);
+                }
+              }
+            }
+          }
+          
+          // Retourner la première image BCEAO trouvée
+          if (foundImages.length > 0) {
+            return foundImages[0];
+          }
+          
+          console.warn(`⚠️ Aucune image BCEAO trouvée dans la page: ${articleUrl}`);
+          return null;
+        } catch (error) {
+          console.error(`❌ Erreur lors de l'extraction de l'image depuis ${articleUrl}:`, error);
+          return null;
+        }
+      }
+      
+      // Fonction pour récupérer les actualités depuis le site BCEAO
+      async function fetchBCEAONews() {
+        try {
+          const corsProxy = 'https://api.allorigins.win/raw?url=';
+          const bceaoUrl = 'https://www.bceao.int/fr/actualites';
+          
+          const response = await fetch(corsProxy + encodeURIComponent(bceaoUrl));
+          if (!response.ok) throw new Error('Erreur de récupération');
+          
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          
+          const newsItems = [];
+          const newsSelectors = [
+            '.view-actualites .views-row',
+            '.view-content .views-row',
+            'article.node-actualite',
+            '.news-item',
+            '.actualite-item',
+            '.node--type-actualite'
+          ];
+          
+          let items = [];
+          for (const selector of newsSelectors) {
+            const found = doc.querySelectorAll(selector);
+            if (found.length > 0) {
+              items = Array.from(found);
+              break;
+            }
+          }
+          
+          if (items.length === 0) {
+            const links = doc.querySelectorAll('a[href*="/actualites/"], a[href*="/fr/actualites"]');
+            const seenParents = new Set();
+            links.forEach(link => {
+              const parent = link.closest('article, .node, .views-row, .news-item, .views-field');
+              if (parent && !seenParents.has(parent)) {
+                seenParents.add(parent);
+                items.push(parent);
+              }
+            });
+          }
+          
+          items = items.slice(0, 8);
+          
+          for (const item of items) {
+            try {
+              const titleEl = item.querySelector('h2 a, h3 a, h4 a, .title a, .field-title a, a[href*="/actualites/"]');
+              const linkEl = titleEl || item.querySelector('a[href*="/actualites/"], a[href*="/fr/actualites"]');
+              const dateEl = item.querySelector('.date, .field-date, .created, time, .views-field-created');
+              const excerptEl = item.querySelector('.field-summary, .excerpt, .body, .field-body, p');
+              
+              if (!linkEl) continue;
+              
+              let link = linkEl.href || linkEl.getAttribute('href');
+              if (!link.startsWith('http')) {
+                link = link.startsWith('/') ? 'https://www.bceao.int' + link : 'https://www.bceao.int/' + link;
+              }
+              
+              const title = (titleEl?.textContent || linkEl.textContent || '').trim();
+              const date = (dateEl?.textContent || '').trim();
+              const excerpt = (excerptEl?.textContent || '').trim().substring(0, 200);
+              
+              // Récupérer le texte complet depuis la page d'actualité
+              let fullText = excerpt;
+              if (link && !fullText) {
+                try {
+                  const articleResponse = await fetch(corsProxy + encodeURIComponent(link));
+                  if (articleResponse.ok) {
+                    const articleHtml = await articleResponse.text();
+                    const articleDoc = parser.parseFromString(articleHtml, 'text/html');
+                    const bodyEl = articleDoc.querySelector('.field-body, .body, article .content, .node-content, .field--name-body');
+                    if (bodyEl) {
+                      fullText = bodyEl.textContent.trim();
+                    }
+                  }
+                } catch (err) {
+                  console.warn('Erreur lors de la récupération du texte de l\'article:', err);
+                }
+              }
+              
+              if (title && link) {
+                // Utiliser uniquement l'image trouvée depuis BCEAO - PAS de fallback Unsplash
+                newsItems.push({
+                  type: 'bceao',
+                  date: date || '2025',
+                  title: title,
+                  excerpt: excerpt || title.substring(0, 150) + '...',
+                  fullText: fullText || excerpt || title,
+                  image: image || '', // Pas de fallback - on utilise seulement les images BCEAO
+                  link: link,
+                  sourceUrl: link
+                });
+              }
+            } catch (err) {
+              console.warn('Erreur lors du traitement d\'une actualité:', err);
+            }
+          }
+          
+          return newsItems;
+        } catch (error) {
+          console.error('Erreur lors de la récupération des actualités BCEAO:', error);
+          return [];
+        }
+      }
+      
+      // Fonction pour synchroniser avec le site BCEAO
+      async function syncBCEAONews() {
+        try {
+          console.log('Synchronisation des actualités BCEAO en cours...');
+          
+          // Récupérer les actualités depuis le site
+          const fetchedNews = await fetchBCEAONews();
+          
+          if (fetchedNews.length > 0) {
+            // Mettre à jour newsData avec les actualités récupérées
+            newsData.length = 0;
+            newsData.push(...fetchedNews);
+            
+            // Ajouter quelques actualités GIM si nécessaire
+            if (newsData.length < 8) {
+              newsData.push(
+                {
+                  type: 'gim',
+                  date: '2025',
+                  title: 'Nouveautés GIM UEMOA : Paiements interbancaires simplifiés',
+                  excerpt: 'La carte GIM UEMOA continue d\'évoluer pour offrir plus de services et de facilités de paiement dans toute l\'Union.',
+                  fullText: 'Le Groupement Interbancaire Monétique de l\'UEMOA (GIM UEMOA) annonce de nouvelles fonctionnalités pour simplifier les paiements interbancaires dans l\'espace UEMOA.',
+                  image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800',
+                  link: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires',
+                  sourceUrl: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires'
+                }
+              );
+            }
+            
+            // Réinitialiser le carousel avec les nouvelles données
+            const swiperContainer = document.getElementById('newsSwiper');
+            if (swiperContainer) {
+              const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+              if (swiperWrapper) {
+                swiperWrapper.innerHTML = '';
+                initNewsCarousel();
+              }
+            }
+            
+            console.log(`${fetchedNews.length} actualités BCEAO synchronisées avec succès`);
+          } else {
+            console.log('Aucune actualité récupérée, utilisation des données par défaut');
+          }
+        } catch (error) {
+          console.error('Erreur lors de la synchronisation:', error);
+        }
+      }
+      
+      function initNewsCarousel() {
+        const swiperContainer = document.getElementById('newsSwiper');
+        if (!swiperContainer) return;
+        
+        const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+        if (!swiperWrapper) return;
+        
+        // Générer les slides
+        newsData.forEach((news, index) => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          slide.style.height = 'auto';
+          // Icône selon le type
+          const iconSvg = news.type === 'bceao' 
+            ? `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+               </svg>`
+            : `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+               </svg>`;
+          
+          slide.innerHTML = `
+            <div class="news-card ${news.type}" style="width: 100%;" data-news-index="${index}">
+              <div class="news-card-content">
+                <div class="news-card-header">
+                  <div class="news-card-header-wrapper">
+                    <span class="news-badge ${news.type}">${news.type.toUpperCase()}</span>
+                    <div class="news-date">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      ${news.date}
+                    </div>
+                  </div>
+                  <div class="news-card-icon ${news.type}" style="background: ${news.type === 'bceao' ? 'linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)' : 'linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%)'};">
+                    ${iconSvg}
+                  </div>
+                </div>
+                <div class="news-card-body">
+                  <h3 class="news-title">${news.title}</h3>
+                  <p class="news-excerpt">${news.excerpt}</p>
+                  <div class="news-link" style="margin-top: auto; padding-top: 8px;">
+                    Lire la suite
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          swiperWrapper.appendChild(slide);
+        });
+        
+        // Initialiser Swiper avec sélecteurs spécifiques
+        const nextEl = swiperContainer.querySelector('.swiper-button-next');
+        const prevEl = swiperContainer.querySelector('.swiper-button-prev');
+        
+        new Swiper(swiperContainer, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
+          navigation: {
+            nextEl: nextEl,
+            prevEl: prevEl,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            }
+          }
+        });
+        
+        // Rendre les cartes cliquables pour ouvrir le popup
+        setTimeout(() => {
+          swiperWrapper.addEventListener('click', function(e) {
+            // Ignorer les clics sur les boutons de navigation et pagination
+            if (e.target.closest('.swiper-button-next') || 
+                e.target.closest('.swiper-button-prev') || 
+                e.target.closest('.swiper-pagination')) {
+              return;
+            }
+            
+            const newsCard = e.target.closest('.news-card');
+            if (!newsCard) return;
+            
+            const newsIndex = parseInt(newsCard.getAttribute('data-news-index'));
+            if (isNaN(newsIndex)) return;
+            
+            const news = newsData[newsIndex];
+            if (!news) return;
+            
+            // Ouvrir le popup avec l'actualité complète
+            openNewsModal(news);
+          });
+        }, 200);
+      }
+      
+      // Fonction pour ouvrir le popup d'actualité avec animation
+      function openNewsModal(news) {
+        const modal = document.getElementById('newsModal');
+        const modalTitle = document.getElementById('newsModalTitle');
+        const modalDate = document.getElementById('newsModalDate');
+        const modalText = document.getElementById('newsModalText');
+        const modalLink = document.getElementById('newsModalLink');
+        
+        if (!modal || !modalTitle || !modalDate || !modalText || !modalLink) return;
+        
+        // Remplir le contenu du modal
+        modalTitle.textContent = news.title;
+        modalDate.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          ${news.date}
+        `;
+        modalText.textContent = news.fullText || news.excerpt;
+        modalLink.href = news.link;
+        modalLink.setAttribute('data-news-link', news.link);
+        
+        // Afficher le modal avec animation
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Fonction pour fermer le popup avec animation
+      function closeNewsModal() {
+        const modal = document.getElementById('newsModal');
+        if (!modal) return;
+        
+        // Animation de fermeture
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      }
+      
+      // Gestion des événements du modal
+      function setupNewsModal() {
+        const closeBtn = document.getElementById('closeNewsModal');
+        const modal = document.getElementById('newsModal');
+        const modalLink = document.getElementById('newsModalLink');
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeNewsModal);
+        }
+        
+        // Fermer le modal en cliquant en dehors
+        if (modal) {
+          modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+              closeNewsModal();
+            }
+          });
+        }
+        
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeNewsModal();
+          }
+        });
+        
+        // Redirection vers l'actualité spécifique au clic sur le lien dans le modal
+        if (modalLink) {
+          modalLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const link = this.getAttribute('data-news-link') || this.href;
+            if (link && link !== '#' && link !== 'javascript:void(0)') {
+              window.open(link, '_blank', 'noopener,noreferrer');
+            }
+          });
+        }
+        
+        // Redirection au clic sur le contenu du modal (sauf le bouton de fermeture)
+        if (modal) {
+          const modalContent = modal.querySelector('.news-modal-content');
+          if (modalContent) {
+            modalContent.addEventListener('click', function(e) {
+              // Ne pas rediriger si on clique sur le bouton de fermeture ou le lien
+              if (e.target.closest('.news-modal-close') || e.target.closest('.news-modal-link')) {
+                return;
+              }
+              
+              // Rediriger vers l'actualité
+              const link = modalLink?.getAttribute('data-news-link') || modalLink?.href;
+              if (link && link !== '#' && link !== 'javascript:void(0)') {
+                window.open(link, '_blank', 'noopener,noreferrer');
+              }
+            });
+          }
+        }
+      }
+      
+      // Initialiser le carousel et le modal
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          // Initialiser d'abord avec les données par défaut
+          initNewsCarousel();
+          setupNewsModal();
+          // Puis synchroniser en arrière-plan
+          setTimeout(() => {
+            syncBCEAONews();
+          }, 2000);
+        });
+      } else {
+        initNewsCarousel();
+        setupNewsModal();
+        setTimeout(() => {
+          syncBCEAONews();
+        }, 2000);
+      }
+      
+      // Synchroniser toutes les 6 heures
+      setInterval(syncBCEAONews, 21600000); // 6 heures
+    })();
+  </script>
+</body>
+</html>

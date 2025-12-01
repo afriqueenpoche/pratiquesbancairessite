@@ -1,0 +1,3349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Comptes - Pratiques Bancaires</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    /* Fluidbook.com Inspired Design System */
+    :root {
+      --fluid-primary: #6366f1;
+      --fluid-secondary: #8b5cf6;
+      --fluid-accent: #ec4899;
+      --fluid-dark: #0f172a;
+      --fluid-gray-900: #1e293b;
+      --fluid-gray-800: #334155;
+      --fluid-gray-700: #475569;
+      --fluid-gray-100: #f1f5f9;
+      --fluid-white: #ffffff;
+      --fluid-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --fluid-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --fluid-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --fluid-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --fluid-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --fluid-blur: blur(20px);
+    }
+    
+    * {
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+      color: var(--fluid-gray-900);
+    }
+    
+    /* Fluid Navbar - Glassmorphism */
+    .glass-effect-blue {
+      background: rgba(255, 255, 255, 0.3);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.08);
+    }
+    
+    /* Fluid Typography */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--fluid-primary) 0%, var(--fluid-secondary) 50%, var(--fluid-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    
+    /* Gradient blanc à orange clair */
+    .text-gradient-white-orange {
+      background: linear-gradient(135deg, #ffffff 0%, #ffffff 70%, #fbbf24 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Fluid Animations */
+    @keyframes fluid-float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      33% { transform: translateY(-10px) translateX(5px); }
+      66% { transform: translateY(5px) translateX(-5px); }
+    }
+    
+    @keyframes fluid-pulse {
+      0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+        transform: scale(1);
+      }
+      50% { 
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+        transform: scale(1.05);
+      }
+    }
+    
+    @keyframes fluid-gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .float-animation {
+      animation: fluid-float 8s ease-in-out infinite;
+    }
+    
+    .pulse-glow {
+      animation: fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    /* Animated Gradient Cards */
+    [class*="bg-gradient-to-br"] {
+      background-size: 200% 200%;
+      animation: fluid-gradient 8s ease infinite;
+    }
+    
+    [class*="bg-gradient-to-br"]:hover {
+      animation: fluid-gradient 8s ease infinite, fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    /* Fluid Glass Effect */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    /* Fluid Cards - Enhanced Glassmorphism */
+    .card-hover {
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      will-change: transform;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: var(--fluid-shadow-2xl);
+    }
+    
+    /* Fluid CTA Button */
+    .cta-button {
+      background: linear-gradient(135deg, var(--fluid-primary), var(--fluid-secondary));
+      border: none;
+      border-radius: 12px;
+      padding: 14px 32px;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: var(--fluid-shadow-2xl);
+    }
+    
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Fluid Background Grid */
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    
+    /* Fluid Pro Cards - Enhanced */
+    .pro-card {
+      position: relative;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--fluid-shadow-lg);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      overflow: hidden;
+    }
+    
+    .pro-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--fluid-primary), var(--fluid-secondary), var(--fluid-accent));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .pro-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--fluid-shadow-2xl);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    .pro-card:hover::before {
+      opacity: 1;
+    }
+    
+    /* Fluid Icon Ring */
+    .icon-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+      box-shadow: var(--fluid-shadow);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .pro-card:hover .icon-ring {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: var(--fluid-shadow-xl);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    }
+    
+    /* Fluid Badge */
+    .pro-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+      color: var(--fluid-primary);
+      transition: all 0.3s ease;
+    }
+    
+    /* Fluid Divider */
+    .divider {
+      height: 1px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.2), transparent);
+    }
+    
+    /* Fluid Pagination - Redesigned */
+    .pagination {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      list-style: none;
+      padding: 16px 8px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      box-shadow: var(--fluid-shadow-xl);
+    }
+    
+    .pagination li {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      padding: 8px;
+      border-radius: 8px;
+    }
+    
+    .pagination li::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.4);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    
+    .pagination li:hover {
+      background: rgba(99, 102, 241, 0.05);
+      transform: translateX(4px);
+    }
+    
+    .pagination li:hover::before,
+    .pagination li.active::before {
+      width: 12px;
+      height: 12px;
+      background: var(--fluid-primary);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+    
+    .pagination li.active {
+      background: rgba(99, 102, 241, 0.1);
+    }
+    
+    .pagination li.active::before {
+      animation: fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    .pagination .hover-text {
+      position: absolute;
+      left: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      background: var(--fluid-gray-900);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: var(--fluid-shadow-xl);
+    }
+    
+    .pagination .hover-text::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-right: 4px solid var(--fluid-gray-900);
+    }
+    
+    .pagination li:hover .hover-text {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
+    }
+    
+    @media (max-width: 1024px) {
+      .pagination {
+        display: none;
+      }
+    }
+    
+    /* Fluid Hero Section avec image de fond */
+    #intro {
+      background-image: url('AFFICHES BANQUE PAYS/alimenter/portrait-young-woman-with-smiling-face-showing-plastic-credit-card-money-ar-169-style-raw-job-id-f3db3f30153d41bead730ad6c4cfe330.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.06) 50%, rgba(14, 165, 233, 0.08) 100%);
+      z-index: 1;
+    }
+    
+    #intro > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    #intro::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: fluid-float 12s ease-in-out infinite reverse;
+      z-index: 1;
+    }
+    
+    /* Fluid Brand Animation */
+    @keyframes fluid-brand {
+      0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+        color: var(--fluid-primary);
+      }
+      25% { 
+        transform: translateY(-2px) rotate(1deg);
+        color: var(--fluid-secondary);
+      }
+      50% { 
+        transform: translateY(-4px) rotate(0deg);
+        color: var(--fluid-accent);
+      }
+      75% { 
+        transform: translateY(-2px) rotate(-1deg);
+        color: var(--fluid-secondary);
+      }
+    }
+    
+    .animated-brand {
+      animation: fluid-brand 4s ease-in-out infinite;
+      font-weight: 800;
+    }
+    
+    /* Fluid Section Backgrounds */
+    section.bg-white {
+      background: rgba(255, 255, 255, 0.6);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    section.bg-gray-50 {
+      background: rgba(248, 250, 252, 0.8);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Fluid Badge Variants */
+    .badge-emerald {
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.2);
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+    }
+    
+    .badge-pink {
+      color: var(--fluid-accent);
+      border-color: rgba(236, 72, 153, 0.2);
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(219, 39, 119, 0.1));
+    }
+    
+    .badge-amber {
+      color: #f59e0b;
+      border-color: rgba(245, 158, 11, 0.2);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
+    }
+    
+    .badge-teal {
+      color: #14b8a6;
+      border-color: rgba(20, 184, 166, 0.2);
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(13, 148, 136, 0.1));
+    }
+    
+    /* 4K Illustration Containers */
+    .illustration-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    
+    .illustration-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: brightness(0.95) saturate(1.1);
+    }
+    
+    .illustration-container:hover .illustration-img {
+      transform: scale(1.05);
+      filter: brightness(1) saturate(1.2);
+    }
+    
+    .illustration-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+      padding: 2rem;
+      color: white;
+      pointer-events: none;
+    }
+    
+    .illustration-overlay h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .illustration-overlay p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+      .illustration-container {
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+      }
+      
+      .illustration-overlay {
+        padding: 1.5rem;
+      }
+      
+      .illustration-overlay h3 {
+        font-size: 1.25rem;
+      }
+      
+      .illustration-overlay p {
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* Styles pour la carte vidéo tutoriel */
+    .video-tutorial-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--fluid-shadow-xl);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+    
+    .video-tutorial-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--fluid-shadow-2xl);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    .video-tutorial-thumbnail {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+    }
+    
+    .video-tutorial-thumbnail img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .video-tutorial-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      z-index: 10;
+    }
+    
+    .video-tutorial-play-button:hover {
+      background: rgba(0, 0, 0, 0.85);
+      transform: translate(-50%, -50%) scale(1.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    }
+    
+    .video-tutorial-play-button svg {
+      width: 40px;
+      height: 40px;
+      margin-left: 4px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+    
+    .video-tutorial-duration-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 10;
+    }
+    
+    .video-tutorial-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, var(--fluid-primary), var(--fluid-secondary));
+      color: white;
+    }
+    
+    /* Carte Emefa au survol de la hero section */
+    #intro {
+      position: relative;
+    }
+    
+    .emefa-hover-card {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      width: 380px;
+      background: rgba(255, 255, 255, 0.95);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 0;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: none;
+      z-index: 20;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+      text-decoration: none;
+    }
+    
+    .emefa-video-preview {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: #000;
+    }
+    
+    .emefa-video-preview video,
+    .emefa-video-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .emefa-avatar.lesson-avatar {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    }
+    
+    .emefa-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    
+    .emefa-hover-card:hover .emefa-video-overlay {
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .emefa-play-button {
+      width: 70px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+    
+    .emefa-play-button:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .emefa-play-button svg {
+      width: 32px;
+      height: 32px;
+      color: #3b82f6;
+      margin-left: 4px;
+    }
+    
+    .emefa-card-body {
+      padding: 24px;
+    }
+    
+    #intro:hover .emefa-hover-card {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    
+    .emefa-hover-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+      border-radius: 24px 24px 0 0;
+    }
+    
+    .emefa-card-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .emefa-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+      flex-shrink: 0;
+    }
+    
+    .emefa-card-info h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 4px;
+    }
+    
+    .emefa-card-info p {
+      font-size: 0.875rem;
+      color: #64748b;
+    }
+    
+    .emefa-card-content {
+      margin-bottom: 20px;
+    }
+    
+    .emefa-card-content p {
+      font-size: 0.9375rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+    
+    .emefa-card-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    .emefa-card-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+    }
+    
+    .emefa-card-link svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    @media (max-width: 1024px) {
+      .emefa-hover-card {
+        width: 320px;
+        bottom: 30px;
+        right: 30px;
+      }
+      
+      .emefa-video-preview {
+        height: 180px;
+      }
+      
+      .emefa-card-body {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .emefa-hover-card {
+        width: calc(100% - 40px);
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+      }
+      
+      .emefa-video-preview {
+        height: 160px;
+      }
+      
+      .emefa-card-body {
+        padding: 20px;
+      }
+    }
+    
+    /* Carousel des leçons vidéo */
+    .lessons-video-swiper {
+      padding: 20px 0 60px 0;
+    }
+    
+    .lessons-video-swiper .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+    
+    .lessons-video-swiper .swiper-slide > * {
+      width: 100%;
+    }
+    
+    .lessons-video-swiper .swiper-button-next,
+    .lessons-video-swiper .swiper-button-prev {
+      color: #3b82f6;
+      background: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .lessons-video-swiper .swiper-button-next:hover,
+    .lessons-video-swiper .swiper-button-prev:hover {
+      background: #3b82f6;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .lessons-video-swiper .swiper-button-next::after,
+    .lessons-video-swiper .swiper-button-prev::after {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    .video-thumbnail {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+    }
+    
+    .video-thumbnail img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .play-button:hover {
+      background: rgba(0, 0, 0, 0.85);
+      transform: translate(-50%, -50%) scale(1.15);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+    }
+    
+    .play-button svg {
+      width: 40px;
+      height: 40px;
+      margin-left: 4px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      color: white;
+    }
+    
+    .lesson-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+    }
+    
+    .lesson-badge.lesson-1 {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    }
+    
+    .duration-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      border-radius: 2px;
+    }
+    
+    .video-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    /* Carousel d'actualités BCEAO et GIM */
+    .news-carousel-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .news-carousel-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    }
+    
+    .news-card {
+      background: white;
+      border-radius: 20px;
+      padding: 0;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-top: 5px solid;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* En-tête de carte avec icône et badge */
+    .news-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Icône décorative pour les cartes */
+    .news-card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+    
+    .news-card-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .news-card:hover .news-card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .news-card:hover .news-card-icon::before {
+      opacity: 1;
+    }
+    
+    .news-card-icon svg {
+      width: 28px;
+      height: 28px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      color: white;
+    }
+    
+    .news-card-content {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .news-card-header-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex-grow: 1;
+    }
+    
+    .news-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .news-card:hover .news-card-icon {
+      transform: scale(1.08) rotate(5deg);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+    
+    .news-card:hover::before {
+      opacity: 1;
+    }
+    
+    .news-card.bceao {
+      border-top-color: #2563eb;
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #dbeafe 100%);
+      position: relative;
+    }
+    
+    .news-card.bceao::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .news-card.bceao:hover::after {
+      opacity: 1;
+    }
+    
+    .news-card.gim {
+      border-top-color: #10b981;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #dcfce7 100%);
+      position: relative;
+    }
+    
+    .news-card.gim::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .news-card.gim:hover::after {
+      opacity: 1;
+    }
+    
+    .news-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .news-badge.bceao {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+    }
+    
+    .news-badge.gim {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+    
+    .news-date {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .news-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      flex-grow: 1;
+      min-height: 2.8em;
+    }
+    
+    .news-excerpt {
+      font-size: 0.875rem;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+    
+    .news-card-body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 6px;
+    }
+    
+    /* Modal popup actualités avec animations */
+    #newsModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    #newsModal.active {
+      display: flex;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.95);
+      animation: fadeIn 0.3s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        background: rgba(0, 0, 0, 0);
+      }
+      to {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.95);
+      }
+    }
+    
+    .news-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.8) translateY(50px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+    
+    #newsModal.active .news-modal-content {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        transform: scale(0.8) translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .news-modal-icon {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .news-modal-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 30% 40%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+    }
+    
+    .news-modal-icon svg {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      z-index: 1;
+      opacity: 0.6;
+    }
+    
+    .news-modal-icon.bceao {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.05));
+    }
+    
+    .news-modal-icon.gim {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(34, 197, 94, 0.05));
+    }
+    
+    .news-modal-body {
+      padding: 32px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+    
+    .news-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    .news-modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+    
+    .news-modal-close svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .news-modal-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    
+    .news-modal-date {
+      font-size: 0.9375rem;
+      color: #64748b;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .news-modal-text {
+      font-size: 1.0625rem;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    
+    .news-modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    .news-modal-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+      background: linear-gradient(135deg, #2563eb, #1e40af);
+    }
+    
+    @media (max-width: 768px) {
+      .news-card {
+        height: auto;
+        min-height: 400px;
+      }
+      
+      .news-modal-content {
+        max-width: 100%;
+        border-radius: 0;
+        max-height: 100vh;
+      }
+      
+      .news-modal-body {
+        padding: 24px;
+      }
+      
+      .news-modal-title {
+        font-size: 1.5rem;
+      }
+    }
+    
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #3b82f6;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: auto;
+    }
+    
+    .news-link:hover {
+      color: #2563eb;
+      gap: 10px;
+    }
+    
+    .news-carousel-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .news-carousel-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .news-carousel-title p {
+      font-size: 1.125rem;
+      color: #64748b;
+    }
+    
+    .news-swiper {
+      padding: 20px 0 60px 0;
+    }
+    
+    .news-swiper .swiper-pagination {
+      bottom: 20px;
+    }
+    
+    .news-swiper .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: #cbd5e1;
+      opacity: 1;
+    }
+    
+    .news-swiper .swiper-pagination-bullet-active {
+      background: #3b82f6;
+    }
+    
+    .news-swiper .swiper-button-next,
+    .news-swiper .swiper-button-prev {
+      color: #3b82f6;
+      background: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .news-swiper .swiper-button-next:hover,
+    .news-swiper .swiper-button-prev:hover {
+      background: #3b82f6;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .news-swiper .swiper-button-next::after,
+    .news-swiper .swiper-button-prev::after {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    .news-swiper .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+    
+    .news-swiper .swiper-slide > * {
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .news-card {
+        height: auto;
+        min-height: 280px;
+      }
+      
+      .news-carousel-title h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass-effect-blue shadow-lg">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center flex-shrink-0 -ml-2">
+          <a href="banque.html" class="flex items-center">
+            <img class="h-10 w-auto" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+            <span class="ml-3 text-xl font-bold animated-brand">Pratiques Bancaires</span>
+          </a>
+        </div>
+        <div class="hidden lg:flex space-x-6 items-center ml-4">
+          <a href="banque.html" class="text-gray-700 hover:text-blue-400 transition-colors font-medium px-2 py-2 whitespace-nowrap">Accueil</a>
+          
+          <div class="relative group">
+            <button class="text-blue-600 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Comptes  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="comptes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Comptes</a>
+                <a href="comptes.html#services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Services</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Paiements  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="paiements.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Paiements</a>
+                <a href="paiements.html#transferts" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Transferts</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Crédits  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="credits.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Crédits</a>
+                <a href="credits.html#financements" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Financements</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Assurances 
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Assurance</a>
+                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Sécurité Financière</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Projets de Vie
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Études & Formations</a>
+                <a href="projets-de-vie.html#projets-de-vie" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Mariage & Famille</a>
+                <a href="projets-de-vie.html#projets-de-vie" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Retraite & Assurance Vie</a>
+                <a href="projets-de-vie.html#projets-de-vie" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Voyages & Migrations</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="cta-button md:hidden">
+          Menu
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Pagination verticale -->
+  <ul class="pagination">
+    <li data-section="#intro" class=""><span class="hover-text">Introduction</span></li>
+    <li data-section="#comptes" class=""><span class="hover-text">Types de Comptes</span></li>
+    <li data-section="#services" class=""><span class="hover-text">Services</span></li>
+  </ul>
+
+  <!-- Hero Section -->
+  <section id="intro" class="relative py-32 md:py-40 pt-40 md:pt-48 overflow-hidden min-h-[80vh] flex items-start">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-40">
+      <div class="text-center" data-aos="fade-up">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          <span class="text-gradient-white-orange">Les Comptes & Services Bancaires </span>
+        </h1>
+        <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto drop-shadow-lg">
+          Découvrez les différents types de comptes bancaires et services financiers disponibles dans l'espace UEMOA pour gérer votre argent en toute sécurité.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#comptes" class="cta-button pulse-glow">
+            Types de Comptes
+          </a>
+          <a href="#services" class="cta-button pulse-glow">
+            Services Disponibles
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Carte Introduction aux Comptes Bancaires au survol -->
+    <a href="tutos-videos.html#lecon-1" class="emefa-hover-card">
+      <!-- Prévisualisation vidéo -->
+      <div class="emefa-video-preview">
+        <img src="Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 1/Chapitre 1 Définition et Utilité d'un compte bancaire -Couverture.jpg" alt="Introduction aux comptes bancaires">
+        <div class="emefa-video-overlay">
+          <div class="emefa-play-button">
+            <svg fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Corps de la carte -->
+      <div class="emefa-card-body">
+        <div class="emefa-card-header">
+          <div class="emefa-avatar lesson-avatar">📚</div>
+          <div class="emefa-card-info">
+            <h3>Leçon 1</h3>
+            <p>Introduction aux Comptes</p>
+          </div>
+        </div>
+        <div class="emefa-card-content">
+          <p>Découvrez les fondamentaux des comptes bancaires : définition, types et utilité dans votre quotidien.</p>
+        </div>
+        <div class="emefa-card-link">
+          <span>Voir la leçon</span>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Carousel des leçons vidéo -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Nos Leçons en Vidéo</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Découvrez nos tutoriels vidéo pour maîtriser les services bancaires dans l'espace UEMOA.
+        </p>
+      </div>
+      
+      <!-- Cartes de toutes les leçons en carousel -->
+      <div class="mt-16" data-aos="fade-up">
+        <h2 class="section-title text-gradient mb-8 text-center" id="lessonsCarouselTitle">Leçon 1 : Introduction aux Comptes Bancaires</h2>
+        <div class="swiper lessons-video-swiper" id="lessonsVideoSwiper">
+          <div class="swiper-wrapper" id="lessonsVideoWrapper">
+            <!-- Les cartes seront générées dynamiquement par JavaScript -->
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Types de Comptes Section -->
+  <section id="comptes" class="py-16 bg-white bg-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Comptes bancaires : définitions, usages et types</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex items-start">
+            <div class="icon-ring mr-4 flex-shrink-0">
+              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Qu'est-ce qu'un compte bancaire ?</h3>
+              <p class="text-gray-600 text-base leading-relaxed">Un compte bancaire est un espace sécurisé où vous déposez votre argent pour le garder, le protéger et l'utiliser facilement pour vos dépenses, votre épargne ou vos projets.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="50">
+          <div class="flex items-start">
+            <div class="icon-ring mr-4 flex-shrink-0">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">À quoi sert un compte bancaire ?</h3>
+              <ul class="text-sm text-gray-700 space-y-2.5">
+                <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3 text-white text-xs font-bold">✓</span>Recevoir de l'argent (salaire, transfert, vente, pension...)</li>
+                <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3 text-white text-xs font-bold">✓</span>Payer sans transporter de cash (carte, QR, virement, prélèvement...)</li>
+                <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3 text-white text-xs font-bold">✓</span>Mettre de côté (épargne pour avenir, urgence, projets...)</li>
+                <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3 text-white text-xs font-bold">✓</span>Prouver vos revenus (utile pour un crédit ou une location)</li>
+                <li class="flex items-center"><span class="w-5 h-5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center mr-3 text-white text-xs font-bold">✓</span>Sécuriser votre argent (évite vol, perte, incendie...)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mb-6" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-gray-900">Quels sont les types de comptes ?</h3>
+        <br>
+        <p class="text-gray-600 max-w-3xl mx-auto">Imaginez que votre argent soit une Maison Familliale et que chaque membre ait sa propre chambre. <br>
+          Chaque type de compte a son rôle : recevoir, dépenser, épargner, investir, etc.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Compte Courant -->
+        <div class="pro-card p-8 card-hover" data-aos="fade-up" data-aos-delay="0">
+          <span class="pro-badge mb-3">Chambre Principale</span>
+            <div class="icon-ring mb-6">
+              <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Compte Courant</h3>
+          
+          <p class="text-gray-600 mb-6">
+            Pour vos opérations quotidiennes : dépôts, retraits, virements et paiements. C’est aussi là que ton salaire arrive, où l’argent entre et sort pour la vie de tous les jours.
+          </p>
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-gray-900 mb-1">Idéal pour</h4>
+            <ul class="text-sm text-gray-600 list-disc ml-5 space-y-1">
+              <li>Salaire et dépenses courantes</li>
+              <li>Paiements carte/QR et retraits</li>
+            </ul>
+          </div>
+          <a href="#services" class="inline-block text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all">En savoir plus →</a>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Carte bancaire incluse
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Services bancaires en ligne
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Relevés mensuels
+            </li>
+          </ul>
+        </div>
+
+        <!-- Compte d'Épargne -->
+        <div class="pro-card p-8 card-hover" data-aos="fade-up" data-aos-delay="100">
+          <span class="pro-badge badge-emerald mb-3">Épargne</span>
+            <div class="icon-ring mb-6">
+              <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Compte d'Épargne</h3>
+          
+          <p class="text-gray-600 mb-6">
+            Pour faire fructifier votre argent en toute sécurité. Génère des intérêts sur vos économies et vous aide à atteindre vos objectifs financiers.
+          </p>
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-gray-900 mb-1">Idéal pour</h4>
+            <ul class="text-sm text-gray-600 list-disc ml-5 space-y-1">
+              <li>Épargne de précaution</li>
+              <li>Objectifs à court/moyen terme</li>
+            </ul>
+          </div>
+          <a href="#services" class="inline-block text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all">En savoir plus →</a>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Taux d'intérêt attractif
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Sécurité garantie
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Retraits limités
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile Money -->
+        <div class="pro-card p-8 card-hover" data-aos="fade-up" data-aos-delay="200">
+          <span class="pro-badge badge-pink mb-3">Mobile</span>
+            <div class="icon-ring mb-6">
+              <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Mobile Money</h3>
+          
+          <p class="text-gray-600 mb-6">
+            Gérez votre argent directement depuis votre téléphone mobile. Orange Money, Moov Money, Wave et autres services de paiement mobile.
+          </p>
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-gray-900 mb-1">Idéal pour</h4>
+            <ul class="text-sm text-gray-600 list-disc ml-5 space-y-1">
+              <li>Achats du quotidien et transferts</li>
+              <li>Zones peu bancarisées</li>
+            </ul>
+          </div>
+          <a href="#services" class="inline-block text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all">En savoir plus →</a>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Accès 24h/24
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Transferts instantanés
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-indigo-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              Paiements de factures
+            </li>
+          </ul>
+        </div>
+
+        <!-- Compte à Terme -->
+        <div class="pro-card p-8 card-hover" data-aos="fade-up" data-aos-delay="300">
+          <span class="pro-badge badge-amber mb-3">À terme</span>
+            <div class="icon-ring mb-6">
+              <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m-6 0h12M4 12h16"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Compte à Terme</h3>
+          
+          <p class="text-gray-600 mb-6">
+            La chambre fermée à clé : vous déposez et n’y touchez pas avant l’échéance. En échange, la banque verse plus d’intérêts.
+          </p>
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-gray-900 mb-1">Idéal pour</h4>
+            <ul class="text-sm text-gray-600 list-disc ml-5 space-y-1">
+              <li>Objectifs datés (6–24 mois+)</li>
+              <li>Rendement supérieur au livret</li>
+            </ul>
+          </div>
+          <a href="#services" class="inline-block text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all">En savoir plus →</a>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Taux d’intérêt bonifié
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Retraits avant terme pénalisés
+            </li>
+          </ul>
+        </div>
+
+        <!-- Compte en Microfinance -->
+        <div class="pro-card p-8 card-hover" data-aos="fade-up" data-aos-delay="400">
+          <span class="pro-badge badge-teal mb-3">Microfinance</span>
+            <div class="icon-ring mb-6">
+              <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M5 6h14M7 14h10"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Compte en Microfinance</h3>
+          
+          <p class="text-gray-600 mb-6">
+            Une porte ouverte vers la banque classique, adaptée aux revenus irréguliers et aux petits montants, proche des quartiers et villages.
+          </p>
+          <div class="mb-4">
+            <h4 class="text-sm font-semibold text-gray-900 mb-1">Idéal pour</h4>
+            <ul class="text-sm text-gray-600 list-disc ml-5 space-y-1">
+              <li>Revenus irréguliers</li>
+              <li>Petits dépôts et réseau local</li>
+            </ul>
+          </div>
+          <a href="#services" class="inline-block text-sm font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 transition-all">En savoir plus →</a>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Conditions d’accès souples
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+              Réseau de proximité
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Conseil épargne -->
+      <div class="mt-8 pro-card p-6 border-l-4 border-l-indigo-500" data-aos="fade-up">
+        <div class="flex items-start">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center mr-4 shadow-lg">
+            <span class="text-2xl">💡</span>
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-gray-900 mb-2">Conseil d'Épargne</h4>
+            <p class="text-sm text-gray-700 leading-relaxed">Épargnez dès que vous encaissez, même une petite somme. La régularité fait grandir votre épargne et vous prépare aux imprévus.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Services Section -->
+
+  <!-- Comparatif rapide -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-6" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-gray-900">Comparatif rapide</h3>
+        <p class="text-gray-600">Vue d’ensemble pour choisir en un coup d’œil.</p>
+      </div>
+      <div class="overflow-x-auto pro-card rounded-2xl" data-aos="fade-up">
+        <table class="min-w-full text-sm">
+          <thead class="bg-gradient-to-r from-indigo-50 to-purple-50 text-gray-800">
+            <tr>
+              <th class="text-left font-bold px-6 py-4 text-indigo-900">Type</th>
+              <th class="text-left font-bold px-6 py-4 text-indigo-900">Disponibilité</th>
+              <th class="text-left font-bold px-6 py-4 text-indigo-900">Rendement</th>
+              <th class="text-left font-bold px-6 py-4 text-indigo-900">Flexibilité</th>
+              <th class="text-left font-bold px-6 py-4 text-indigo-900">Accès</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr class="hover:bg-indigo-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Compte courant</td>
+              <td class="px-6 py-4 text-gray-600">Immédiate</td>
+              <td class="px-6 py-4 text-gray-600">Faible</td>
+              <td class="px-6 py-4 text-gray-600">Très flexible</td>
+              <td class="px-6 py-4 text-gray-600">Agence, carte, e-banking</td>
+            </tr>
+            <tr class="hover:bg-indigo-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Épargne</td>
+              <td class="px-6 py-4 text-gray-600">Rapide</td>
+              <td class="px-6 py-4 text-gray-600">Moyen</td>
+              <td class="px-6 py-4 text-gray-600">Modérée</td>
+              <td class="px-6 py-4 text-gray-600">Agence, appli</td>
+            </tr>
+            <tr class="hover:bg-indigo-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">À terme</td>
+              <td class="px-6 py-4 text-gray-600">À l'échéance</td>
+              <td class="px-6 py-4 text-gray-600">Élevé</td>
+              <td class="px-6 py-4 text-gray-600">Faible</td>
+              <td class="px-6 py-4 text-gray-600">Agence</td>
+            </tr>
+            <tr class="hover:bg-indigo-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Mobile money</td>
+              <td class="px-6 py-4 text-gray-600">Immédiate</td>
+              <td class="px-6 py-4 text-gray-600">Variable</td>
+              <td class="px-6 py-4 text-gray-600">Très flexible</td>
+              <td class="px-6 py-4 text-gray-600">USSD, appli, agents</td>
+            </tr>
+            <tr class="hover:bg-indigo-50/50 transition-colors">
+              <td class="px-6 py-4 font-semibold text-gray-900">Microfinance</td>
+              <td class="px-6 py-4 text-gray-600">Rapide</td>
+              <td class="px-6 py-4 text-gray-600">Moyen</td>
+              <td class="px-6 py-4 text-gray-600">Modérée</td>
+              <td class="px-6 py-4 text-gray-600">Agence de proximité</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section id="services" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Services Bancaires & Digitaux</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Découvrez tous les services disponibles pour faciliter la gestion de vos finances au quotidien.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Ouvrir un Compte -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="0">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <div class="icon-ring mr-3">
+              <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
+            </div>
+            Ouvrir un Compte Bancaire
+          </h3>
+          <div class="space-y-4">
+            <div class="flex items-start p-4 bg-gradient-to-r from-indigo-50/50 to-purple-50/50 rounded-xl border border-indigo-100">
+              <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center mr-4 shadow-md">
+                <span class="text-white font-bold text-xs">1</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Documents requis</h4>
+                <p class="text-gray-600 text-sm">Pièce d'identité, justificatif de domicile, justificatif de revenus</p>
+              </div>
+            </div>
+            <div class="flex items-start p-4 bg-gradient-to-r from-purple-50/50 to-pink-50/50 rounded-xl border border-purple-100">
+              <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mr-4 shadow-md">
+                <span class="text-white font-bold text-xs">2</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Dépôt initial</h4>
+                <p class="text-gray-600 text-sm">Montant minimum variable selon la banque (généralement 5 000 à 25 000 FCFA)</p>
+              </div>
+            </div>
+            <div class="flex items-start p-4 bg-gradient-to-r from-pink-50/50 to-amber-50/50 rounded-xl border border-pink-100">
+              <div class="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center mr-4 shadow-md">
+                <span class="text-white font-bold text-xs">3</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-1">Activation</h4>
+                <p class="text-gray-600 text-sm">Signature des contrats et réception de vos moyens de paiement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frais de Tenue -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <div class="icon-ring mr-3">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            Comprendre les Frais
+          </h3>
+          <div class="space-y-4">
+            <div class="p-4 bg-gradient-to-r from-emerald-50/50 to-green-50/50 rounded-xl border-l-4 border-emerald-500 border border-emerald-100">
+              <h4 class="font-bold text-gray-900 mb-1">Frais de tenue de compte</h4>
+              <p class="text-gray-600 text-sm">Généralement 500 à 2 000 FCFA par mois selon la banque</p>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-indigo-50/50 to-blue-50/50 rounded-xl border-l-4 border-indigo-500 border border-indigo-100">
+              <h4 class="font-bold text-gray-900 mb-1">Frais de retrait</h4>
+              <p class="text-gray-600 text-sm">Gratuit dans votre banque, 200 à 500 FCFA dans d'autres banques</p>
+            </div>
+            <div class="p-4 bg-gradient-to-r from-amber-50/50 to-yellow-50/50 rounded-xl border-l-4 border-amber-500 border border-amber-100">
+              <h4 class="font-bold text-gray-900 mb-1">Frais de virement</h4>
+              <p class="text-gray-600 text-sm">Gratuit ou 100 à 300 FCFA selon le type de virement</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Services à Distance -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <div class="icon-ring mr-3">
+              <svg class="w-5 h-5 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+              </svg>
+            </div>
+            Services à Distance
+          </h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="text-center p-5 pro-card hover:scale-105 transition-transform">
+              <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-sm text-gray-900 mb-1">USSD</h4>
+              <p class="text-xs text-gray-600 font-medium">*144#</p>
+            </div>
+            <div class="text-center p-5 pro-card hover:scale-105 transition-transform">
+              <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-sm text-gray-900 mb-1">Application</h4>
+              <p class="text-xs text-gray-600 font-medium">Mobile Banking</p>
+            </div>
+            <div class="text-center p-5 pro-card hover:scale-105 transition-transform">
+              <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-sm text-gray-900 mb-1">Carte Prépayée</h4>
+              <p class="text-xs text-gray-600 font-medium">Rechargeable</p>
+            </div>
+            <div class="text-center p-5 pro-card hover:scale-105 transition-transform">
+              <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-sm text-gray-900 mb-1">E-Banking</h4>
+              <p class="text-xs text-gray-600 font-medium">Internet Banking</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Relevé Bancaire -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+            <div class="icon-ring mr-3">
+              <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            Relevé Bancaire & Transparence
+          </h3>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-indigo-50/30 rounded-xl border border-indigo-100">
+              <span class="text-sm font-semibold text-gray-800">Fréquence des relevés</span>
+              <span class="text-sm font-medium text-indigo-600 bg-indigo-100 px-3 py-1 rounded-lg">Mensuel</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-purple-50/30 rounded-xl border border-purple-100">
+              <span class="text-sm font-semibold text-gray-800">Format</span>
+              <span class="text-sm font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-lg">Papier + Digital</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-pink-50/30 rounded-xl border border-pink-100">
+              <span class="text-sm font-semibold text-gray-800">Détail des frais</span>
+              <span class="text-sm font-medium text-pink-600 bg-pink-100 px-3 py-1 rounded-lg">Obligatoire</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gradient-to-r from-gray-50 to-amber-50/30 rounded-xl border border-amber-100">
+              <span class="text-sm font-semibold text-gray-800">Conservation</span>
+              <span class="text-sm font-medium text-amber-600 bg-amber-100 px-3 py-1 rounded-lg">5 ans minimum</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Conseils Pratiques -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Conseils Pratiques</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Quelques conseils pour bien gérer vos comptes bancaires dans l'espace UEMOA.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center pro-card p-8" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Comparez les Offres</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            N'hésitez pas à comparer les frais et services entre différentes banques avant de choisir.
+          </p>
+        </div>
+
+        <div class="text-center pro-card p-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Sécurisez vos Accès</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Gardez vos codes secrets confidentiels et activez les notifications de sécurité.
+          </p>
+        </div>
+
+        <div class="text-center pro-card p-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Surveillez vos Relevés</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Vérifiez régulièrement vos relevés pour détecter toute opération suspecte.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carousel d'actualités BCEAO et GIM UEMOA -->
+  <section class="news-carousel-container">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="news-carousel-title" data-aos="fade-up">
+        <h2>Actualités BCEAO & GIM UEMOA</h2>
+        <p>Restez informé des dernières nouveautés bancaires et financières</p>
+      </div>
+      
+      <div class="swiper news-swiper" id="newsSwiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          <!-- Les cartes seront générées dynamiquement par JavaScript -->
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal popup actualités -->
+  <div id="newsModal" class="news-modal">
+    <div class="news-modal-content">
+      <button class="news-modal-close" id="closeNewsModal" aria-label="Fermer">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="news-modal-body">
+        <div id="newsModalDate" class="news-modal-date"></div>
+        <h2 id="newsModalTitle" class="news-modal-title"></h2>
+        <p id="newsModalText" class="news-modal-text"></p>
+        <a href="#" id="newsModalLink" target="_blank" rel="noopener noreferrer" class="news-modal-link">
+          Lire l'actualité complète sur le site
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-12 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center">
+        <img class="h-12 w-auto mx-auto mb-6 opacity-90" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+        <p class="text-gray-300 mb-6 text-lg">
+          Votre guide complet pour comprendre et utiliser les services bancaires dans l'espace UEMOA.
+        </p>
+        <div class="flex justify-center space-x-8">
+          <a href="banque.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Accueil</a>
+          <a href="comptes.html" class="text-white font-semibold transition-all hover:scale-110">Comptes</a>
+          <a href="paiements.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Paiements</a>
+          <a href="credits.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Crédits</a>
+          <a href="assurance.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Assurances</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // Pagination verticale
+    document.addEventListener('DOMContentLoaded', function () {
+      const paginationItems = document.querySelectorAll('.pagination li');
+      const sections = document.querySelectorAll('section[id]');
+
+      // Navigation smooth scroll
+      paginationItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-section');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 80;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Détection de la section active lors du scroll
+      function updateActiveSection() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 150;
+          const sectionHeight = section.offsetHeight;
+          if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        paginationItems.forEach(item => {
+          const sectionId = item.getAttribute('data-section').substring(1);
+          if (sectionId === current) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+
+      // Initialiser au chargement
+      updateActiveSection();
+
+      // Mettre à jour lors du scroll
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateActiveSection();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    });
+    
+    // Pas de gestion vidéo nécessaire car on utilise une image
+    
+    // Carousel d'actualités BCEAO et GIM UEMOA - Synchronisation avec le site officiel
+    (function() {
+      // Actualités synchronisées avec le site BCEAO (https://www.bceao.int/)
+      // Basées sur les actualités réelles du site officiel avec images depuis BCEAO
+      const newsData = [
+        {
+          type: 'bceao',
+          date: '30 Septembre 2025',
+          title: 'Lancement officiel de la Plateforme Interopérable du Système de Paiement Instantané (PI-SPI)',
+          excerpt: 'La BCEAO lance la PI-SPI pour faciliter les paiements instantanés dans l\'espace UEMOA, révolutionnant les transactions bancaires.',
+          fullText: 'La Banque Centrale des Etats de l\'Afrique de l\'Ouest (BCEAO) a officiellement lancé la Plateforme Interopérable du Système de Paiement Instantané (PI-SPI) le 30 septembre 2025. Cette innovation majeure permet aux utilisateurs de l\'espace UEMOA d\'effectuer des paiements instantanés entre différents systèmes de paiement, qu\'il s\'agisse de banques, de services de mobile money ou d\'autres institutions financières. La PI-SPI facilite les transactions interbancaires et interopérables, réduisant les délais de traitement et améliorant l\'expérience utilisateur. Cette plateforme représente une étape importante dans la modernisation du système de paiement dans l\'Union et contribue à l\'inclusion financière dans la région.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-09/pi-spi-lancement.jpg',
+          link: 'https://www.bceao.int/fr/actualites/lancement-officiel-de-la-plateforme-interoperable-du-systeme-de-paiement-instantane-pi-spi',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/lancement-officiel-de-la-plateforme-interoperable-du-systeme-de-paiement-instantane-pi-spi'
+        },
+        {
+          type: 'bceao',
+          date: '17 Septembre 2025',
+          title: 'Réunion ordinaire du Comité de Politique Monétaire de la BCEAO',
+          excerpt: 'Le Comité de Politique Monétaire se réunit pour définir les orientations monétaires de l\'Union.',
+          fullText: 'Le Comité de Politique Monétaire (CPM) de la BCEAO s\'est réuni en session ordinaire le 17 septembre 2025 à Dakar. Cette réunion a permis d\'examiner l\'évolution de la situation économique et financière de l\'Union Monétaire Ouest Africaine (UMOA) et de définir les orientations de la politique monétaire pour les prochains mois. Les membres du Comité ont analysé les indicateurs macroéconomiques, l\'évolution de l\'inflation, la croissance économique et la stabilité financière dans l\'Union. Des décisions importantes ont été prises concernant les taux directeurs et les instruments de politique monétaire pour maintenir la stabilité des prix et soutenir la croissance économique.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-09/cpm-reunion.jpg',
+          link: 'https://www.bceao.int/fr/actualites/reunion-ordinaire-du-comite-de-politique-monetaire-de-la-bceao',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/reunion-ordinaire-du-comite-de-politique-monetaire-de-la-bceao'
+        },
+        {
+          type: 'bceao',
+          date: '06 Octobre 2025',
+          title: 'Session ordinaire du Conseil des Ministres de l\'Union',
+          excerpt: 'Le Conseil des Ministres se réunit pour examiner les questions économiques et financières de l\'UEMOA.',
+          fullText: 'Le Conseil des Ministres de l\'Union Monétaire Ouest Africaine s\'est réuni en session ordinaire le 6 octobre 2025. Cette session a été l\'occasion d\'examiner les questions économiques et financières importantes pour l\'Union, notamment la coordination des politiques économiques des États membres, la stabilité financière régionale, et les réformes en cours dans le secteur bancaire et financier. Les ministres ont également discuté des défis liés à l\'inclusion financière, à la digitalisation des services bancaires, et aux perspectives économiques pour l\'année 2026. Des décisions stratégiques ont été prises pour renforcer l\'intégration économique et financière dans l\'espace UEMOA.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-10/conseil-ministres.jpg',
+          link: 'https://www.bceao.int/fr/actualites/session-ordinaire-du-conseil-des-ministres-de-lunion',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/session-ordinaire-du-conseil-des-ministres-de-lunion'
+        },
+        {
+          type: 'bceao',
+          date: '31 Octobre 2025',
+          title: 'Publication du Rapport sur le commerce extérieur de l\'Union 2024',
+          excerpt: 'La BCEAO publie son rapport annuel sur le commerce extérieur de l\'UEMOA pour l\'année 2024.',
+          fullText: 'La BCEAO a publié son rapport annuel sur le commerce extérieur de l\'Union Monétaire Ouest Africaine pour l\'année 2024. Ce rapport présente une analyse détaillée des échanges commerciaux de l\'Union avec le reste du monde, incluant l\'évolution des exportations et des importations, la balance commerciale, et les principaux partenaires commerciaux. Le rapport révèle une amélioration de la balance commerciale grâce à l\'augmentation des exportations de produits agricoles et miniers, ainsi qu\'une diversification progressive des partenaires commerciaux. Des recommandations sont formulées pour renforcer la compétitivité des économies de l\'Union et promouvoir l\'intégration commerciale régionale.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-10/rapport-commerce.jpg',
+          link: 'https://www.bceao.int/fr/publications/rapport-sur-le-commerce-exterieur-de-lunion-2024',
+          sourceUrl: 'https://www.bceao.int/fr/publications/rapport-sur-le-commerce-exterieur-de-lunion-2024'
+        },
+        {
+          type: 'bceao',
+          date: '27 Mai 2025',
+          title: '1ère réunion du Cadre de concertation sur la Lutte Anti-Blanchiment (CLAB)',
+          excerpt: 'Renforcement de la lutte contre le blanchiment de capitaux dans l\'espace UEMOA.',
+          fullText: 'La première réunion du Cadre de concertation sur la Lutte Anti-Blanchiment (CLAB) s\'est tenue le 27 mai 2025. Cette instance de coordination réunit les autorités de régulation, les banques centrales, et les institutions financières de l\'UEMOA pour renforcer la lutte contre le blanchiment de capitaux et le financement du terrorisme. Les participants ont discuté des meilleures pratiques, des défis rencontrés, et des stratégies à mettre en place pour améliorer l\'efficacité de la lutte contre ces fléaux. Des recommandations ont été formulées pour harmoniser les réglementations, renforcer la coopération entre les pays membres, et améliorer les capacités de détection et de prévention des activités suspectes.',
+          image: 'https://www.bceao.int/sites/default/files/styles/actualite/public/2025-05/clab-reunion.jpg',
+          link: 'https://www.bceao.int/fr/actualites/premiere-reunion-cadre-concertation-lutte-anti-blanchiment',
+          sourceUrl: 'https://www.bceao.int/fr/actualites/premiere-reunion-cadre-concertation-lutte-anti-blanchiment'
+        },
+        {
+          type: 'gim',
+          date: '2025',
+          title: 'Nouveautés GIM UEMOA : Paiements interbancaires simplifiés',
+          excerpt: 'La carte GIM UEMOA continue d\'évoluer pour offrir plus de services et de facilités de paiement dans toute l\'Union.',
+          fullText: 'Le Groupement Interbancaire Monétique de l\'UEMOA (GIM UEMOA) annonce de nouvelles fonctionnalités pour simplifier les paiements interbancaires dans l\'espace UEMOA. Les détenteurs de cartes GIM peuvent désormais effectuer des retraits et des paiements dans tous les pays membres de l\'Union sans frais supplémentaires. Les nouvelles fonctionnalités incluent également la possibilité de consulter le solde et l\'historique des transactions en temps réel via l\'application mobile GIM, ainsi que des notifications push pour chaque transaction. Ces améliorations renforcent la sécurité et la facilité d\'utilisation des cartes GIM, contribuant ainsi à l\'inclusion financière dans la région.',
+          image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800',
+          link: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires',
+          sourceUrl: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires'
+        },
+        {
+          type: 'gim',
+          date: '2025',
+          title: 'Extension du réseau GIM : Plus de distributeurs disponibles',
+          excerpt: 'Le réseau GIM s\'étend dans tous les pays de l\'UEMOA pour un accès facilité aux services bancaires.',
+          fullText: 'Le réseau de distributeurs automatiques GIM continue de s\'étendre dans tous les pays de l\'UEMOA. Plus de 500 nouveaux distributeurs ont été installés en 2025, portant le nombre total à plus de 5000 distributeurs dans toute l\'Union. Cette expansion permet aux utilisateurs de cartes GIM d\'avoir un accès plus facile aux services bancaires, même dans les zones rurales et périurbaines. Les nouveaux distributeurs sont équipés des dernières technologies de sécurité et acceptent toutes les cartes GIM, VISA et Mastercard. Cette initiative s\'inscrit dans le cadre de l\'amélioration de l\'accessibilité des services financiers pour tous les citoyens de l\'UEMOA.',
+          image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800',
+          link: 'https://www.gim-uemoa.org/actualites/extension-reseau-distributeurs',
+          sourceUrl: 'https://www.gim-uemoa.org/actualites/extension-reseau-distributeurs'
+        },
+        {
+          type: 'gim',
+          date: '2025',
+          title: 'Sécurité renforcée des cartes GIM UEMOA',
+          excerpt: 'Nouvelles mesures de sécurité pour protéger vos transactions avec la carte GIM dans l\'espace UEMOA.',
+          fullText: 'Le GIM UEMOA a renforcé les mesures de sécurité des cartes bancaires pour mieux protéger les utilisateurs contre la fraude. Les nouvelles cartes GIM sont désormais équipées de la technologie EMV (Europay, Mastercard, Visa) avec puce et authentification par code PIN. De plus, un système d\'alerte en temps réel a été mis en place pour notifier les utilisateurs de toute transaction suspecte. Les banques membres du réseau GIM ont également renforcé leurs systèmes de détection de fraude grâce à l\'intelligence artificielle. Ces mesures contribuent à renforcer la confiance des utilisateurs dans les cartes GIM et à sécuriser les transactions dans tout l\'espace UEMOA.',
+          image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800',
+          link: 'https://www.gim-uemoa.org/actualites/securite-renforcee-cartes',
+          sourceUrl: 'https://www.gim-uemoa.org/actualites/securite-renforcee-cartes'
+        }
+      ];
+      
+      // Fonction pour charger et vérifier une image depuis BCEAO
+      async function loadBCEAOImage(imageUrl) {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => resolve(imageUrl);
+          img.onerror = () => {
+            console.warn('Image BCEAO non disponible, utilisation du fallback:', imageUrl);
+            resolve('https://www.bceao.int/sites/default/files/styles/actualite/public/default-news.jpg');
+          };
+          img.src = imageUrl;
+        });
+      }
+      
+      // Fonction pour normaliser une URL d'image
+      function normalizeImageUrl(url, baseUrl = 'https://www.bceao.int') {
+        if (!url) return '';
+        url = url.trim();
+        if (url.startsWith('http://') || url.startsWith('https://')) {
+          return url;
+        }
+        if (url.startsWith('//')) {
+          return 'https:' + url;
+        }
+        if (url.startsWith('/')) {
+          return baseUrl + url;
+        }
+        return baseUrl + '/' + url;
+      }
+      
+      // Fonction pour vérifier si une image est accessible
+      async function verifyImageUrl(imageUrl) {
+        if (!imageUrl) return false;
+        try {
+          const img = new Image();
+          return new Promise((resolve) => {
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = imageUrl;
+            setTimeout(() => resolve(false), 5000);
+          });
+        } catch (error) {
+          return false;
+        }
+      }
+      
+      // Fonction pour extraire l'image depuis une page d'actualité BCEAO
+      async function extractImageFromArticle(articleUrl, corsProxy) {
+        try {
+          console.log(`📥 Récupération de la page: ${articleUrl}`);
+          const response = await fetch(corsProxy + encodeURIComponent(articleUrl));
+          if (!response.ok) {
+            console.warn(`❌ Erreur HTTP: ${response.status}`);
+            return null;
+          }
+          
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          
+          // Sélecteurs multiples pour trouver l'image principale BCEAO (par ordre de priorité)
+          const imageSelectors = [
+            // Sélecteurs spécifiques BCEAO Drupal
+            'img.field--name-field-image',
+            '.field--name-field-image img',
+            '.field--name-field-image img[src*="/sites/default/files/"]',
+            '.field-image img',
+            'article .field-image img',
+            '.node-article .field-image img',
+            '.node--type-actualite .field-image img',
+            // Images dans les vues Drupal
+            '.views-field-field-image img',
+            '.field--name-field-image img',
+            // Sélecteurs génériques
+            'article img[typeof="foaf:Image"]',
+            'article .content img',
+            '.node-content img',
+            '.content img',
+            // Sélecteurs par chemin (priorité absolue aux images BCEAO)
+            'img[src*="/sites/default/files/styles/actualite/"]',
+            'img[src*="/sites/default/files/"]',
+            'img[src*="actualite"]',
+            // Images dans les articles
+            'article img:not([src*="logo"]):not([src*="icon"]):not([src*="favicon"])',
+            '.main-content img:first-of-type',
+            'article img:first-of-type'
+          ];
+          
+          const foundImages = [];
+          
+          for (const selector of imageSelectors) {
+            const imgs = doc.querySelectorAll(selector);
+            for (const img of imgs) {
+              // Récupérer l'URL de l'image
+              let src = img.src || img.getAttribute('data-src') || img.getAttribute('data-lazy-src') || img.getAttribute('data-original') || '';
+              
+              // Ignorer les logos, icônes et images trop petites
+              if (!src || 
+                  src.includes('logo') || 
+                  src.includes('icon') || 
+                  src.includes('favicon') ||
+                  src.includes('sprite') ||
+                  (img.width && img.width < 100) ||
+                  (img.height && img.height < 100)) {
+                continue;
+              }
+              
+              // Essayer srcset pour obtenir la meilleure résolution
+              if (img.srcset) {
+                const srcsetParts = img.srcset.split(',');
+                let largestUrl = '';
+                let largestWidth = 0;
+                for (const part of srcsetParts) {
+                  const parts = part.trim().split(/\s+/);
+                  const url = parts[0];
+                  const width = parts[1] ? parseInt(parts[1].replace('w', '')) : 0;
+                  if (width > largestWidth && width > 200) {
+                    largestWidth = width;
+                    largestUrl = url;
+                  }
+                }
+                if (largestUrl) {
+                  src = largestUrl;
+                }
+              }
+              
+              if (src) {
+                // Normaliser l'URL
+                let imageUrl = normalizeImageUrl(src);
+                
+                // Vérifier que c'est bien une URL BCEAO
+                if (imageUrl.includes('bceao.int') || imageUrl.includes('/sites/default/files/')) {
+                  foundImages.push(imageUrl);
+                  console.log(`📷 Image BCEAO trouvée: ${imageUrl}`);
+                }
+              }
+            }
+          }
+          
+          // Retourner la première image BCEAO trouvée
+          if (foundImages.length > 0) {
+            return foundImages[0];
+          }
+          
+          console.warn(`⚠️ Aucune image BCEAO trouvée dans la page: ${articleUrl}`);
+          return null;
+        } catch (error) {
+          console.error(`❌ Erreur lors de l'extraction de l'image depuis ${articleUrl}:`, error);
+          return null;
+        }
+      }
+      
+      // Fonction pour récupérer les actualités depuis le site BCEAO
+      async function fetchBCEAONews() {
+        try {
+          const corsProxy = 'https://api.allorigins.win/raw?url=';
+          const bceaoUrl = 'https://www.bceao.int/fr/actualites';
+          
+          const response = await fetch(corsProxy + encodeURIComponent(bceaoUrl));
+          if (!response.ok) throw new Error('Erreur de récupération');
+          
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          
+          const newsItems = [];
+          const newsSelectors = [
+            '.view-actualites .views-row',
+            '.view-content .views-row',
+            'article.node-actualite',
+            '.news-item',
+            '.actualite-item',
+            '.node--type-actualite'
+          ];
+          
+          let items = [];
+          for (const selector of newsSelectors) {
+            const found = doc.querySelectorAll(selector);
+            if (found.length > 0) {
+              items = Array.from(found);
+              break;
+            }
+          }
+          
+          if (items.length === 0) {
+            const links = doc.querySelectorAll('a[href*="/actualites/"], a[href*="/fr/actualites"]');
+            const seenParents = new Set();
+            links.forEach(link => {
+              const parent = link.closest('article, .node, .views-row, .news-item, .views-field');
+              if (parent && !seenParents.has(parent)) {
+                seenParents.add(parent);
+                items.push(parent);
+              }
+            });
+          }
+          
+          items = items.slice(0, 8);
+          
+          for (const item of items) {
+            try {
+              const titleEl = item.querySelector('h2 a, h3 a, h4 a, .title a, .field-title a, a[href*="/actualites/"]');
+              const linkEl = titleEl || item.querySelector('a[href*="/actualites/"], a[href*="/fr/actualites"]');
+              const dateEl = item.querySelector('.date, .field-date, .created, time, .views-field-created');
+              const excerptEl = item.querySelector('.field-summary, .excerpt, .body, .field-body, p');
+              
+              if (!linkEl) continue;
+              
+              let link = linkEl.href || linkEl.getAttribute('href');
+              if (!link.startsWith('http')) {
+                link = link.startsWith('/') ? 'https://www.bceao.int' + link : 'https://www.bceao.int/' + link;
+              }
+              
+              const title = (titleEl?.textContent || linkEl.textContent || '').trim();
+              const date = (dateEl?.textContent || '').trim();
+              const excerpt = (excerptEl?.textContent || '').trim().substring(0, 200);
+              
+              // Récupérer le texte complet depuis la page d'actualité
+              let fullText = excerpt;
+              if (link && !fullText) {
+                try {
+                  const articleResponse = await fetch(corsProxy + encodeURIComponent(link));
+                  if (articleResponse.ok) {
+                    const articleHtml = await articleResponse.text();
+                    const articleDoc = parser.parseFromString(articleHtml, 'text/html');
+                    const bodyEl = articleDoc.querySelector('.field-body, .body, article .content, .node-content, .field--name-body');
+                    if (bodyEl) {
+                      fullText = bodyEl.textContent.trim();
+                    }
+                  }
+                } catch (err) {
+                  console.warn('Erreur lors de la récupération du texte de l\'article:', err);
+                }
+              }
+              
+              if (title && link) {
+                // Utiliser uniquement l'image trouvée depuis BCEAO - PAS de fallback Unsplash
+                newsItems.push({
+                  type: 'bceao',
+                  date: date || '2025',
+                  title: title,
+                  excerpt: excerpt || title.substring(0, 150) + '...',
+                  fullText: fullText || excerpt || title,
+                  image: image || '', // Pas de fallback - on utilise seulement les images BCEAO
+                  link: link,
+                  sourceUrl: link
+                });
+              }
+            } catch (err) {
+              console.warn('Erreur lors du traitement d\'une actualité:', err);
+            }
+          }
+          
+          return newsItems;
+        } catch (error) {
+          console.error('Erreur lors de la récupération des actualités BCEAO:', error);
+          return [];
+        }
+      }
+      
+      // Fonction pour synchroniser avec le site BCEAO
+      async function syncBCEAONews() {
+        try {
+          console.log('Synchronisation des actualités BCEAO en cours...');
+          
+          // Récupérer les actualités depuis le site
+          const fetchedNews = await fetchBCEAONews();
+          
+          if (fetchedNews.length > 0) {
+            // Mettre à jour newsData avec les actualités récupérées
+            newsData.length = 0;
+            newsData.push(...fetchedNews);
+            
+            // Ajouter quelques actualités GIM si nécessaire
+            if (newsData.length < 8) {
+              newsData.push(
+                {
+                  type: 'gim',
+                  date: '2025',
+                  title: 'Nouveautés GIM UEMOA : Paiements interbancaires simplifiés',
+                  excerpt: 'La carte GIM UEMOA continue d\'évoluer pour offrir plus de services et de facilités de paiement dans toute l\'Union.',
+                  fullText: 'Le Groupement Interbancaire Monétique de l\'UEMOA (GIM UEMOA) annonce de nouvelles fonctionnalités pour simplifier les paiements interbancaires dans l\'espace UEMOA.',
+                  image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800',
+                  link: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires',
+                  sourceUrl: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires'
+                }
+              );
+            }
+            
+            // Réinitialiser le carousel avec les nouvelles données
+            const swiperContainer = document.getElementById('newsSwiper');
+            if (swiperContainer) {
+              const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+              if (swiperWrapper) {
+                swiperWrapper.innerHTML = '';
+                initNewsCarousel();
+              }
+            }
+            
+            console.log(`${fetchedNews.length} actualités BCEAO synchronisées avec succès`);
+          } else {
+            console.log('Aucune actualité récupérée, utilisation des données par défaut');
+          }
+        } catch (error) {
+          console.error('Erreur lors de la synchronisation:', error);
+        }
+      }
+      
+      // Synchroniser au chargement et toutes les heures
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', syncBCEAONews);
+      } else {
+        syncBCEAONews();
+      }
+      
+      // Synchroniser toutes les heures
+      setInterval(syncBCEAONews, 3600000); // 1 heure
+      
+      function initNewsCarousel() {
+        const swiperContainer = document.getElementById('newsSwiper');
+        if (!swiperContainer) return;
+        
+        const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+        if (!swiperWrapper) return;
+        
+        // Générer les slides
+        newsData.forEach((news, index) => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          slide.style.height = 'auto';
+          // Icône selon le type
+          const iconSvg = news.type === 'bceao' 
+            ? `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+               </svg>`
+            : `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+               </svg>`;
+          
+          slide.innerHTML = `
+            <div class="news-card ${news.type}" style="width: 100%;" data-news-index="${index}">
+              <div class="news-card-content">
+                <div class="news-card-header">
+                  <div class="news-card-header-wrapper">
+                    <span class="news-badge ${news.type}">${news.type.toUpperCase()}</span>
+                    <div class="news-date">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      ${news.date}
+                    </div>
+                  </div>
+                  <div class="news-card-icon ${news.type}" style="background: ${news.type === 'bceao' ? 'linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)' : 'linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%)'};">
+                    ${iconSvg}
+                  </div>
+                </div>
+                <div class="news-card-body">
+                  <h3 class="news-title">${news.title}</h3>
+                  <p class="news-excerpt">${news.excerpt}</p>
+                  <div class="news-link" style="margin-top: auto; padding-top: 8px;">
+                    Lire la suite
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          swiperWrapper.appendChild(slide);
+        });
+        
+        // Initialiser Swiper avec sélecteurs spécifiques
+        const nextEl = swiperContainer.querySelector('.swiper-button-next');
+        const prevEl = swiperContainer.querySelector('.swiper-button-prev');
+        
+        new Swiper(swiperContainer, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
+          navigation: {
+            nextEl: nextEl,
+            prevEl: prevEl,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            }
+          }
+        });
+        
+        // Rendre les cartes cliquables pour ouvrir le popup
+        setTimeout(() => {
+          swiperWrapper.addEventListener('click', function(e) {
+            // Ignorer les clics sur les boutons de navigation
+            if (e.target.closest('.swiper-button-next') || 
+                e.target.closest('.swiper-button-prev')) {
+              return;
+            }
+            
+            const newsCard = e.target.closest('.news-card');
+            if (!newsCard) return;
+            
+            const newsIndex = parseInt(newsCard.getAttribute('data-news-index'));
+            if (isNaN(newsIndex)) return;
+            
+            const news = newsData[newsIndex];
+            if (!news) return;
+            
+            // Ouvrir le popup avec l'actualité complète
+            openNewsModal(news);
+          });
+        }, 200);
+      }
+      
+      // Fonction pour ouvrir le popup d'actualité avec animation
+      function openNewsModal(news) {
+        const modal = document.getElementById('newsModal');
+        const modalTitle = document.getElementById('newsModalTitle');
+        const modalDate = document.getElementById('newsModalDate');
+        const modalText = document.getElementById('newsModalText');
+        const modalLink = document.getElementById('newsModalLink');
+        
+        if (!modal || !modalTitle || !modalDate || !modalText || !modalLink) return;
+        
+        // Remplir le contenu du modal
+        modalTitle.textContent = news.title;
+        modalDate.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          ${news.date}
+        `;
+        modalText.textContent = news.fullText || news.excerpt;
+        modalLink.href = news.link;
+        modalLink.setAttribute('data-news-link', news.link);
+        
+        // Afficher le modal avec animation
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+      
+      // Fonction pour fermer le popup avec animation
+      function closeNewsModal() {
+        const modal = document.getElementById('newsModal');
+        if (!modal) return;
+        
+        // Animation de fermeture
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      }
+      
+      // Gestion des événements du modal
+      function setupNewsModal() {
+        const closeBtn = document.getElementById('closeNewsModal');
+        const modal = document.getElementById('newsModal');
+        const modalLink = document.getElementById('newsModalLink');
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeNewsModal);
+        }
+        
+        // Fermer le modal en cliquant en dehors
+        if (modal) {
+          modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+              closeNewsModal();
+            }
+          });
+        }
+        
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeNewsModal();
+          }
+        });
+        
+        // Redirection vers l'actualité spécifique au clic sur le lien dans le modal
+        if (modalLink) {
+          modalLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const link = this.getAttribute('data-news-link') || this.href;
+            if (link && link !== '#' && link !== 'javascript:void(0)') {
+              window.open(link, '_blank', 'noopener,noreferrer');
+            }
+          });
+        }
+        
+        // Redirection au clic sur le contenu du modal (sauf le bouton de fermeture)
+        if (modal) {
+          const modalContent = modal.querySelector('.news-modal-content');
+          if (modalContent) {
+            modalContent.addEventListener('click', function(e) {
+              // Ne pas rediriger si on clique sur le bouton de fermeture ou le lien
+              if (e.target.closest('.news-modal-close') || e.target.closest('.news-modal-link')) {
+                return;
+              }
+              
+              // Rediriger vers l'actualité
+              const link = modalLink?.getAttribute('data-news-link') || modalLink?.href;
+              if (link && link !== '#' && link !== 'javascript:void(0)') {
+                window.open(link, '_blank', 'noopener,noreferrer');
+              }
+            });
+          }
+        }
+      }
+      
+      // Initialiser le carousel et le modal
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          // Initialiser d'abord avec les données par défaut
+          initNewsCarousel();
+          setupNewsModal();
+          // Puis synchroniser en arrière-plan
+          setTimeout(() => {
+            syncBCEAONews();
+          }, 2000);
+        });
+      } else {
+        initNewsCarousel();
+        setupNewsModal();
+        setTimeout(() => {
+          syncBCEAONews();
+        }, 2000);
+      }
+      
+      // Synchroniser toutes les 6 heures
+      setInterval(syncBCEAONews, 21600000); // 6 heures
+    })();
+    
+    // Carousel de leçons vidéo avec toutes les leçons
+    (function() {
+      // Données de toutes les leçons
+      const lessonsData = [
+        {
+          lessonNumber: '1',
+          lessonTitle: 'Introduction aux Comptes Bancaires',
+          badge: 'lesson-1',
+          badgeText: 'Chapitre 1',
+          title: 'Définition et Utilité',
+          description: 'Découvrez ce qu\'est un compte bancaire et son utilité dans votre quotidien.',
+          image: 'Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 1/Chapitre 1 Définition et Utilité d\'un compte bancaire -Couverture.jpg',
+          videoSrc: 'Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 1/Chapitre 1 Définition et Utilité d\'un compte bancaire.mp4',
+          duration: '5:30'
+        },
+        {
+          lessonNumber: '1',
+          lessonTitle: 'Introduction aux Comptes Bancaires',
+          badge: 'lesson-1',
+          badgeText: 'Chapitre 2',
+          title: 'Les Différents Types de Comptes',
+          description: 'Explorez les différents types de comptes disponibles dans l\'espace UEMOA.',
+          image: 'Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 2/Chapitre 2 Types de Comptes Bancaires-Couverture.jpg',
+          videoSrc: 'Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 2/Chapitre 2 Types de Comptes Bancaires.mp4',
+          duration: '7:15'
+        },
+        {
+          lessonNumber: '1',
+          lessonTitle: 'Introduction aux Comptes Bancaires',
+          badge: 'lesson-1',
+          badgeText: 'Chapitre 3',
+          title: 'Comment Créer un Compte',
+          description: 'Guide complet pour créer votre premier compte bancaire en toute simplicité.',
+          image: 'Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 3/Chapitre 3 Comment crée un compte -Couverture.jpg',
+          videoSrc: 'Sources%20Image/EMEFA/Tutos Léçon/Leçon 1 Les comptes Bancaires/Chapitre 3/Chapitre 3 Comment crée un compte .mp4',
+          duration: '6:45'
+        },
+        {
+          lessonNumber: '2',
+          lessonTitle: 'Services de Paiement',
+          badge: 'lesson-2',
+          badgeText: 'Leçon 2.1',
+          title: 'Utiliser une Carte Bancaire',
+          description: 'Maîtrisez l\'utilisation des cartes bancaires GIM, VISA et Mastercard.',
+          image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800',
+          duration: '8:20'
+        },
+        {
+          lessonNumber: '2',
+          lessonTitle: 'Services de Paiement',
+          badge: 'lesson-2',
+          badgeText: 'Leçon 2.2',
+          title: 'Paiements Mobile Money',
+          description: 'Découvrez comment effectuer des paiements via votre téléphone mobile.',
+          image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800',
+          duration: '6:30'
+        },
+        {
+          lessonNumber: '2',
+          lessonTitle: 'Services de Paiement',
+          badge: 'lesson-2',
+          badgeText: 'Leçon 2.3',
+          title: 'Effectuer des Transferts',
+          description: 'Apprenez à transférer de l\'argent en toute sécurité entre comptes.',
+          image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800',
+          duration: '9:10'
+        },
+        {
+          lessonNumber: '3',
+          lessonTitle: 'Crédits et Financements',
+          badge: 'lesson-3',
+          badgeText: 'Leçon 3.1',
+          title: 'Comprendre les Crédits',
+          description: 'Tout savoir sur les différents types de crédits disponibles.',
+          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800',
+          duration: '10:00'
+        },
+        {
+          lessonNumber: '3',
+          lessonTitle: 'Crédits et Financements',
+          badge: 'lesson-3',
+          badgeText: 'Leçon 3.2',
+          title: 'Demander un Crédit',
+          description: 'Guide étape par étape pour faire une demande de crédit.',
+          image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800',
+          duration: '7:45'
+        },
+        {
+          lessonNumber: '3',
+          lessonTitle: 'Crédits et Financements',
+          badge: 'lesson-3',
+          badgeText: 'Leçon 3.3',
+          title: 'Financement de Projets',
+          description: 'Comment obtenir un financement pour vos projets personnels ou professionnels.',
+          image: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?w=800',
+          duration: '8:50'
+        },
+        {
+          lessonNumber: '4',
+          lessonTitle: 'Assurances',
+          badge: 'lesson-4',
+          badgeText: 'Leçon 4.1',
+          title: 'Types d\'Assurances',
+          description: 'Découvrez les différents types d\'assurances disponibles.',
+          image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800',
+          duration: '6:15'
+        },
+        {
+          lessonNumber: '4',
+          lessonTitle: 'Assurances',
+          badge: 'lesson-4',
+          badgeText: 'Leçon 4.2',
+          title: 'Assurance Vie',
+          description: 'Protégez votre famille avec une assurance vie adaptée à vos besoins.',
+          image: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=800',
+          duration: '7:30'
+        },
+        {
+          lessonNumber: '4',
+          lessonTitle: 'Assurances',
+          badge: 'lesson-4',
+          badgeText: 'Leçon 4.3',
+          title: 'Sécurité Financière',
+          description: 'Apprenez à protéger vos finances et vos biens efficacement.',
+          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800',
+          duration: '8:00'
+        }
+      ];
+      
+      function createLessonCard(lesson) {
+        const videoSrc = lesson.videoSrc || '';
+        return `
+          <div class="swiper-slide">
+            <div class="video-card lesson-video-card-clickable" data-video-src="${videoSrc}" data-lesson-title="${lesson.title}" style="cursor: pointer;">
+              <div class="video-thumbnail">
+                <img src="${lesson.image || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800'}" alt="${lesson.title}" loading="lazy">
+                <div class="play-button"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+                <div class="duration-badge">${lesson.duration}</div>
+              </div>
+              <div class="p-6">
+                <span class="lesson-badge ${lesson.badge} mb-3 block">${lesson.badgeText}</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-800">${lesson.title}</h3>
+                <p class="text-gray-600 text-sm mb-4">${lesson.description}</p>
+                <a href="tutos-videos.html" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center" onclick="event.stopPropagation();">
+                  Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      
+      function initLessonsVideoCarousel() {
+        const swiperContainer = document.getElementById('lessonsVideoSwiper');
+        const wrapper = document.getElementById('lessonsVideoWrapper');
+        const titleElement = document.getElementById('lessonsCarouselTitle');
+        
+        if (!swiperContainer || !wrapper || !titleElement) return;
+        
+        // Générer toutes les cartes de leçons
+        wrapper.innerHTML = '';
+        lessonsData.forEach(lesson => {
+          wrapper.insertAdjacentHTML('beforeend', createLessonCard(lesson));
+        });
+        
+        const nextEl = swiperContainer.querySelector('.swiper-button-next');
+        const prevEl = swiperContainer.querySelector('.swiper-button-prev');
+        
+        const swiper = new Swiper(swiperContainer, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+            stopOnLastSlide: false,
+          },
+          speed: 800,
+          navigation: {
+            nextEl: nextEl,
+            prevEl: prevEl,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            }
+          },
+          on: {
+            slideChange: function() {
+              // Mettre à jour le titre selon la leçon active
+              const activeIndex = this.realIndex;
+              const activeLesson = lessonsData[activeIndex];
+              if (activeLesson) {
+                titleElement.textContent = `Leçon ${activeLesson.lessonNumber} : ${activeLesson.lessonTitle}`;
+              }
+            },
+            init: function() {
+              // Démarrer l'autoplay immédiatement
+              this.autoplay.start();
+            }
+          }
+        });
+        
+        // Mettre à jour le titre initial
+        if (lessonsData.length > 0) {
+          titleElement.textContent = `Leçon ${lessonsData[0].lessonNumber} : ${lessonsData[0].lessonTitle}`;
+        }
+
+        // Calculer la vraie durée des vidéos et mettre à jour les badges
+        const lessonCards = wrapper.querySelectorAll('.lesson-video-card-clickable[data-video-src]');
+        lessonCards.forEach(card => {
+          const src = card.getAttribute('data-video-src');
+          const badge = card.querySelector('.duration-badge');
+          if (!src || !badge) return;
+
+          const tempVideo = document.createElement('video');
+          tempVideo.preload = 'metadata';
+          tempVideo.src = src;
+          tempVideo.style.display = 'none';
+
+          tempVideo.addEventListener('loadedmetadata', function() {
+            const totalSeconds = Math.floor(tempVideo.duration || 0);
+            if (!isNaN(totalSeconds) && totalSeconds > 0) {
+              const mins = Math.floor(totalSeconds / 60);
+              const secs = totalSeconds % 60;
+              badge.textContent = mins + ':' + secs.toString().padStart(2, '0');
+            }
+            tempVideo.remove();
+          });
+
+          tempVideo.addEventListener('error', function() {
+            tempVideo.remove();
+          });
+
+          document.body.appendChild(tempVideo);
+        });
+
+        // Gestion des clics sur les cartes vidéo du carrousel
+        setTimeout(() => {
+          const videoCards = swiperContainer.querySelectorAll('.lesson-video-card-clickable');
+          videoCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+              // Ne pas déclencher si on clique sur le lien "Regarder"
+              if (e.target.closest('a')) return;
+              
+              const videoSrc = this.getAttribute('data-video-src');
+              const lessonTitle = this.getAttribute('data-lesson-title');
+              
+              if (videoSrc) {
+                // Arrêter le défilement automatique du carrousel
+                swiper.autoplay.stop();
+                
+                // Ouvrir la popup vidéo du carrousel
+                openCarouselVideoPopup(videoSrc, lessonTitle, swiper);
+              } else {
+                // Si pas de vidéo, rediriger vers tutos-videos.html
+                window.location.href = 'tutos-videos.html';
+              }
+            });
+          });
+        }, 100);
+      }
+      
+      // Fonction pour ouvrir la popup vidéo du carrousel
+      function openCarouselVideoPopup(videoSrc, lessonTitle, swiperInstance) {
+        // Créer ou récupérer la popup vidéo du carrousel
+        let carouselPopup = document.getElementById('carouselVideoPopup');
+        if (!carouselPopup) {
+          carouselPopup = document.createElement('div');
+          carouselPopup.id = 'carouselVideoPopup';
+          carouselPopup.className = 'fixed inset-0 bg-black bg-opacity-95 z-50 hidden items-center justify-center';
+          carouselPopup.innerHTML = `
+            <div class="relative w-full h-full flex items-center justify-center p-4">
+              <button id="closeCarouselVideoBtn" class="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors z-10 bg-black bg-opacity-50 rounded-full p-3 hover:bg-opacity-70">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+              <div class="relative w-full max-w-6xl max-h-[90vh] bg-black rounded-lg overflow-hidden shadow-2xl">
+                <video id="carouselVideoPlayer" class="w-full h-auto max-h-[90vh]" style="object-fit: contain;" controls playsinline preload="auto"></video>
+              </div>
+            </div>
+          `;
+          document.body.appendChild(carouselPopup);
+          
+          // Gestionnaire de fermeture
+          const closeBtn = document.getElementById('closeCarouselVideoBtn');
+          const videoPlayer = document.getElementById('carouselVideoPlayer');
+          
+          closeBtn.addEventListener('click', function() {
+            videoPlayer.pause();
+            carouselPopup.classList.add('hidden');
+            carouselPopup.style.display = 'none';
+            // Reprendre le défilement automatique
+            if (swiperInstance && swiperInstance.autoplay) {
+              swiperInstance.autoplay.start();
+            }
+          });
+          
+          // Fermer en cliquant à l'extérieur
+          carouselPopup.addEventListener('click', function(e) {
+            if (e.target === carouselPopup) {
+              videoPlayer.pause();
+              carouselPopup.classList.add('hidden');
+              carouselPopup.style.display = 'none';
+              // Reprendre le défilement automatique
+              if (swiperInstance && swiperInstance.autoplay) {
+                swiperInstance.autoplay.start();
+              }
+            }
+          });
+          
+          // Reprendre le carrousel quand la vidéo se termine
+          videoPlayer.addEventListener('ended', function() {
+            carouselPopup.classList.add('hidden');
+            carouselPopup.style.display = 'none';
+            if (swiperInstance && swiperInstance.autoplay) {
+              swiperInstance.autoplay.start();
+            }
+          });
+        }
+        
+        // Charger et jouer la vidéo
+        const videoPlayer = document.getElementById('carouselVideoPlayer');
+        videoPlayer.src = videoSrc;
+        videoPlayer.load();
+        carouselPopup.classList.remove('hidden');
+        carouselPopup.style.display = 'flex';
+        videoPlayer.play().catch(err => console.log('Lecture de la vidéo échouée:', err));
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLessonsVideoCarousel);
+      } else {
+        initLessonsVideoCarousel();
+      }
+    })();
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,2357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets de Vie - Pratiques Bancaires</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Fluidbook.com Inspired Design System */
+    :root {
+      --fluid-primary: #6366f1;
+      --fluid-secondary: #8b5cf6;
+      --fluid-accent: #ec4899;
+      --fluid-dark: #0f172a;
+      --fluid-gray-900: #1e293b;
+      --fluid-gray-800: #334155;
+      --fluid-gray-700: #475569;
+      --fluid-gray-100: #f1f5f9;
+      --fluid-white: #ffffff;
+      --fluid-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --fluid-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --fluid-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --fluid-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --fluid-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --fluid-blur: blur(20px);
+    }
+    
+    * {
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+      color: var(--fluid-gray-900);
+    }
+    
+    /* Fluid Navbar - Glassmorphism */
+    .glass-effect-blue {
+      background: rgba(255, 255, 255, 0.3);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.08);
+    }
+    
+    /* Fluid Typography */
+    .text-gradient {
+      background: linear-gradient(135deg, var(--fluid-primary) 0%, var(--fluid-secondary) 50%, var(--fluid-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    
+    /* Fluid Animations */
+    @keyframes fluid-float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      33% { transform: translateY(-10px) translateX(5px); }
+      66% { transform: translateY(5px) translateX(-5px); }
+    }
+
+    /* Carousel leçons vidéo (projets de vie) */
+    .lessons-video-swiper {
+      padding: 20px 0 60px 0;
+    }
+    
+    .lessons-video-swiper .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+    
+    .lessons-video-swiper .swiper-slide > * {
+      width: 100%;
+    }
+    
+    .lessons-video-swiper .swiper-button-next,
+    .lessons-video-swiper .swiper-button-prev {
+      color: #3b82f6;
+      background: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .lessons-video-swiper .swiper-button-next:hover,
+    .lessons-video-swiper .swiper-button-prev:hover {
+      background: #3b82f6;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .lessons-video-swiper .swiper-button-next::after,
+    .lessons-video-swiper .swiper-button-prev::after {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    
+    .video-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .video-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+    
+    .video-thumbnail {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+    }
+    
+    .video-thumbnail img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .play-button:hover {
+      background: rgba(0, 0, 0, 0.85);
+      transform: translate(-50%, -50%) scale(1.15);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .play-button svg {
+      width: 40px;
+      height: 40px;
+      margin-left: 4px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+      color: white;
+    }
+    
+    .lesson-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+    }
+    
+    .lesson-badge.lesson-1 {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    }
+    
+    .lesson-badge.lesson-2 {
+      background: linear-gradient(135deg, #10b981, #059669);
+    }
+    
+    .lesson-badge.lesson-3 {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+    
+    .lesson-badge.lesson-4 {
+      background: linear-gradient(135deg, #ec4899, #db2777);
+    }
+    
+    .duration-badge {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    @keyframes fluid-pulse {
+      0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+        transform: scale(1);
+      }
+      50% { 
+        box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+        transform: scale(1.05);
+      }
+    }
+    
+    .float-animation {
+      animation: fluid-float 8s ease-in-out infinite;
+    }
+    
+    .pulse-glow {
+      animation: fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    /* Fluid Glass Effect */
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.7);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    /* Fluid Cards - Enhanced */
+    .card-hover {
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      will-change: transform;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: var(--fluid-shadow-2xl);
+    }
+    
+    /* Fluid CTA Button */
+    .cta-button {
+      background: linear-gradient(135deg, var(--fluid-primary), var(--fluid-secondary));
+      border: none;
+      border-radius: 12px;
+      padding: 14px 32px;
+      color: white;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--fluid-shadow-lg);
+    }
+    
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: var(--fluid-shadow-2xl);
+    }
+    
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    
+    /* Fluid Pro Cards - Enhanced */
+    .pro-card {
+      position: relative;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--fluid-shadow-lg);
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      overflow: hidden;
+    }
+    
+    .pro-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--fluid-primary), var(--fluid-secondary), var(--fluid-accent));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .pro-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--fluid-shadow-2xl);
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+    
+    .pro-card:hover::before {
+      opacity: 1;
+    }
+    
+    /* Card Variants with Fluid Animations */
+    .education-card, .marriage-card, .retirement-card, .migration-card {
+      position: relative;
+      overflow: hidden;
+      transform-origin: center;
+    }
+    
+    .education-card {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8, #6366f1);
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite, card-glow 4s ease-in-out infinite;
+    }
+    .marriage-card {
+      background: linear-gradient(135deg, #ec4899, #be185d, #f472b6);
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite, card-glow 4s ease-in-out infinite 0.5s;
+    }
+    .retirement-card {
+      background: linear-gradient(135deg, #f59e0b, #f97316, #fb923c);
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite, card-glow 4s ease-in-out infinite 1s;
+    }
+    .migration-card {
+      background: linear-gradient(135deg, #10b981, #059669, #34d399);
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite, card-glow 4s ease-in-out infinite 1.5s;
+    }
+    
+    .education-card:hover, .marriage-card:hover, .retirement-card:hover, .migration-card:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), 0 0 40px rgba(255, 255, 255, 0.1) !important;
+      transform: translateY(-12px) scale(1.02) !important;
+    }
+    
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes card-glow {
+      0%, 100% { 
+        filter: brightness(1) saturate(1);
+      }
+      50% { 
+        filter: brightness(1.1) saturate(1.2);
+      }
+    }
+    
+    .education-card .text-center > div, .marriage-card .text-center > div, 
+    .retirement-card .text-center > div, .migration-card .text-center > div {
+      animation: icon-float 6s ease-in-out infinite;
+      transition: all 0.3s ease;
+    }
+    
+    .education-card:hover .text-center > div, .marriage-card:hover .text-center > div, 
+    .retirement-card:hover .text-center > div, .migration-card:hover .text-center > div {
+      animation: none !important;
+      transform: scale(1.1) rotate(5deg) !important;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    @keyframes icon-float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-5px) rotate(2deg); }
+    }
+    
+    /* Fluid Brand Animation */
+    @keyframes fluid-brand {
+      0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+        color: var(--fluid-primary);
+      }
+      25% { 
+        transform: translateY(-2px) rotate(1deg);
+        color: var(--fluid-secondary);
+      }
+      50% { 
+        transform: translateY(-4px) rotate(0deg);
+        color: var(--fluid-accent);
+      }
+      75% { 
+        transform: translateY(-2px) rotate(-1deg);
+        color: var(--fluid-secondary);
+      }
+    }
+    
+    .animated-brand {
+      animation: fluid-brand 4s ease-in-out infinite;
+      font-weight: 800;
+    }
+    
+    /* Fluid Pagination - Redesigned */
+    .pagination {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      list-style: none;
+      padding: 16px 8px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      box-shadow: var(--fluid-shadow-xl);
+    }
+    
+    .pagination li {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      padding: 8px;
+      border-radius: 8px;
+    }
+    
+    .pagination li::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.4);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    
+    .pagination li:hover {
+      background: rgba(99, 102, 241, 0.05);
+      transform: translateX(4px);
+    }
+    
+    .pagination li:hover::before,
+    .pagination li.active::before {
+      width: 12px;
+      height: 12px;
+      background: var(--fluid-primary);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+    
+    .pagination li.active {
+      background: rgba(99, 102, 241, 0.1);
+    }
+    
+    .pagination li.active::before {
+      animation: fluid-pulse 2s ease-in-out infinite;
+    }
+    
+    .pagination .hover-text {
+      position: absolute;
+      left: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      background: var(--fluid-gray-900);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: var(--fluid-shadow-xl);
+    }
+    
+    .pagination .hover-text::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-right: 4px solid var(--fluid-gray-900);
+    }
+    
+    .pagination li:hover .hover-text {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
+    }
+    
+    @media (max-width: 1024px) {
+      .pagination {
+        display: none;
+      }
+    }
+    
+    /* Fluid Section Backgrounds */
+    section.bg-white {
+      background: rgba(255, 255, 255, 0.6);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    section.bg-gray-50 {
+      background: rgba(248, 250, 252, 0.8);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    
+    /* Fluid Hero Section avec image de fond */
+    #intro {
+      background-image: url('AFFICHES BANQUE PAYS/alimenter/pleased-energetic-group-conservationists-team-up-help-preserve-ecosystems.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #intro::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(59, 130, 246, 0.06) 50%, rgba(14, 165, 233, 0.08) 100%);
+      z-index: 1;
+    }
+    
+    #intro > * {
+      position: relative;
+      z-index: 2;
+    }
+    
+    #intro::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: fluid-float 12s ease-in-out infinite reverse;
+      z-index: 1;
+    }
+
+    /* Carousel d'actualités BCEAO et GIM */
+    .news-carousel-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 60px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .news-carousel-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+    }
+    
+    .news-card {
+      background: white;
+      border-radius: 16px;
+      padding: 0;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
+      box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.12),
+        0 8px 20px rgba(15, 23, 42, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-top: 4px solid;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .news-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    .news-card-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+    
+    .news-card-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .news-card:hover .news-card-icon {
+      transform: scale(1.15) rotate(8deg);
+      box-shadow:
+        0 18px 35px rgba(15, 23, 42, 0.35),
+        0 10px 24px rgba(15, 23, 42, 0.22);
+    }
+    
+    .news-card:hover .news-card-icon::before {
+      opacity: 1;
+    }
+    
+    .news-card-icon svg {
+      width: 28px;
+      height: 28px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      color: white;
+    }
+    
+    .news-card-content {
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .news-card-header-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      flex-grow: 1;
+    }
+    
+    .news-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow:
+        0 35px 80px rgba(15, 23, 42, 0.25),
+        0 20px 45px rgba(15, 23, 42, 0.18);
+    }
+    
+    .news-card:hover .news-card-icon {
+      transform: scale(1.15) rotate(8deg);
+      box-shadow:
+        0 18px 35px rgba(15, 23, 42, 0.35),
+        0 10px 24px rgba(15, 23, 42, 0.22);
+    }
+    
+    .news-card:hover::before {
+      opacity: 1;
+    }
+    
+    .news-card.bceao {
+      border-top-color: #2563eb;
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 50%, #dbeafe 100%);
+      position: relative;
+    }
+    
+    .news-card.bceao::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .news-card.bceao:hover::after {
+      opacity: 1;
+    }
+    
+    .news-card.gim {
+      border-top-color: #10b981;
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #dcfce7 100%);
+      position: relative;
+    }
+    
+    .news-card.gim::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+    
+    .news-card.gim:hover::after {
+      opacity: 1;
+    }
+    
+    .news-badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 16px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+    
+    .news-badge.bceao {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+    }
+    
+    .news-badge.gim {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+    }
+    
+    .news-date {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .news-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      flex-grow: 1;
+      min-height: 2.8em;
+    }
+    
+    .news-excerpt {
+      font-size: 0.875rem;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+    
+    .news-card-body {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      gap: 6px;
+    }
+    
+    .news-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #3b82f6;
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      margin-top: auto;
+    }
+    
+    .news-link:hover {
+      color: #2563eb;
+      gap: 10px;
+    }
+    
+    .news-carousel-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .news-carousel-title h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .news-carousel-title p {
+      font-size: 1.125rem;
+      color: #64748b;
+    }
+    
+    .news-swiper {
+      padding: 20px 0 60px 0;
+    }
+    
+    .news-swiper .swiper-pagination {
+      bottom: 20px;
+    }
+    
+    .news-swiper .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: #cbd5e1;
+      opacity: 1;
+    }
+    
+    .news-swiper .swiper-pagination-bullet-active {
+      background: #3b82f6;
+    }
+    
+    .news-swiper .swiper-button-next,
+    .news-swiper .swiper-button-prev {
+      color: #3b82f6;
+      background: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+    
+    .news-swiper .swiper-button-next:hover,
+    .news-swiper .swiper-button-prev:hover {
+      background: #3b82f6;
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .news-swiper .swiper-button-next::after,
+    .news-swiper .swiper-button-prev::after {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    
+    .news-swiper .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+    
+    .news-swiper .swiper-slide > * {
+      width: 100%;
+    }
+    
+    @media (max-width: 768px) {
+      .news-card {
+        height: auto;
+        min-height: 280px;
+      }
+      
+      .news-carousel-title h2 {
+        font-size: 2rem;
+      }
+    }
+    
+    #newsModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    #newsModal.active {
+      display: flex;
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.95);
+    }
+    
+    .news-modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow:
+        0 40px 90px rgba(15, 23, 42, 0.45),
+        0 20px 45px rgba(15, 23, 42, 0.25);
+      display: flex;
+      flex-direction: column;
+      transform: scale(0.8) translateY(50px);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    }
+    
+    #newsModal.active .news-modal-content {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+    
+    .news-modal-body {
+      padding: 32px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+    
+    .news-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+     -webkit-backdrop-filter: blur(10px);
+     backdrop-filter: blur(10px);
+    }
+    
+    .news-modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+    
+    .news-modal-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    
+    .news-modal-date {
+      font-size: 0.9375rem;
+      color: #64748b;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .news-modal-date .news-modal-source {
+      color: inherit;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .news-modal-date .news-modal-source:hover {
+      text-decoration: underline;
+    }
+    .news-modal-source-separator {
+      color: rgba(148, 163, 184, 0.6);
+    }
+    
+    .news-modal-text {
+      font-size: 1.0625rem;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    
+    .news-modal-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+    
+    .news-modal-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass-effect-blue shadow-lg">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center flex-shrink-0 -ml-2">
+          <a href="banque.html" class="flex items-center">
+            <img class="h-10 w-auto" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+            <span class="ml-3 text-xl font-bold animated-brand">Pratiques Bancaires</span>
+          </a>
+        </div>
+        <div class="hidden lg:flex space-x-6 items-center ml-4">
+          <a href="banque.html" class="text-gray-700 hover:text-blue-400 transition-colors font-medium px-2 py-2 whitespace-nowrap">Accueil</a>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Comptes  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="comptes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Comptes</a>
+                <a href="comptes.html#services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Services</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Paiements  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="paiements.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Paiements</a>
+                <a href="paiements.html#transferts" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Transferts</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Crédits  
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="credits.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Crédits</a>
+                <a href="credits.html#financements" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Financements</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Les Assurances 
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Assurance</a>
+                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Sécurité Financière</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="relative group">
+            <button class="text-blue-600 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Projets de Vie
+              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+              <div class="py-1">
+                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Études & Formations</a>
+                <a href="projets-de-vie.html#projets-de-vie" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Mariage & Famille</a>
+                <a href="projets-de-vie.html#projets-de-vie" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Retraite & Assurance Vie</a>
+                <a href="projets-de-vie.html#projets-de-vie" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Voyages & Migrations</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Pagination verticale -->
+  <ul class="pagination">
+    <li data-section="#intro" class=""><span class="hover-text">Introduction</span></li>
+    <li data-section="#projets-de-vie" class=""><span class="hover-text">Projets de Vie</span></li>
+    <li data-section="#planification" class=""><span class="hover-text">Planification</span></li>
+    <li data-section="#epargne" class=""><span class="hover-text">Stratégies d'Épargne</span></li>
+    <li data-section="#conseils" class=""><span class="hover-text">Conseils</span></li>
+  </ul>
+
+  <!-- Hero Section -->
+  <section id="intro" class="relative py-32 md:py-40 pt-40 md:pt-48 overflow-hidden min-h-[80vh] flex items-start">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 md:pt-44">
+      <div class="text-center" data-aos="fade-up">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-2xl text-white">
+          <span>Projets de Vie & Planification Financière</span>
+        </h1>
+        <p class="text-lg md:text-xl text-white mb-6 max-w-3xl mx-auto drop-shadow-lg">
+          Planifiez et financez vos projets de vie essentiels : études, mariage, retraite et migration. Découvrez les solutions financières adaptées aux réalités africaines.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#projets-de-vie" class="cta-button pulse-glow">
+            Découvrir les Projets
+          </a>
+          <a href="#planification" class="cta-button pulse-glow">
+            Planification Financière
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projets de Vie Section -->
+  <section id="projets-de-vie" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Les Grands Projets de Vie</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Chaque étape de la vie nécessite une planification financière adaptée. Découvrez les solutions pour vos projets les plus importants.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Études & Formations -->
+        <div class="education-card rounded-xl p-6 text-white card-hover" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Études & Formations</h3>
+            <p class="text-base opacity-90 mb-4">Investir dans l'éducation</p>
+          </div>
+          <ul class="text-xs space-y-1">
+            <li>• Frais de scolarité</li>
+            <li>• Logement étudiant</li>
+            <li>• Formation professionnelle</li>
+            <li>• Études à l'étranger</li>
+            <li>• Bourses et aides</li>
+            <li>• Crédit étudiant</li>
+          </ul>
+        </div>
+
+        <!-- Mariage & Famille -->
+        <div class="marriage-card rounded-xl p-6 text-white card-hover" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Mariage & Famille</h3>
+            <p class="text-base opacity-90 mb-4">Célébrer et fonder une famille</p>
+          </div>
+          <ul class="text-xs space-y-1">
+            <li>• Cérémonie de mariage</li>
+            <li>• Dot et cadeaux</li>
+            <li>• Logement familial</li>
+            <li>• Naissance d'enfants</li>
+            <li>• Éducation des enfants</li>
+            <li>• Épargne familiale</li>
+          </ul>
+        </div>
+
+        <!-- Retraite & Assurance Vie -->
+        <div class="retirement-card rounded-xl p-6 text-white card-hover" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Retraite & Assurance Vie</h3>
+            <p class="text-base opacity-90 mb-4">Préparer l'avenir</p>
+          </div>
+          <ul class="text-xs space-y-1">
+            <li>• Pension de retraite</li>
+            <li>• Assurance vie</li>
+            <li>• Épargne retraite</li>
+            <li>• Investissements</li>
+            <li>• Transmission patrimoine</li>
+            <li>• Sécurité financière</li>
+          </ul>
+        </div>
+
+        <!-- Voyages & Migrations -->
+        <div class="migration-card rounded-xl p-6 text-white card-hover" data-aos="fade-up" data-aos-delay="300">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Voyages & Migrations</h3>
+            <p class="text-base opacity-90 mb-4">Explorer et s'installer</p>
+          </div>
+          <ul class="text-xs space-y-1">
+            <li>• Voyages d'études</li>
+            <li>• Migration économique</li>
+            <li>• Transferts d'argent</li>
+            <li>• Investissement immobilier</li>
+            <li>• Retour au pays</li>
+            <li>• Double nationalité</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planification Financière -->
+  <section id="planification" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Planification Financière par Projet</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Chaque projet nécessite une approche financière spécifique. Découvrez les stratégies adaptées à vos objectifs.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Études & Formations -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex items-center mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mr-4 shadow-xl">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Études & Formations</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="border-l-4 border-blue-500 pl-4 bg-gradient-to-r from-blue-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Épargne éducation</h4>
+              <p class="text-gray-600 text-base">Compte d'épargne dédié aux frais de scolarité</p>
+            </div>
+            <div class="border-l-4 border-green-500 pl-4 bg-gradient-to-r from-green-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Crédit étudiant</h4>
+              <p class="text-gray-600 text-base">Prêt à taux préférentiel pour les études</p>
+            </div>
+            <div class="border-l-4 border-purple-500 pl-4 bg-gradient-to-r from-purple-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Bourses et aides</h4>
+              <p class="text-gray-600 text-base">Recherche de financements publics et privés</p>
+            </div>
+            <div class="border-l-4 border-orange-500 pl-4 bg-gradient-to-r from-orange-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Travail étudiant</h4>
+              <p class="text-gray-600 text-base">Activités rémunérées pendant les études</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mariage & Famille -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl flex items-center justify-center mr-4 shadow-xl">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Mariage & Famille</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="border-l-4 border-pink-500 pl-4 bg-gradient-to-r from-pink-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Budget mariage</h4>
+              <p class="text-gray-600 text-base">Planification des dépenses de cérémonie</p>
+            </div>
+            <div class="border-l-4 border-red-500 pl-4 bg-gradient-to-r from-red-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Logement familial</h4>
+              <p class="text-gray-600 text-base">Crédit immobilier pour le foyer</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4 bg-gradient-to-r from-yellow-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Épargne enfants</h4>
+              <p class="text-gray-600 text-base">Compte dédié à l'éducation des enfants</p>
+            </div>
+            <div class="border-l-4 border-indigo-500 pl-4 bg-gradient-to-r from-indigo-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Assurance famille</h4>
+              <p class="text-gray-600 text-base">Protection santé et vie pour tous</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Retraite & Assurance Vie -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mr-4 shadow-xl">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Retraite & Assurance Vie</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="border-l-4 border-orange-500 pl-4 bg-gradient-to-r from-orange-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Épargne retraite</h4>
+              <p class="text-gray-600 text-base">Compte d'épargne à long terme</p>
+            </div>
+            <div class="border-l-4 border-green-500 pl-4 bg-gradient-to-r from-green-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Assurance vie</h4>
+              <p class="text-gray-600 text-base">Protection et épargne combinées</p>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4 bg-gradient-to-r from-blue-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Investissements</h4>
+              <p class="text-gray-600 text-base">Placements diversifiés pour la croissance</p>
+            </div>
+            <div class="border-l-4 border-purple-500 pl-4 bg-gradient-to-r from-purple-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Transmission</h4>
+              <p class="text-gray-600 text-base">Planification de la succession</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voyages & Migrations -->
+        <div class="pro-card p-10" data-aos="fade-up" data-aos-delay="300">
+          <div class="flex items-center mb-6">
+            <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mr-4 shadow-xl">
+              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9"></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900">Voyages & Migrations</h3>
+          </div>
+          <div class="space-y-4">
+            <div class="border-l-4 border-green-500 pl-4 bg-gradient-to-r from-green-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Épargne voyage</h4>
+              <p class="text-gray-600 text-base">Budget pour les déplacements</p>
+            </div>
+            <div class="border-l-4 border-blue-500 pl-4 bg-gradient-to-r from-blue-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Transferts d'argent</h4>
+              <p class="text-gray-600 text-base">Envoi d'argent à la famille</p>
+            </div>
+            <div class="border-l-4 border-purple-500 pl-4 bg-gradient-to-r from-purple-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Investissement immobilier</h4>
+              <p class="text-gray-600 text-base">Achat de biens dans le pays d'origine</p>
+            </div>
+            <div class="border-l-4 border-orange-500 pl-4 bg-gradient-to-r from-orange-50 to-transparent py-2 rounded-r-lg">
+              <h4 class="font-semibold text-gray-900">Retour au pays</h4>
+              <p class="text-gray-600 text-base">Planification du retour définitif</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stratégies d'Épargne -->
+  <section id="epargne" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Stratégies d'Épargne par Objectif</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Découvrez les meilleures stratégies pour épargner selon vos projets et votre horizon temporel.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Court Terme (1-3 ans) -->
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Court Terme</h3>
+            <p class="text-sm text-gray-600 mb-4">1 à 3 ans</p>
+          </div>
+          <div class="space-y-3">
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Compte d'épargne</h4>
+              <p class="text-gray-600 text-xs">Sécurité et liquidité</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Dépôts à terme</h4>
+              <p class="text-gray-600 text-xs">Taux d'intérêt fixe</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Mobile money</h4>
+              <p class="text-gray-600 text-xs">Épargne accessible</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Moyen Terme (3-10 ans) -->
+        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Moyen Terme</h3>
+            <p class="text-sm text-gray-600 mb-4">3 à 10 ans</p>
+          </div>
+          <div class="space-y-3">
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Assurance vie</h4>
+              <p class="text-gray-600 text-xs">Épargne et protection</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Obligations</h4>
+              <p class="text-gray-600 text-xs">Rendement stable</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Immobilier</h4>
+              <p class="text-gray-600 text-xs">Investissement tangible</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Long Terme (10+ ans) -->
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-8" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">Long Terme</h3>
+            <p class="text-sm text-gray-600 mb-4">10+ ans</p>
+          </div>
+          <div class="space-y-3">
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Actions</h4>
+              <p class="text-gray-600 text-xs">Croissance du capital</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Fonds de pension</h4>
+              <p class="text-gray-600 text-xs">Retraite sécurisée</p>
+            </div>
+            <div class="p-3 bg-white rounded-lg">
+              <h4 class="font-semibold text-gray-900 text-sm">Diversification</h4>
+              <p class="text-gray-600 text-xs">Portfolio équilibré</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conseils Pratiques -->
+  <section id="conseils" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Conseils pour Réussir vos Projets</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          Quelques conseils essentiels pour bien planifier et financer vos projets de vie.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="space-y-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mt-1">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Commencez tôt</h3>
+              <p class="text-gray-600 text-base">Plus vous commencez tôt à épargner, plus vos projets seront faciles à réaliser grâce aux intérêts composés.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mt-1">
+              <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Fixez des objectifs clairs</h3>
+              <p class="text-gray-600 text-base">Définissez précisément vos projets avec des montants et des échéances réalistes.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mt-1">
+              <svg class="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Diversifiez vos placements</h3>
+              <p class="text-gray-600 text-base">Ne mettez pas tous vos œufs dans le même panier. Diversifiez pour réduire les risques.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mt-1">
+              <svg class="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Automatisez l'épargne</h3>
+              <p class="text-gray-600 text-base">Configurez des virements automatiques pour épargner sans y penser chaque mois.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mt-1">
+              <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Réévaluez régulièrement</h3>
+              <p class="text-gray-600 text-base">Adaptez votre stratégie selon l'évolution de votre situation et de vos objectifs.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="flex-shrink-0 w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mt-1">
+              <svg class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="ml-4">
+              <h3 class="font-semibold text-gray-900 mb-2">Protégez-vous</h3>
+              <p class="text-gray-600 text-base">Assurez-vous contre les risques qui pourraient compromettre vos projets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leçons vidéo Projets de Vie -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Tutoriels Vidéo : Financer vos Projets de Vie</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Focus sur les leçons dédiées aux études, au mariage, à la retraite et aux projets de migration dans l’espace UEMOA.
+        </p>
+      </div>
+
+      <div class="mt-16" data-aos="fade-up">
+        <h2 class="section-title text-gradient mb-8 text-center" id="projetsLessonsTitle">Projets de Vie : Leçons en vidéo</h2>
+        <div class="swiper lessons-video-swiper" id="projetsLessonsSwiper">
+          <div class="swiper-wrapper" id="projetsLessonsWrapper">
+            <!-- Les cartes seront injectées via JavaScript -->
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-carousel-container" id="actualites-projets">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="news-carousel-title" data-aos="fade-up">
+        <h2>Actualités BCEAO & GIM UEMOA</h2>
+        <p>Les dernières informations du GIM UEMOA et de la BCEAO pour vos projets de vie.</p>
+      </div>
+      
+      <div class="swiper news-swiper" id="newsSwiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          <!-- Les cartes seront générées dynamiquement par JavaScript -->
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Modal popup actualités -->
+  <div id="newsModal" class="news-modal">
+    <div class="news-modal-content">
+      <button class="news-modal-close" id="closeNewsModal" aria-label="Fermer">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="news-modal-body">
+        <div id="newsModalDate" class="news-modal-date"></div>
+        <h2 id="newsModalTitle" class="news-modal-title"></h2>
+        <p id="newsModalText" class="news-modal-text"></p>
+        <a href="#" id="newsModalLink" target="_blank" rel="noopener noreferrer" class="news-modal-link">
+          Lire l'actualité complète sur le site
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-12 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center">
+        <img class="h-12 w-auto mx-auto mb-6 opacity-90" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+        <p class="text-gray-300 mb-6 text-lg">
+          Votre guide complet pour comprendre et utiliser les services bancaires dans l'espace UEMOA.
+        </p>
+        <div class="flex justify-center space-x-8">
+          <a href="banque.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Accueil</a>
+          <a href="comptes.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Comptes</a>
+          <a href="paiements.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Paiements</a>
+          <a href="credits.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Crédits</a>
+          <a href="assurance.html" class="text-gray-400 hover:text-white transition-all font-medium hover:scale-110">Assurances</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // Carousel des leçons vidéo (Projets de Vie)
+    (function() {
+      const lessonsData = [
+        {
+          badge: 'lesson-1',
+          badgeText: 'Études',
+          title: 'Financer ses études et formations',
+          description: 'Bourses, crédits étudiants, épargne préalable : les chemins possibles pour payer ses études sans se perdre.',
+          image: 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=900',
+          duration: '7:30'
+        },
+        {
+          badge: 'lesson-2',
+          badgeText: 'Mariage & Famille',
+          title: 'Préparer un mariage sans se surendetter',
+          description: 'Budget, priorités et astuces pour organiser un mariage ou une dot raisonnable et maîtrisée.',
+          image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=900',
+          duration: '6:50'
+        },
+        {
+          badge: 'lesson-3',
+          badgeText: 'Retraite',
+          title: 'Construire sa retraite dès aujourd’hui',
+          description: 'Comprendre les pensions, les produits d’épargne long terme et les compléments possibles.',
+          image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=900',
+          duration: '8:10'
+        },
+        {
+          badge: 'lesson-4',
+          badgeText: 'Migration & Voyages',
+          title: 'Préparer un projet de voyage ou d’installation à l’étranger',
+          description: 'Budget, transferts, comptes multi-devises et précautions avant de partir.',
+          image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900',
+          duration: '7:00'
+        }
+      ];
+      
+      function createLessonCard(lesson) {
+        const videoSrc = lesson.videoSrc || '';
+        return `
+          <div class="swiper-slide">
+            <div class="video-card lesson-video-card-clickable" data-video-src="${videoSrc}" data-lesson-title="${lesson.title}" style="cursor: pointer;">
+              <div class="video-thumbnail">
+                <img src="${lesson.image}" alt="${lesson.title}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900';">
+                <div class="play-button">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+                <div class="duration-badge">${lesson.duration}</div>
+              </div>
+              <div class="p-6">
+                <span class="lesson-badge ${lesson.badge} mb-3 block">${lesson.badgeText}</span>
+                <h3 class="text-xl font-bold mb-2 text-gray-800">${lesson.title}</h3>
+                <p class="text-gray-600 text-sm mb-4">${lesson.description}</p>
+                <a href="tutos-videos.html#projets" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors inline-flex items-center" onclick="event.stopPropagation();">
+                  Regarder <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      
+      function initProjetsLessonsCarousel() {
+        const swiperContainer = document.getElementById('projetsLessonsSwiper');
+        const wrapper = document.getElementById('projetsLessonsWrapper');
+        const titleElement = document.getElementById('projetsLessonsTitle');
+        
+        if (!swiperContainer || !wrapper || !titleElement) {
+          return;
+        }
+        
+        wrapper.innerHTML = '';
+        lessonsData.forEach(lesson => {
+          wrapper.insertAdjacentHTML('beforeend', createLessonCard(lesson));
+        });
+        
+        const nextEl = swiperContainer.querySelector('.swiper-button-next');
+        const prevEl = swiperContainer.querySelector('.swiper-button-prev');
+        
+        const swiper = new Swiper(swiperContainer, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+            stopOnLastSlide: false,
+          },
+          speed: 800,
+          navigation: {
+            nextEl: nextEl,
+            prevEl: prevEl,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            }
+          },
+          on: {
+            slideChange: function() {
+              const activeIndex = this.realIndex;
+              const activeLesson = lessonsData[activeIndex];
+              if (activeLesson) {
+                titleElement.textContent = `Projets de Vie : ${activeLesson.badgeText}`;
+              }
+            },
+            init: function() {
+              this.autoplay.start();
+            }
+          }
+        });
+        
+        if (lessonsData.length > 0) {
+          titleElement.textContent = `Projets de Vie : ${lessonsData[0].badgeText}`;
+        }
+
+        // Calculer la vraie durée des vidéos et mettre à jour les badges (si une vidéo est liée)
+        const lessonCards = wrapper.querySelectorAll('.lesson-video-card-clickable[data-video-src]');
+        lessonCards.forEach(card => {
+          const src = card.getAttribute('data-video-src');
+          const badge = card.querySelector('.duration-badge');
+          if (!src || !badge) return;
+
+          const tempVideo = document.createElement('video');
+          tempVideo.preload = 'metadata';
+          tempVideo.src = src;
+          tempVideo.style.display = 'none';
+
+          tempVideo.addEventListener('loadedmetadata', function() {
+            const totalSeconds = Math.floor(tempVideo.duration || 0);
+            if (!isNaN(totalSeconds) && totalSeconds > 0) {
+              const mins = Math.floor(totalSeconds / 60);
+              const secs = totalSeconds % 60;
+              badge.textContent = mins + ':' + secs.toString().padStart(2, '0');
+            }
+            tempVideo.remove();
+          });
+
+          tempVideo.addEventListener('error', function() {
+            tempVideo.remove();
+          });
+
+          document.body.appendChild(tempVideo);
+        });
+
+        setTimeout(() => {
+          const videoCards = swiperContainer.querySelectorAll('.lesson-video-card-clickable');
+          videoCards.forEach(card => {
+            card.addEventListener('click', function(e) {
+              if (e.target.closest('a')) return;
+              
+              const videoSrc = this.getAttribute('data-video-src');
+              if (videoSrc) {
+                window.location.href = 'tutos-videos.html#projets';
+              } else {
+                window.location.href = 'tutos-videos.html#projets';
+              }
+            });
+          });
+        }, 100);
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProjetsLessonsCarousel);
+      } else {
+        initProjetsLessonsCarousel();
+      }
+    })();
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.AOS && typeof AOS.init === 'function') {
+        AOS.init({ once: true, duration: 800, offset: 50 });
+      }
+    });
+    // Pagination verticale
+    document.addEventListener('DOMContentLoaded', function () {
+      const paginationItems = document.querySelectorAll('.pagination li');
+      const sections = document.querySelectorAll('section[id]');
+
+      // Navigation smooth scroll
+      paginationItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-section');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 80;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Détection de la section active lors du scroll
+      function updateActiveSection() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 150;
+          const sectionHeight = section.offsetHeight;
+          if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        paginationItems.forEach(item => {
+          const sectionId = item.getAttribute('data-section').substring(1);
+          if (sectionId === current) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+
+      // Initialiser au chargement
+      updateActiveSection();
+
+      // Mettre à jour lors du scroll
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateActiveSection();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    });
+  </script>
+
+  <script>
+    // Section actualités - Code identique à banque.html
+    (function() {
+      const newsData = [
+        {
+          type: 'bceao',
+          source: 'BCEAO',
+          date: '30 Septembre 2025',
+          title: 'Lancement officiel de la Plateforme Interopérable du Système de Paiement Instantané (PI-SPI)',
+          excerpt: 'La BCEAO lance la PI-SPI pour faciliter les paiements instantanés dans l\'espace UEMOA, révolutionnant les transactions bancaires.',
+          fullText: 'La Banque Centrale des Etats de l\'Afrique de l\'Ouest (BCEAO) a officiellement lancé la Plateforme Interopérable du Système de Paiement Instantané (PI-SPI) le 30 septembre 2025. Cette innovation majeure permet aux utilisateurs de l\'espace UEMOA d\'effectuer des paiements instantanés entre différents systèmes de paiement, qu\'il s\'agisse de banques, de services de mobile money ou d\'autres institutions financières. La PI-SPI facilite les transactions interbancaires et interopérables, réduisant les délais de traitement et améliorant l\'expérience utilisateur. Cette plateforme représente une étape importante dans la modernisation du système de paiement dans l\'Union et contribue à l\'inclusion financière dans la région.',
+          link: 'https://www.bceao.int/fr/actualites/lancement-officiel-de-la-plateforme-interoperable-du-systeme-de-paiement-instantane-pi-spi',
+          sourceUrl: 'https://www.bceao.int/'
+        },
+        {
+          type: 'bceao',
+          source: 'BCEAO',
+          date: '17 Septembre 2025',
+          title: 'Réunion ordinaire du Comité de Politique Monétaire de la BCEAO',
+          excerpt: 'Le Comité de Politique Monétaire se réunit pour définir les orientations monétaires de l\'Union.',
+          fullText: 'Le Comité de Politique Monétaire (CPM) de la BCEAO s\'est réuni en session ordinaire le 17 septembre 2025 à Dakar. Cette réunion a permis d\'examiner l\'évolution de la situation économique et financière de l\'Union Monétaire Ouest Africaine (UMOA) et de définir les orientations de la politique monétaire pour les prochains mois. Les membres du Comité ont analysé les indicateurs macroéconomiques, l\'évolution de l\'inflation, la croissance économique et la stabilité financière dans l\'Union. Des décisions importantes ont été prises concernant les taux directeurs et les instruments de politique monétaire pour maintenir la stabilité des prix et soutenir la croissance économique.',
+          link: 'https://www.bceao.int/fr/actualites/reunion-ordinaire-du-comite-de-politique-monetaire-de-la-bceao',
+          sourceUrl: 'https://www.bceao.int/'
+        },
+        {
+          type: 'bceao',
+          source: 'BCEAO',
+          date: '06 Octobre 2025',
+          title: 'Session ordinaire du Conseil des Ministres de l\'Union',
+          excerpt: 'Le Conseil des Ministres se réunit pour examiner les questions économiques et financières de l\'UEMOA.',
+          fullText: 'Le Conseil des Ministres de l\'Union Monétaire Ouest Africaine s\'est réuni en session ordinaire le 6 octobre 2025. Cette session a été l\'occasion d\'examiner les questions économiques et financières importantes pour l\'Union, notamment la coordination des politiques économiques des États membres, la stabilité financière régionale, et les réformes en cours dans le secteur bancaire et financier. Les ministres ont également discuté des défis liés à l\'inclusion financière, à la digitalisation des services bancaires, et aux perspectives économiques pour l\'année 2026. Des décisions stratégiques ont été prises pour renforcer l\'intégration économique et financière dans l\'espace UEMOA.',
+          link: 'https://www.bceao.int/fr/actualites/session-ordinaire-du-conseil-des-ministres-de-lunion',
+          sourceUrl: 'https://www.bceao.int/'
+        },
+        {
+          type: 'bceao',
+          source: 'BCEAO',
+          date: '31 Octobre 2025',
+          title: 'Publication du Rapport sur le commerce extérieur de l\'Union 2024',
+          excerpt: 'La BCEAO publie son rapport annuel sur le commerce extérieur de l\'UEMOA pour l\'année 2024.',
+          fullText: 'La BCEAO a publié son rapport annuel sur le commerce extérieur de l\'Union Monétaire Ouest Africaine pour l\'année 2024. Ce rapport présente une analyse détaillée des échanges commerciaux de l\'Union avec le reste du monde, incluant l\'évolution des exportations et des importations, la balance commerciale, et les principaux partenaires commerciaux. Le rapport révèle une amélioration de la balance commerciale grâce à l\'augmentation des exportations de produits agricoles et miniers, ainsi qu\'une diversification progressive des partenaires commerciaux. Des recommandations sont formulées pour renforcer la compétitivité des économies de l\'Union et promouvoir l\'intégration commerciale régionale.',
+          link: 'https://www.bceao.int/fr/publications/rapport-sur-le-commerce-exterieur-de-lunion-2024',
+          sourceUrl: 'https://www.bceao.int/'
+        },
+        {
+          type: 'bceao',
+          source: 'BCEAO',
+          date: '27 Mai 2025',
+          title: '1ère réunion du Cadre de concertation sur la Lutte Anti-Blanchiment (CLAB)',
+          excerpt: 'Renforcement de la lutte contre le blanchiment de capitaux dans l\'espace UEMOA.',
+          fullText: 'La première réunion du Cadre de concertation sur la Lutte Anti-Blanchiment (CLAB) s\'est tenue le 27 mai 2025. Cette instance de coordination réunit les autorités de régulation, les banques centrales, et les institutions financières de l\'UEMOA pour renforcer la lutte contre le blanchiment de capitaux et le financement du terrorisme. Les participants ont discuté des meilleures pratiques, des défis rencontrés, et des stratégies à mettre en place pour améliorer l\'efficacité de la lutte contre ces fléaux. Des recommandations ont été formulées pour harmoniser les réglementations, renforcer la coopération entre les pays membres, et améliorer les capacités de détection et de prévention des activités suspectes.',
+          link: 'https://www.bceao.int/fr/actualites/premiere-reunion-cadre-concertation-lutte-anti-blanchiment',
+          sourceUrl: 'https://www.bceao.int/'
+        },
+        {
+          type: 'gim',
+          source: 'GIM-UEMOA',
+          date: '2025',
+          title: 'Nouveautés GIM UEMOA : Paiements interbancaires simplifiés',
+          excerpt: 'La carte GIM UEMOA continue d\'évoluer pour offrir plus de services et de facilités de paiement dans toute l\'Union.',
+          fullText: 'Le Groupement Interbancaire Monétique de l\'UEMOA (GIM UEMOA) annonce de nouvelles fonctionnalités pour simplifier les paiements interbancaires dans l\'espace UEMOA. Les détenteurs de cartes GIM peuvent désormais effectuer des retraits et des paiements dans tous les pays membres de l\'Union sans frais supplémentaires. Les nouvelles fonctionnalités incluent également la possibilité de consulter le solde et l\'historique des transactions en temps réel via l\'application mobile GIM, ainsi que des notifications push pour chaque transaction. Ces améliorations renforcent la sécurité et la facilité d\'utilisation des cartes GIM, contribuant ainsi à l\'inclusion financière dans la région.',
+          link: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires',
+          sourceUrl: 'https://www.gim-uemoa.org/'
+        },
+        {
+          type: 'gim',
+          source: 'GIM-UEMOA',
+          date: '2025',
+          title: 'Extension du réseau GIM : Plus de distributeurs disponibles',
+          excerpt: 'Le réseau GIM s\'étend dans tous les pays de l\'UEMOA pour un accès facilité aux services bancaires.',
+          fullText: 'Le réseau de distributeurs automatiques GIM continue de s\'étendre dans tous les pays de l\'UEMOA. Plus de 500 nouveaux distributeurs ont été installés en 2025, portant le nombre total à plus de 5000 distributeurs dans toute l\'Union. Cette expansion permet aux utilisateurs de cartes GIM d\'avoir un accès plus facile aux services bancaires, même dans les zones rurales et périurbaines. Les nouveaux distributeurs sont équipés des dernières technologies de sécurité et acceptent toutes les cartes GIM, VISA et Mastercard. Cette initiative s\'inscrit dans le cadre de l\'amélioration de l\'accessibilité des services financiers pour tous les citoyens de l\'UEMOA.',
+          link: 'https://www.gim-uemoa.org/actualites/extension-reseau-distributeurs',
+          sourceUrl: 'https://www.gim-uemoa.org/'
+        },
+        {
+          type: 'gim',
+          source: 'GIM-UEMOA',
+          date: '2025',
+          title: 'Sécurité renforcée des cartes GIM UEMOA',
+          excerpt: 'Nouvelles mesures de sécurité pour protéger vos transactions avec la carte GIM dans l\'espace UEMOA.',
+          fullText: 'Le GIM UEMOA a renforcé les mesures de sécurité des cartes bancaires pour mieux protéger les utilisateurs contre la fraude. Les nouvelles cartes GIM sont désormais équipées de la technologie EMV (Europay, Mastercard, Visa) avec puce et authentification par code PIN. De plus, un système d\'alerte en temps réel a été mis en place pour notifier les utilisateurs de toute transaction suspecte. Les banques membres du réseau GIM ont également renforcé leurs systèmes de détection de fraude grâce à l\'intelligence artificielle. Ces mesures contribuent à renforcer la confiance des utilisateurs dans les cartes GIM et à sécuriser les transactions dans tout l\'espace UEMOA.',
+          link: 'https://www.gim-uemoa.org/actualites/securite-renforcee-cartes',
+          sourceUrl: 'https://www.gim-uemoa.org/'
+        }
+      ];
+      
+      // Fonction pour récupérer les actualités depuis le site BCEAO
+      async function fetchBCEAONews() {
+        try {
+          const corsProxy = 'https://api.allorigins.win/raw?url=';
+          const bceaoUrl = 'https://www.bceao.int/fr/actualites';
+          
+          const response = await fetch(corsProxy + encodeURIComponent(bceaoUrl));
+          if (!response.ok) throw new Error('Erreur de récupération');
+          
+          const html = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          
+          const newsItems = [];
+          const newsSelectors = [
+            '.view-actualites .views-row',
+            '.view-content .views-row',
+            'article.node-actualite',
+            '.news-item',
+            '.actualite-item',
+            '.node--type-actualite'
+          ];
+          
+          let items = [];
+          for (const selector of newsSelectors) {
+            const found = doc.querySelectorAll(selector);
+            if (found.length > 0) {
+              items = Array.from(found);
+              break;
+            }
+          }
+          
+          if (items.length === 0) {
+            const links = doc.querySelectorAll('a[href*="/actualites/"], a[href*="/fr/actualites"]');
+            const seenParents = new Set();
+            links.forEach(link => {
+              const parent = link.closest('article, .node, .views-row, .news-item, .views-field');
+              if (parent && !seenParents.has(parent)) {
+                seenParents.add(parent);
+                items.push(parent);
+              }
+            });
+          }
+          
+          items = items.slice(0, 8);
+          
+          for (const item of items) {
+            try {
+              const titleEl = item.querySelector('h2 a, h3 a, h4 a, .title a, .field-title a, a[href*="/actualites/"]');
+              const linkEl = titleEl || item.querySelector('a[href*="/actualites/"], a[href*="/fr/actualites"]');
+              const dateEl = item.querySelector('.date, .field-date, .created, time, .views-field-created');
+              const excerptEl = item.querySelector('.field-summary, .excerpt, .body, .field-body, p');
+              
+              if (!linkEl) continue;
+              
+              let link = linkEl.href || linkEl.getAttribute('href');
+              if (!link.startsWith('http')) {
+                link = link.startsWith('/') ? 'https://www.bceao.int' + link : 'https://www.bceao.int/' + link;
+              }
+              
+              const title = (titleEl?.textContent || linkEl.textContent || '').trim();
+              const date = (dateEl?.textContent || '').trim();
+              const excerpt = (excerptEl?.textContent || '').trim().substring(0, 200);
+              
+              let fullText = excerpt;
+              if (link && !fullText) {
+                try {
+                  const articleResponse = await fetch(corsProxy + encodeURIComponent(link));
+                  if (articleResponse.ok) {
+                    const articleHtml = await articleResponse.text();
+                    const articleDoc = parser.parseFromString(articleHtml, 'text/html');
+                    const bodyEl = articleDoc.querySelector('.field-body, .body, article .content, .node-content, .field--name-body');
+                    if (bodyEl) {
+                      fullText = bodyEl.textContent.trim();
+                    }
+                  }
+                } catch (err) {
+                  console.warn('Erreur lors de la récupération du texte de l\'article:', err);
+                }
+              }
+              
+              if (title && link) {
+                newsItems.push({
+                  type: 'bceao',
+                  source: 'BCEAO',
+                  date: date || '2025',
+                  title: title,
+                  excerpt: excerpt || title.substring(0, 150) + '...',
+                  fullText: fullText || excerpt || title,
+                  link: link,
+                  sourceUrl: 'https://www.bceao.int/'
+                });
+              }
+            } catch (err) {
+              console.warn('Erreur lors du traitement d\'une actualité:', err);
+            }
+          }
+          
+          return newsItems;
+        } catch (error) {
+          console.error('Erreur lors de la récupération des actualités BCEAO:', error);
+          return [];
+        }
+      }
+      
+      async function syncBCEAONews() {
+        try {
+          const fetchedNews = await fetchBCEAONews();
+          
+          if (fetchedNews.length > 0) {
+            newsData.length = 0;
+            newsData.push(...fetchedNews);
+            
+            if (newsData.length < 8) {
+              newsData.push(
+                {
+                  type: 'gim',
+                  source: 'GIM-UEMOA',
+                  date: '2025',
+                  title: 'Nouveautés GIM UEMOA : Paiements interbancaires simplifiés',
+                  excerpt: 'La carte GIM UEMOA continue d\'évoluer pour offrir plus de services et de facilités de paiement dans toute l\'Union.',
+                  fullText: 'Le Groupement Interbancaire Monétique de l\'UEMOA (GIM UEMOA) annonce de nouvelles fonctionnalités pour simplifier les paiements interbancaires dans l\'espace UEMOA.',
+                  link: 'https://www.gim-uemoa.org/actualites/nouveautes-paiements-interbancaires',
+                  sourceUrl: 'https://www.gim-uemoa.org/'
+                }
+              );
+            }
+            
+            const swiperContainer = document.getElementById('newsSwiper');
+            if (swiperContainer) {
+              const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+              if (swiperWrapper) {
+                swiperWrapper.innerHTML = '';
+                initNewsCarousel();
+              }
+            }
+          }
+        } catch (error) {
+          console.error('Erreur lors de la synchronisation:', error);
+        }
+      }
+      
+      function initNewsCarousel() {
+        const swiperContainer = document.getElementById('newsSwiper');
+        if (!swiperContainer) return;
+        
+        const swiperWrapper = swiperContainer.querySelector('.swiper-wrapper');
+        if (!swiperWrapper) return;
+        
+        newsData.forEach((news, index) => {
+          const slide = document.createElement('div');
+          slide.className = 'swiper-slide';
+          slide.style.height = 'auto';
+          const iconSvg = news.type === 'bceao' 
+            ? `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+               </svg>`
+            : `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+               </svg>`;
+          
+          const sourceLabel = news.source || (news.type === 'bceao' ? 'BCEAO' : 'GIM-UEMOA');
+          const sourceUrl = news.sourceUrl || (news.type === 'bceao' ? 'https://www.bceao.int/' : 'https://www.gim-uemoa.org/');
+          
+          slide.innerHTML = `
+            <div class="news-card ${news.type}" style="width: 100%;" data-news-index="${index}">
+              <div class="news-card-content">
+                <div class="news-card-header">
+                  <div class="news-card-header-wrapper">
+                    <a class="news-badge ${news.type}" href="${sourceUrl}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a>
+                    <div class="news-date">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      ${news.date}
+                    </div>
+                  </div>
+                  <div class="news-card-icon ${news.type}" style="background: ${news.type === 'bceao' ? 'linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #60a5fa 100%)' : 'linear-gradient(135deg, #10b981 0%, #34d399 50%, #6ee7b7 100%)'};">
+                    ${iconSvg}
+                  </div>
+                </div>
+                <div class="news-card-body">
+                  <h3 class="news-title">${news.title}</h3>
+                  <p class="news-excerpt">${news.excerpt}</p>
+                  <div class="news-link" style="margin-top: auto; padding-top: 8px;">
+                    Lire la suite
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          swiperWrapper.appendChild(slide);
+        });
+        
+        const nextEl = swiperContainer.querySelector('.swiper-button-next');
+        const prevEl = swiperContainer.querySelector('.swiper-button-prev');
+        
+        new Swiper(swiperContainer, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          },
+          navigation: {
+            nextEl: nextEl,
+            prevEl: prevEl,
+          },
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+            1280: {
+              slidesPerView: 4,
+            }
+          }
+        });
+        
+        setTimeout(() => {
+          swiperWrapper.addEventListener('click', function(e) {
+            if (e.target.closest('.swiper-button-next') || 
+                e.target.closest('.swiper-button-prev')) {
+              return;
+            }
+            
+            const newsCard = e.target.closest('.news-card');
+            if (!newsCard) return;
+            
+            const newsIndex = parseInt(newsCard.getAttribute('data-news-index'));
+            if (isNaN(newsIndex)) return;
+            
+            const news = newsData[newsIndex];
+            if (!news) return;
+            
+            openNewsModal(news);
+          });
+        }, 200);
+      }
+      
+      function openNewsModal(news) {
+        const modal = document.getElementById('newsModal');
+        const modalTitle = document.getElementById('newsModalTitle');
+        const modalDate = document.getElementById('newsModalDate');
+        const modalText = document.getElementById('newsModalText');
+        const modalLink = document.getElementById('newsModalLink');
+        
+        if (!modal || !modalTitle || !modalDate || !modalText || !modalLink) return;
+        
+        const sourceLabel = news.source || (news.type === 'bceao' ? 'BCEAO' : 'GIM-UEMOA');
+        const sourceUrl = news.sourceUrl || (news.type === 'bceao' ? 'https://www.bceao.int/' : 'https://www.gim-uemoa.org/');
+        
+        modalTitle.textContent = news.title;
+        modalDate.innerHTML = `
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          ${news.date}
+          <span class="news-modal-source-separator">•</span>
+          <a class="news-modal-source" href="${sourceUrl}" target="_blank" rel="noopener noreferrer">${sourceLabel}</a>
+        `;
+        modalText.textContent = news.fullText || news.excerpt;
+        modalLink.href = news.link;
+        modalLink.setAttribute('data-news-link', news.link);
+        
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      }
+      
+      function closeNewsModal() {
+        const modal = document.getElementById('newsModal');
+        if (!modal) return;
+        
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      }
+      
+      function setupNewsModal() {
+        const closeBtn = document.getElementById('closeNewsModal');
+        const modal = document.getElementById('newsModal');
+        const modalLink = document.getElementById('newsModalLink');
+        
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeNewsModal);
+        }
+        
+        if (modal) {
+          modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+              closeNewsModal();
+            }
+          });
+        }
+        
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+            closeNewsModal();
+          }
+        });
+        
+        if (modalLink) {
+          modalLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const link = this.getAttribute('data-news-link') || this.href;
+            if (link && link !== '#' && link !== 'javascript:void(0)') {
+              window.open(link, '_blank', 'noopener,noreferrer');
+            }
+          });
+        }
+        
+        if (modal) {
+          const modalContent = modal.querySelector('.news-modal-content');
+          if (modalContent) {
+            modalContent.addEventListener('click', function(e) {
+              if (e.target.closest('.news-modal-close') || e.target.closest('.news-modal-link')) {
+                return;
+              }
+              const link = modalLink?.getAttribute('data-news-link') || modalLink?.href;
+              if (link && link !== '#' && link !== 'javascript:void(0)') {
+                window.open(link, '_blank', 'noopener,noreferrer');
+              }
+            });
+          }
+        }
+      }
+      
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          initNewsCarousel();
+          setupNewsModal();
+          setTimeout(() => {
+            syncBCEAONews();
+          }, 2000);
+        });
+      } else {
+        initNewsCarousel();
+        setupNewsModal();
+        setTimeout(() => {
+          syncBCEAONews();
+        }, 2000);
+      }
+      
+      setInterval(syncBCEAONews, 21600000);
+    })();
+  </script>
+</body>
+</html>

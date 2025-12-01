@@ -1,0 +1,19 @@
+{
+  "name": "pratiques-bancaires",
+  "version": "1.0.0",
+  "description": "Plateforme éducative dédiée à l'éducation financière et à la bancarisation dans l'espace UEMOA",
+  "main": "banque.html",
+  "scripts": {
+    "dev": "echo 'Site statique - Ouvrez banque.html dans votre navigateur'",
+    "build": "echo 'Build terminé - Site prêt pour le déploiement'"
+  },
+  "keywords": [
+    "banque",
+    "education",
+    "uemoa",
+    "finance"
+  ],
+  "author": "Pratiques Bancaires",
+  "license": "MIT"
+}
+

@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entreprises - Pratiques Bancaires</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Styles Calaméo Section - Design Exact de diffusion.html avec animations */
+    .flex-wrap-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #a8b5e8 0%, #b8a5d1 100%);
+      color: white;
+      text-align: center;
+      min-height: 60vh;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Animation de background - SEULEMENT pour la section wall */
+    .flex-wrap-col::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+        rgba(168, 181, 232, 0.8) 0%, 
+        rgba(184, 165, 209, 0.8) 25%, 
+        rgba(200, 150, 200, 0.8) 50%, 
+        rgba(184, 165, 209, 0.8) 75%, 
+        rgba(168, 181, 232, 0.8) 100%);
+      animation: gradientShift 8s ease-in-out infinite;
+      z-index: 0;
+    }
+    
+    .flex-wrap-col > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% {
+        background: linear-gradient(45deg, 
+          rgba(168, 181, 232, 0.8) 0%, 
+          rgba(184, 165, 209, 0.8) 25%, 
+          rgba(200, 150, 200, 0.8) 50%, 
+          rgba(184, 165, 209, 0.8) 75%, 
+          rgba(168, 181, 232, 0.8) 100%);
+      }
+      25% {
+        background: linear-gradient(45deg, 
+          rgba(184, 165, 209, 0.8) 0%, 
+          rgba(200, 150, 200, 0.8) 25%, 
+          rgba(168, 181, 232, 0.8) 50%, 
+          rgba(200, 150, 200, 0.8) 75%, 
+          rgba(184, 165, 209, 0.8) 100%);
+      }
+      50% {
+        background: linear-gradient(45deg, 
+          rgba(200, 150, 200, 0.8) 0%, 
+          rgba(168, 181, 232, 0.8) 25%, 
+          rgba(184, 165, 209, 0.8) 50%, 
+          rgba(168, 181, 232, 0.8) 75%, 
+          rgba(200, 150, 200, 0.8) 100%);
+      }
+      75% {
+        background: linear-gradient(45deg, 
+          rgba(184, 165, 209, 0.8) 0%, 
+          rgba(200, 150, 200, 0.8) 25%, 
+          rgba(168, 181, 232, 0.8) 50%, 
+          rgba(200, 150, 200, 0.8) 75%, 
+          rgba(184, 165, 209, 0.8) 100%);
+      }
+    }
+    
+    .flex-wrap-col h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+    
+    .calameo-image-container {
+      position: relative;
+      max-width: 100%;
+      animation: fadeInScale 1.2s ease-out 0.3s both;
+    }
+    
+    .calameo-main-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .calameo-main-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Styles existants pour les cartes d'entreprises - BORDURES NORMALES */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+    
+    .company-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      padding: 40px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      border: 1px solid #e5e7eb; /* Bordure normale */
+    }
+    
+    .company-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      border-color: #d1d5db; /* Bordure normale au hover */
+    }
+    
+    .company-card .icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #3b82f6;
+    }
+    
+    .company-card .name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1e3a8a;
+    }
+    
+    .company-card .title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #4b5563;
+      margin-bottom: 8px;
+    }
+    
+    .company-card .description {
+      font-size: 1.1rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    
+    .company-card .cta {
+      display: inline-block;
+      background: #3b82f6;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      border: 1px solid #3b82f6; /* Bordure normale */
+    }
+    
+    .company-card .cta:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      border-color: #2563eb; /* Bordure normale au hover */
+    }
+    
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      background: #6b7280;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin-top: 30px;
+      border: 1px solid #6b7280; /* Bordure normale */
+    }
+    
+    .back-button:hover {
+      background: #4b5563;
+      transform: translateY(-2px);
+      border-color: #4b5563; /* Bordure normale au hover */
+    }
+    
+    .back-button svg {
+      margin-right: 8px;
+    }
+    
+    /* Styles Calaméo pour les onglets de domaines */
+    .calameo-tabs-container {
+      padding: 0;
+      background: #f8f9fa;
+      border-bottom: 1px solid #e9ecef;
+    }
+    
+    .calameo-tabs-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 0;
+      margin: 0 auto;
+      list-style: none;
+      overflow-x: auto;
+      /* scrollbar-width: none; */ /* Not supported by Chrome < 121, Safari, Safari on iOS, Samsung Internet */
+      -ms-overflow-style: none;
+      max-width: 1200px;
+    }
+    
+    .calameo-tabs-nav::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .calameo-tab {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      color: #6c757d;
+      position: relative;
+      min-width: 120px;
+      justify-content: center;
+    }
+    
+    .calameo-tab:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: #495057;
+    }
+    
+    .calameo-tab.active {
+      background: #ffffff;
+      color: #007bff;
+      border-bottom-color: #007bff;
+      font-weight: 600;
+    }
+    
+    .calameo-tab.active::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #007bff, #0056b3);
+    }
+    
+    .calameo-tab .icon {
+      font-size: 1.1rem;
+      margin-right: 8px;
+      opacity: 0.8;
+    }
+    
+    .calameo-tab.active .icon {
+      opacity: 1;
+    }
+    
+    .calameo-tab .text {
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+    }
+    
+    @media (max-width: 768px) {
+      .flex-wrap-col {
+        padding: 2rem 1rem;
+      }
+      .flex-wrap-col h2 {
+        font-size: 2rem;
+      }
+      .company-card .name {
+        font-size: 1.5rem;
+      }
+      .company-card .title {
+        font-size: 1.1rem;
+      }
+      
+      .calameo-tab {
+        padding: 12px 16px;
+        font-size: 0.8rem;
+        min-width: 100px;
+      }
+      
+      .calameo-tab .icon {
+        font-size: 1rem;
+        margin-right: 6px;
+      }
+      
+      .calameo-tab .text {
+        font-size: 0.75rem;
+      }
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .btn-hollow {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+    
+    .btn-hollow:hover {
+      background: white;
+      color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-light {
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .btn-discover {
+      font-size: 1rem;
+    }
+    
+    .company-card {
+      transition: all 0.3s ease;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+    
+    #companiesGrid {
+      justify-items: stretch;
+      align-items: start;
+      display: grid;
+    }
+    
+    @media (min-width: 768px) {
+      #companiesGrid {
+        justify-items: stretch;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      #companiesGrid {
+        justify-items: center;
+        align-items: start;
+      }
+      
+      .company-card {
+        max-width: 380px;
+        width: 100%;
+      }
+    }
+    
+    /* Centrer le contenu des cartes */
+    .company-card .text-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .company-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .company-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .back-button {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .company-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .company-card .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+    }
+    
+    .company-card .subtitle {
+      font-size: 1.2rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    
+    .company-card .description {
+      font-size: 1.05rem;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+    
+    .company-card .cta-button {
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .company-card .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 4rem;
+      color: #6b7280;
+    }
+    
+    .error {
+      text-align: center;
+      padding: 4rem;
+      color: #dc2626;
+      background: #fef2f2;
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+    
+    @media (max-width: 768px) {
+      .wall {
+        padding: 2rem 1rem;
+        min-height: 50vh;
+      }
+      
+      .flex-wrap-col h2 {
+        font-size: 2rem;
+      }
+      
+      .flex-wrap-col {
+        gap: 1.5rem;
+      }
+    }
+    /* Fluid Pagination - Redesigned */
+    .pagination {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      list-style: none;
+      padding: 16px 8px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 16px;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .pagination li {
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      padding: 8px;
+      border-radius: 8px;
+    }
+    
+    .pagination li::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.4);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    
+    .pagination li:hover {
+      background: rgba(99, 102, 241, 0.05);
+      transform: translateX(4px);
+    }
+    
+    .pagination li:hover::before,
+    .pagination li.active::before {
+      width: 12px;
+      height: 12px;
+      background: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+    
+    .pagination li.active {
+      background: rgba(99, 102, 241, 0.1);
+    }
+    
+    .pagination li.active::before {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .pagination .hover-text {
+      position: absolute;
+      left: 36px;
+      top: 50%;
+      transform: translateY(-50%);
+      white-space: nowrap;
+      background: rgba(15, 23, 42, 0.95);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .pagination .hover-text::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-right: 4px solid rgba(15, 23, 42, 0.95);
+    }
+    
+    .pagination li:hover .hover-text {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+    }
+    
+    @media (max-width: 1024px) {
+      .pagination {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <!-- Bouton de présentation séparé -->
+  <div class="fixed top-4 right-4 z-50">
+    <a href="presentation.html" class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span class="font-semibold">Présentation</span>
+    </a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-40 bg-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center flex-shrink-0">
+          <a href="banque.html" class="flex items-center">
+            <img class="h-10 w-auto" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo">
+            <span class="ml-3 text-xl font-bold">Pratiques Bancaires</span>
+          </a>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="banque.html" class="text-gray-600 hover:text-gray-900">Retour à la banque</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Domain Tabs - Calaméo Style -->
+  <div class="bg-white border-b border-gray-200 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="calameo-tabs-container">
+        <nav class="calameo-tabs-nav" id="domainTabs">
+          <!-- Les onglets seront générés dynamiquement par JavaScript -->
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination verticale -->
+  <ul class="pagination">
+    <li data-section="#intro" class=""><span class="hover-text">Introduction</span></li>
+    <li data-section="#calameo" class=""><span class="hover-text">Cartes</span></li>
+    <li data-section="#main" class=""><span class="hover-text">Entreprises</span></li>
+  </ul>
+
+  <!-- Calameo Section -->
+  <article id="intro" class="flex-wrap-col">
+    <h2 id="heroTitle">Les Cartes en ligne</h2>
+    <div class="calameo-image-container">
+      <img src="https://s.calameoassets.com/pinwheel/9385-cdd7d2/platform/img/_new/wall/sharing.png" height="907" loading="lazy" alt="Les Cartes en ligne" class="calameo-main-image">
+    </div>
+  </article>
+
+  <!-- Main Content -->
+  <main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Companies Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="companiesGrid">
+      <div class="loading">
+        <div class="text-2xl mb-4">⏳</div>
+        <p>Chargement des entreprises...</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Données des entreprises (même structure que dans banque.html)
+    const companiesData = {
+      'all': {
+        'assurances': [
+          {
+            name: 'NSIA Assurance',
+            title: 'Protection Complète',
+            subtitle: 'Assurance Multirisque',
+            description: 'Protégez votre famille et vos biens avec nos solutions d\'assurance adaptées à vos besoins.',
+            icon: '🛡️',
+            cta: 'Découvrir nos offres'
+          },
+          {
+            name: 'Saham Assurance',
+            title: 'Sécurité Financière',
+            subtitle: 'Assurance Vie & Santé',
+            description: 'Préparez l\'avenir de vos proches avec nos produits d\'assurance vie et santé.',
+            icon: '💼',
+            cta: 'En savoir plus'
+          }
+        ],
+        'transfert-argent': [
+          {
+            name: 'Western Union',
+            title: 'Transferts Internationaux',
+            subtitle: 'Envois Rapides & Sécurisés',
+            description: 'Envoyez de l\'argent dans le monde entier avec Western Union. Service fiable et rapide.',
+            icon: '💸',
+            cta: 'Envoyer de l\'argent'
+          },
+          {
+            name: 'MoneyGram',
+            title: 'Transferts d\'Argent',
+            subtitle: 'Service Mondial',
+            description: 'MoneyGram vous permet d\'envoyer de l\'argent rapidement et en toute sécurité.',
+            icon: '🌍',
+            cta: 'Découvrir MoneyGram'
+          }
+        ],
+        'societes-financieres': [
+          {
+            name: 'Ecobank',
+            title: 'Banque Panafricaine',
+            subtitle: 'Services Bancaires Complets',
+            description: 'Ecobank offre des services bancaires complets dans toute l\'Afrique.',
+            icon: '🏦',
+            cta: 'Ouvrir un compte'
+          },
+          {
+            name: 'UBA Group',
+            title: 'United Bank for Africa',
+            subtitle: 'Banque de Confiance',
+            description: 'UBA propose des solutions bancaires innovantes pour particuliers et entreprises.',
+            icon: '🏛️',
+            cta: 'Nos services'
+          }
+        ],
+        'comptabilite': [
+          {
+            name: 'Cabinet Comptable ABC',
+            title: 'Expertise Comptable',
+            subtitle: 'Gestion & Conseil',
+            description: 'Confiez votre comptabilité à nos experts qualifiés pour une gestion optimale.',
+            icon: '📊',
+            cta: 'Demander un devis'
+          },
+          {
+            name: 'Fiduciaire Afrique',
+            title: 'Services Fiduciaires',
+            subtitle: 'Gestion Professionnelle',
+            description: 'Services de gestion fiduciaire et conseil en gestion d\'entreprise.',
+            icon: '📈',
+            cta: 'Nos services'
+          }
+        ],
+        'cartes-bancaires': [
+          {
+            name: 'GIM UEMOA',
+            title: 'Cartes Bancaires UEMOA',
+            subtitle: 'GIM Interbancaire',
+            description: 'Obtenez vos cartes bancaires GIM UEMOA pour des paiements sécurisés.',
+            icon: '💳',
+            cta: 'Demander une carte'
+          },
+          {
+            name: 'VISA Afrique',
+            title: 'Cartes VISA',
+            subtitle: 'Paiements Internationaux',
+            description: 'Cartes VISA pour vos paiements locaux et internationaux.',
+            icon: '🌐',
+            cta: 'Voir les offres'
+          },
+          {
+            name: 'Mastercard',
+            title: 'Cartes Mastercard',
+            subtitle: 'Paiements Sécurisés',
+            description: 'Mastercard vous offre des solutions de paiement innovantes et sécurisées.',
+            icon: '🔒',
+            cta: 'Découvrir Mastercard'
+          }
+        ],
+        'agregateurs': [
+          {
+            name: 'Paystack',
+            title: 'Solutions de Paiement',
+            subtitle: 'Paiements en Ligne',
+            description: 'Intégrez les solutions de paiement Paystack pour votre entreprise.',
+            icon: '🔗',
+            cta: 'Intégrer Paystack'
+          },
+          {
+            name: 'Flutterwave',
+            title: 'Paiements Digitaux',
+            subtitle: 'Solutions Fintech',
+            description: 'Flutterwave facilite les paiements digitaux pour les entreprises africaines.',
+            icon: '⚡',
+            cta: 'Voir les solutions'
+          }
+        ]
+      },
+      'benin': {
+        'assurances': [
+          {
+            name: 'AFG Assurance Bénin',
+            title: 'Assurance Auto',
+            subtitle: 'Renouvellement Automatique',
+            description: 'Assurance auto expirée ? Nous la renouvelons pour vous.',
+            icon: '🛡️',
+            bannerImage: 'Sources%20Image/ASSURANCES/ASSURANCES BENIN/AFG assurance Banner.jpg',
+            cta: 'Renouveler mon assurance'
+          },
+          {
+            name: 'NSIA Assurance Bénin',
+            title: 'Protection Locale',
+            subtitle: 'Assurance Multirisque',
+            description: 'NSIA Assurance vous accompagne au Bénin avec des solutions adaptées au marché local.',
+            icon: '🛡️',
+            bannerImage: 'Sources%20Image/ASSURANCES/ASSURANCES BENIN/NISIA BANNER.jpg',
+            cta: 'Nos produits au Bénin'
+          },
+          {
+            name: 'Sanlam Allianz Assurance Vie Bénin',
+            title: 'Toujours plus proche de vous',
+            subtitle: 'Assurance Vie & Non-Vie',
+            description: 'Sanlam Allianz vous accompagne au Bénin avec des solutions d\'assurance adaptées.',
+            icon: '👨‍👩‍👧‍👦',
+            bannerImage: 'Sources%20Image/ASSURANCES/ASSURANCES BENIN/Salam alianz banner.jpg',
+            cta: 'Découvrir nos offres'
+          },
+          {
+            name: 'GAB Assurance Bénin',
+            title: 'Protégez vos efforts et sacrifices',
+            subtitle: 'GAB DJIDIDÉ',
+            description: 'Une seule assurance pour couvrir vos risques : incendie, vol, dégâts des eaux et plus.',
+            icon: '🛡️',
+            bannerImage: 'Sources%20Image/ASSURANCES/ASSURANCES BENIN/GAB ASSURANCES BANNER.jpg',
+            cta: 'Protéger mes biens'
+          }
+        ],
+        'voyages': [
+          {
+            name: 'Agence Voyages Cotonou',
+            title: 'Découvrez le Bénin',
+            subtitle: 'Tourisme Local',
+            description: 'Explorez les merveilles du Bénin : Ouidah, Ganvié, Parc Pendjari et plus encore.',
+            icon: '🏛️',
+            cta: 'Visiter le Bénin'
+          },
+          {
+            name: 'Air Bénin Express',
+            title: 'Vols Domestiques',
+            subtitle: 'Connexions Intérieures',
+            description: 'Voyagez facilement au Bénin avec nos vols domestiques et connexions régionales.',
+            icon: '✈️',
+            cta: 'Réserver un vol'
+          }
+        ],
+        'hebergement': [
+          {
+            name: 'Hôtel du Port Cotonou',
+            title: 'Face à l\'Océan',
+            subtitle: 'Hôtel 4 Étoiles',
+            description: 'Séjournez face à l\'océan Atlantique dans notre hôtel moderne de Cotonou.',
+            icon: '🌊',
+            cta: 'Réserver une chambre'
+          },
+          {
+            name: 'Auberge de Ganvié',
+            title: 'Sur l\'Eau',
+            subtitle: 'Hébergement Unique',
+            description: 'Dormez sur l\'eau à Ganvié, la Venise de l\'Afrique. Expérience inoubliable.',
+            icon: '🏠',
+            cta: 'Vivre l\'expérience'
+          }
+        ],
+        'automobiles': [
+          {
+            name: 'Concession Toyota Cotonou',
+            title: 'Toyota au Bénin',
+            subtitle: 'Véhicules Neufs',
+            description: 'Achetez votre Toyota au Bénin. Service après-vente et garantie complète.',
+            icon: '🚗',
+            cta: 'Acheter une Toyota'
+          },
+          {
+            name: 'Location Auto Bénin',
+            title: 'Location de Voitures',
+            subtitle: 'Flexibilité Totale',
+            description: 'Louez une voiture au Bénin pour vos déplacements. Tarifs compétitifs.',
+            icon: '🚙',
+            cta: 'Louer une voiture'
+          }
+        ],
+        'telecom': [
+          {
+            name: 'Moov Bénin',
+            title: 'Connectivité Mobile',
+            subtitle: 'Internet & Appels',
+            description: 'Moov Bénin vous connecte. Forfaits internet et appels avantageux.',
+            icon: '📱',
+            cta: 'Choisir un forfait'
+          },
+          {
+            name: 'MTN Bénin',
+            title: 'Réseau National',
+            subtitle: 'Couverture Totale',
+            description: 'MTN Bénin couvre tout le territoire. Internet rapide et appels illimités.',
+            icon: '📞',
+            cta: 'Découvrir MTN'
+          }
+        ]
+      },
+      'togo': {
+        'assurances': [
+          {
+            name: 'NSIA Assurance Togo',
+            title: 'Protection Togolaise',
+            subtitle: 'Assurance Locale',
+            description: 'NSIA Assurance au Togo. Solutions d\'assurance adaptées au marché togolais.',
+            icon: '🛡️',
+            cta: 'Nos produits au Togo'
+          },
+          {
+            name: 'Saham Assurance Togo',
+            title: 'Sécurité Familiale',
+            subtitle: 'Assurance Vie',
+            description: 'Protégez votre famille au Togo avec Saham Assurance. Solutions personnalisées.',
+            icon: '👨‍👩‍👧‍👦',
+            cta: 'Protéger ma famille'
+          }
+        ],
+        'voyages': [
+          {
+            name: 'Agence Voyages Lomé',
+            title: 'Découvrez le Togo',
+            subtitle: 'Tourisme Local',
+            description: 'Explorez le Togo : Lomé, Kpalimé, Togoville et ses merveilles naturelles.',
+            icon: '🏛️',
+            cta: 'Visiter le Togo'
+          },
+          {
+            name: 'Air Togo Express',
+            title: 'Vols Régionaux',
+            subtitle: 'Connexions Ouest-Africaines',
+            description: 'Voyagez en Afrique de l\'Ouest avec Air Togo Express. Vols réguliers.',
+            icon: '✈️',
+            cta: 'Réserver un vol'
+          }
+        ],
+        'hebergement': [
+          {
+            name: 'Hôtel Sarakawa Lomé',
+            title: 'Luxe à Lomé',
+            subtitle: 'Hôtel 5 Étoiles',
+            description: 'Séjournez dans le luxe à Lomé. Hôtel Sarakawa avec vue sur l\'océan.',
+            icon: '🌊',
+            cta: 'Réserver une chambre'
+          },
+          {
+            name: 'Auberge de Kpalimé',
+            title: 'Nature & Détente',
+            subtitle: 'Hébergement Écologique',
+            description: 'Détendez-vous à Kpalimé dans notre auberge écologique au cœur de la nature.',
+            icon: '🌿',
+            cta: 'Réserver un séjour'
+          }
+        ],
+        'automobiles': [
+          {
+            name: 'Concession Toyota Lomé',
+            title: 'Toyota au Togo',
+            subtitle: 'Véhicules Neufs',
+            description: 'Achetez votre Toyota au Togo. Service après-vente et garantie complète.',
+            icon: '🚗',
+            cta: 'Acheter une Toyota'
+          },
+          {
+            name: 'Location Auto Togo',
+            title: 'Location de Voitures',
+            subtitle: 'Flexibilité Totale',
+            description: 'Louez une voiture au Togo pour vos déplacements. Tarifs compétitifs.',
+            icon: '🚙',
+            cta: 'Louer une voiture'
+          }
+        ],
+        'telecom': [
+          {
+            name: 'Moov Togo',
+            title: 'Connectivité Mobile',
+            subtitle: 'Internet & Appels',
+            description: 'Moov Togo vous connecte. Forfaits internet et appels avantageux.',
+            icon: '📱',
+            cta: 'Choisir un forfait'
+          },
+          {
+            name: 'Togocel',
+            title: 'Réseau National',
+            subtitle: 'Couverture Totale',
+            description: 'Togocel couvre tout le territoire. Internet rapide et appels illimités.',
+            icon: '📞',
+            cta: 'Découvrir Togocel'
+          }
+        ]
+      },
+      'niger': {
+        'assurances': [
+          {
+            name: 'NSIA Assurance Niger',
+            title: 'Protection Nigérienne',
+            subtitle: 'Assurance Locale',
+            description: 'NSIA Assurance au Niger. Solutions d\'assurance adaptées au marché nigérien.',
+            icon: '🛡️',
+            cta: 'Nos produits au Niger'
+          },
+          {
+            name: 'Saham Assurance Niger',
+            title: 'Sécurité Familiale',
+            subtitle: 'Assurance Vie',
+            description: 'Protégez votre famille au Niger avec Saham Assurance. Solutions personnalisées.',
+            icon: '👨‍👩‍👧‍👦',
+            cta: 'Protéger ma famille'
+          }
+        ],
+        'voyages': [
+          {
+            name: 'Agence Voyages Niamey',
+            title: 'Découvrez le Niger',
+            subtitle: 'Tourisme Local',
+            description: 'Explorez le Niger : Niamey, Agadez, Parc W et ses trésors culturels.',
+            icon: '🏛️',
+            cta: 'Visiter le Niger'
+          },
+          {
+            name: 'Air Niger Express',
+            title: 'Vols Domestiques',
+            subtitle: 'Connexions Intérieures',
+            description: 'Voyagez facilement au Niger avec nos vols domestiques et connexions régionales.',
+            icon: '✈️',
+            cta: 'Réserver un vol'
+          }
+        ],
+        'hebergement': [
+          {
+            name: 'Hôtel Gaweye Niamey',
+            title: 'Face au Fleuve',
+            subtitle: 'Hôtel 4 Étoiles',
+            description: 'Séjournez face au fleuve Niger dans notre hôtel moderne de Niamey.',
+            icon: '🌊',
+            cta: 'Réserver une chambre'
+          },
+          {
+            name: 'Auberge d\'Agadez',
+            title: 'Porte du Désert',
+            subtitle: 'Hébergement Authentique',
+            description: 'Dormez à Agadez, porte du désert. Expérience culturelle unique.',
+            icon: '🏜️',
+            cta: 'Vivre l\'expérience'
+          }
+        ],
+        'automobiles': [
+          {
+            name: 'Concession Toyota Niamey',
+            title: 'Toyota au Niger',
+            subtitle: 'Véhicules Neufs',
+            description: 'Achetez votre Toyota au Niger. Service après-vente et garantie complète.',
+            icon: '🚗',
+            cta: 'Acheter une Toyota'
+          },
+          {
+            name: 'Location Auto Niger',
+            title: 'Location de Voitures',
+            subtitle: 'Flexibilité Totale',
+            description: 'Louez une voiture au Niger pour vos déplacements. Tarifs compétitifs.',
+            icon: '🚙',
+            cta: 'Louer une voiture'
+          }
+        ],
+        'telecom': [
+          {
+            name: 'Moov Niger',
+            title: 'Connectivité Mobile',
+            subtitle: 'Internet & Appels',
+            description: 'Moov Niger vous connecte. Forfaits internet et appels avantageux.',
+            icon: '📱',
+            cta: 'Choisir un forfait'
+          },
+          {
+            name: 'Orange Niger',
+            title: 'Réseau National',
+            subtitle: 'Couverture Totale',
+            description: 'Orange Niger couvre tout le territoire. Internet rapide et appels illimités.',
+            icon: '📞',
+            cta: 'Découvrir Orange'
+          }
+        ]
+      },
+      'burkina-faso': {
+        'assurances': [
+          {
+            name: 'NSIA Assurance Burkina',
+            title: 'Protection Burkinabè',
+            subtitle: 'Assurance Locale',
+            description: 'NSIA Assurance au Burkina Faso. Solutions d\'assurance adaptées au marché burkinabè.',
+            icon: '🛡️',
+            cta: 'Nos produits au Burkina'
+          },
+          {
+            name: 'Saham Assurance Burkina',
+            title: 'Sécurité Familiale',
+            subtitle: 'Assurance Vie',
+            description: 'Protégez votre famille au Burkina Faso avec Saham Assurance. Solutions personnalisées.',
+            icon: '👨‍👩‍👧‍👦',
+            cta: 'Protéger ma famille'
+          }
+        ],
+        'voyages': [
+          {
+            name: 'Agence Voyages Ouagadougou',
+            title: 'Découvrez le Burkina',
+            subtitle: 'Tourisme Local',
+            description: 'Explorez le Burkina Faso : Ouagadougou, Bobo-Dioulasso et ses richesses culturelles.',
+            icon: '🏛️',
+            cta: 'Visiter le Burkina'
+          },
+          {
+            name: 'Air Burkina Express',
+            title: 'Vols Régionaux',
+            subtitle: 'Connexions Ouest-Africaines',
+            description: 'Voyagez en Afrique de l\'Ouest avec Air Burkina Express. Vols réguliers.',
+            icon: '✈️',
+            cta: 'Réserver un vol'
+          }
+        ],
+        'hebergement': [
+          {
+            name: 'Hôtel Indépendance Ouaga',
+            title: 'Cœur de la Capitale',
+            subtitle: 'Hôtel 4 Étoiles',
+            description: 'Séjournez au cœur d\'Ouagadougou dans notre hôtel moderne et confortable.',
+            icon: '🏛️',
+            cta: 'Réserver une chambre'
+          },
+          {
+            name: 'Auberge de Bobo',
+            title: 'Culture & Tradition',
+            subtitle: 'Hébergement Authentique',
+            description: 'Dormez à Bobo-Dioulasso dans notre auberge au cœur de la culture burkinabè.',
+            icon: '🎭',
+            cta: 'Vivre l\'expérience'
+          }
+        ],
+        'automobiles': [
+          {
+            name: 'Concession Toyota Ouaga',
+            title: 'Toyota au Burkina',
+            subtitle: 'Véhicules Neufs',
+            description: 'Achetez votre Toyota au Burkina Faso. Service après-vente et garantie complète.',
+            icon: '🚗',
+            cta: 'Acheter une Toyota'
+          },
+          {
+            name: 'Location Auto Burkina',
+            title: 'Location de Voitures',
+            subtitle: 'Flexibilité Totale',
+            description: 'Louez une voiture au Burkina Faso pour vos déplacements. Tarifs compétitifs.',
+            icon: '🚙',
+            cta: 'Louer une voiture'
+          }
+        ],
+        'telecom': [
+          {
+            name: 'Moov Burkina',
+            title: 'Connectivité Mobile',
+            subtitle: 'Internet & Appels',
+            description: 'Moov Burkina Faso vous connecte. Forfaits internet et appels avantageux.',
+            icon: '📱',
+            cta: 'Choisir un forfait'
+          },
+          {
+            name: 'Orange Burkina',
+            title: 'Réseau National',
+            subtitle: 'Couverture Totale',
+            description: 'Orange Burkina Faso couvre tout le territoire. Internet rapide et appels illimités.',
+            icon: '📞',
+            cta: 'Découvrir Orange'
+          }
+        ]
+      },
+      'cote-divoire': {
+        'assurances': [
+          {
+            name: 'NSIA Assurance Côte d\'Ivoire',
+            title: 'Protection Ivoirienne',
+            subtitle: 'Assurance Locale',
+            description: 'NSIA Assurance en Côte d\'Ivoire. Solutions d\'assurance adaptées au marché ivoirien.',
+            icon: '🛡️',
+            cta: 'Nos produits en Côte d\'Ivoire'
+          },
+          {
+            name: 'Saham Assurance Côte d\'Ivoire',
+            title: 'Sécurité Familiale',
+            subtitle: 'Assurance Vie',
+            description: 'Protégez votre famille en Côte d\'Ivoire avec Saham Assurance. Solutions personnalisées.',
+            icon: '👨‍👩‍👧‍👦',
+            cta: 'Protéger ma famille'
+          }
+        ],
+        'voyages': [
+          {
+            name: 'Agence Voyages Abidjan',
+            title: 'Découvrez la Côte d\'Ivoire',
+            subtitle: 'Tourisme Local',
+            description: 'Explorez la Côte d\'Ivoire : Abidjan, Yamoussoukro, Grand-Bassam et ses trésors.',
+            icon: '🏛️',
+            cta: 'Visiter la Côte d\'Ivoire'
+          },
+          {
+            name: 'Air Côte d\'Ivoire',
+            title: 'Vols Internationaux',
+            subtitle: 'Connexions Mondiales',
+            description: 'Voyagez dans le monde avec Air Côte d\'Ivoire. Vols internationaux et régionaux.',
+            icon: '✈️',
+            cta: 'Réserver un vol'
+          }
+        ],
+        'hebergement': [
+          {
+            name: 'Hôtel Pullman Abidjan',
+            title: 'Luxe à Abidjan',
+            subtitle: 'Hôtel 5 Étoiles',
+            description: 'Séjournez dans le luxe à Abidjan. Hôtel Pullman avec vue panoramique sur la ville.',
+            icon: '🌆',
+            cta: 'Réserver une chambre'
+          },
+          {
+            name: 'Auberge de Grand-Bassam',
+            title: 'Face à l\'Océan',
+            subtitle: 'Hébergement Balnéaire',
+            description: 'Détendez-vous à Grand-Bassam dans notre auberge face à l\'océan Atlantique.',
+            icon: '🌊',
+            cta: 'Réserver un séjour'
+          }
+        ],
+        'automobiles': [
+          {
+            name: 'Concession Toyota Abidjan',
+            title: 'Toyota en Côte d\'Ivoire',
+            subtitle: 'Véhicules Neufs',
+            description: 'Achetez votre Toyota en Côte d\'Ivoire. Service après-vente et garantie complète.',
+            icon: '🚗',
+            cta: 'Acheter une Toyota'
+          },
+          {
+            name: 'Location Auto Côte d\'Ivoire',
+            title: 'Location de Voitures',
+            subtitle: 'Flexibilité Totale',
+            description: 'Louez une voiture en Côte d\'Ivoire pour vos déplacements. Tarifs compétitifs.',
+            icon: '🚙',
+            cta: 'Louer une voiture'
+          }
+        ],
+        'telecom': [
+          {
+            name: 'Moov Côte d\'Ivoire',
+            title: 'Connectivité Mobile',
+            subtitle: 'Internet & Appels',
+            description: 'Moov Côte d\'Ivoire vous connecte. Forfaits internet et appels avantageux.',
+            icon: '📱',
+            cta: 'Choisir un forfait'
+          },
+          {
+            name: 'Orange Côte d\'Ivoire',
+            title: 'Réseau National',
+            subtitle: 'Couverture Totale',
+            description: 'Orange Côte d\'Ivoire couvre tout le territoire. Internet rapide et appels illimités.',
+            icon: '📞',
+            cta: 'Découvrir Orange'
+          }
+        ]
+      }
+    };
+
+    // Informations des domaines
+    const domainInfos = {
+      'assurances': {
+        title: 'Assurances',
+        subtitle: 'Protection & Sécurité',
+        description: 'Découvrez les meilleures compagnies d\'assurance pour protéger votre famille et vos biens.',
+        icon: '🛡️',
+        bgClass: 'bg-blue'
+      },
+      'transfert-argent': {
+        title: 'Transfert d\'Argent',
+        subtitle: 'Envois Rapides & Sécurisés',
+        description: 'Envoyez de l\'argent facilement et en toute sécurité vers l\'Afrique et le monde entier.',
+        icon: '💸',
+        bgClass: 'bg-green'
+      },
+      'societes-financieres': {
+        title: 'Sociétés Financières',
+        subtitle: 'Services Bancaires & Financiers',
+        description: 'Accédez aux meilleurs services financiers et bancaires pour vos besoins professionnels.',
+        icon: '🏦',
+        bgClass: 'bg-mint'
+      },
+      'comptabilite': {
+        title: 'Comptabilité',
+        subtitle: 'Gestion & Expertise',
+        description: 'Confiez votre comptabilité à des experts qualifiés pour une gestion optimale.',
+        icon: '📊',
+        bgClass: 'bg-orange'
+      },
+      'cartes-bancaires': {
+        title: 'Cartes Bancaires',
+        subtitle: 'GIM UEMOA, VISA, MASTERCARD',
+        description: 'Obtenez vos cartes bancaires et moyens de paiement auprès des meilleurs fournisseurs.',
+        icon: '💳',
+        bgClass: 'bg-purple'
+      },
+      'agregateurs': {
+        title: 'Agrégateurs',
+        subtitle: 'Solutions de Paiement',
+        description: 'Intégrez les solutions de paiement les plus avancées pour votre entreprise.',
+        icon: '🔗',
+        bgClass: 'bg-blue'
+      }
+    };
+
+    // Noms des pays
+    const countryNames = {
+      'all': 'Tous les pays',
+      'benin': 'Bénin',
+      'togo': 'Togo',
+      'niger': 'Niger',
+      'burkina-faso': 'Burkina Faso',
+      'cote-divoire': 'Côte d\'Ivoire'
+    };
+
+    // Fonction pour obtenir les paramètres URL
+    function getUrlParams() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return {
+        country: urlParams.get('country') || 'all',
+        domain: urlParams.get('domain') || 'assurances'
+      };
+    }
+
+    // Fonction pour créer une carte d'entreprise
+    function createCompanyCard(company) {
+      // Si une image de bannière est disponible, l'afficher
+      const bannerImageHTML = company.bannerImage 
+        ? `<div class="banner-image-container" style="width: calc(100% + 48px); height: 200px; overflow: hidden; border-radius: 12px 12px 0 0; margin: -24px -24px 24px -24px; position: relative;">
+             <img src="${company.bannerImage}" alt="${company.title || company.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+           </div>`
+        : `<div class="icon">${company.icon}</div>`;
+      
+      return `
+        <div class="company-card bg-white p-6">
+          <div class="text-center" style="width: 100%;">
+            ${bannerImageHTML}
+            <div class="title">${company.title}</div>
+            <div class="subtitle">${company.subtitle}</div>
+            <div class="description">${company.description}</div>
+            <a href="#" class="cta-button">${company.cta}</a>
+          </div>
+        </div>
+      `;
+    }
+
+    // Fonction pour créer les onglets de domaines
+    function createDomainTabs(currentDomain, currentCountry) {
+      const tabsContainer = document.getElementById('domainTabs');
+      if (!tabsContainer) return;
+      
+      const domains = Object.keys(domainInfos);
+      const tabsHTML = domains.map(domain => {
+        const domainInfo = domainInfos[domain];
+        const isActive = domain === currentDomain;
+        const url = `entreprises.html?country=${currentCountry}&domain=${domain}`;
+        
+        return `
+          <a href="${url}" class="calameo-tab ${isActive ? 'active' : ''}" data-domain="${domain}">
+            <span class="icon">${domainInfo.icon}</span>
+            <span class="text">${domainInfo.title}</span>
+          </a>
+        `;
+      }).join('');
+      
+      tabsContainer.innerHTML = tabsHTML;
+    }
+    
+    // Fonction pour charger les entreprises
+    function loadCompanies() {
+      const params = getUrlParams();
+      const { country, domain } = params;
+      
+      // Créer les onglets de domaines
+      createDomainTabs(domain, country);
+      
+      // Mettre à jour le titre de la section hero
+      const domainInfo = domainInfos[domain];
+      if (domainInfo) {
+        const countryName = countryNames[country] || country;
+        const heroTitle = document.getElementById('heroTitle');
+        if (heroTitle) {
+          // Utiliser les mêmes prépositions que dans banque.html
+          const countryLabels = {
+            'all': { name: "l'espace UEMOA", prep: 'dans' },
+            'benin': { name: 'Bénin', prep: 'au' },
+            'togo': { name: 'Togo', prep: 'au' },
+            'niger': { name: 'Niger', prep: 'au' },
+            'burkina-faso': { name: 'Burkina Faso', prep: 'au' },
+            'cote-divoire': { name: "Côte d'Ivoire", prep: 'en' }
+          };
+          
+          const label = countryLabels[country] || { name: country, prep: 'en' };
+          const title = label.prep === 'dans'
+            ? `${domainInfo.title} ${label.prep} ${label.name}`
+            : `${domainInfo.title} ${label.prep} ${label.name}`;
+            
+          heroTitle.textContent = title;
+        }
+      }
+      
+      // Charger les entreprises
+      const countryData = companiesData[country] || companiesData['all'];
+      const companies = countryData[domain] || [];
+      
+      const grid = document.getElementById('companiesGrid');
+      
+      if (companies.length === 0) {
+        grid.innerHTML = `
+          <div class="error col-span-full">
+            <div class="text-2xl mb-4">❌</div>
+            <p>Aucune entreprise trouvée pour ce domaine et ce pays.</p>
+          </div>
+        `;
+        return;
+      }
+      
+      // Générer les cartes d'entreprises
+      const companiesHTML = companies.map(company => createCompanyCard(company)).join('');
+      grid.innerHTML = companiesHTML;
+    }
+
+    // Initialiser la page
+    document.addEventListener('DOMContentLoaded', loadCompanies);
+    // Pagination verticale
+    const paginationItems = document.querySelectorAll('.pagination li');
+    const sections = document.querySelectorAll('section[id], article[id], main[id]');
+    if (paginationItems.length > 0 && sections.length > 0) {
+      // Navigation smooth scroll
+      paginationItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const targetId = this.getAttribute('data-section');
+          const targetSection = document.querySelector(targetId);
+          if (targetSection) {
+            const offsetTop = targetSection.offsetTop - 80;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // Détection de la section active lors du scroll
+      function updateActiveSection() {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 150;
+          const sectionHeight = section.offsetHeight;
+          if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        paginationItems.forEach(item => {
+          const sectionId = item.getAttribute('data-section').substring(1);
+          if (sectionId === current) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+
+      // Initialiser au chargement
+      updateActiveSection();
+
+      // Mettre à jour lors du scroll
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(function() {
+            updateActiveSection();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
