@@ -2368,6 +2368,69 @@
           .image-popup .close-btn:hover {
             transform: rotate(90deg);
           }
+          /* Flipbook Modal Styles */
+          .flipbook-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+          }
+          .flipbook-modal.active {
+            display: flex;
+          }
+          .flipbook-modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 90vh;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+          }
+          .flipbook-modal .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 32px;
+            font-weight: 300;
+            cursor: pointer;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.6);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+          }
+          .flipbook-modal .close-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: rotate(90deg);
+          }
+          .flipbook-iframe-container {
+            position: relative;
+            padding-top: 56.25%;
+            width: 100%;
+            height: 0;
+          }
+          .flipbook-iframe-container iframe {
+            position: absolute;
+            border: none;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+          }
           /* Navigation Arrows */
           .slider-nav {
             position: absolute;
@@ -2422,32 +2485,19 @@
       <div class="unique-ipad-holder">
           <div>
               <div class="unique-ipad">
-                  <a href="banque.html" class="unique-image unique-image-1" data-country="togo" title="Orabank 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Orabank.jpg" alt="Orabank" /></a>
-                  <a href="banque.html" class="unique-image unique-image-2" data-country="togo" title="Orabank 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Orabank (2).jpg" alt="Orabank 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-3" data-country="togo" title="BDM 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BDM.jpg" alt="BDM" /></a>
-                  <a href="banque.html" class="unique-image unique-image-4" data-country="togo" title="BDM 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BDM (2).jpg" alt="BDM 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-5" data-country="togo" title="BIA 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BIA.jpg" alt="BIA" /></a>
-                  <a href="banque.html" class="unique-image unique-image-6" data-country="togo" title="BIA 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BIA (2).jpg" alt="BIA 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-7" data-country="togo" title="BOA 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BOA.jpg" alt="BOA" /></a>
-                  <a href="banque.html" class="unique-image unique-image-8" data-country="togo" title="BOA 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BOA (2).jpg" alt="BOA 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-9" data-country="togo" title="BSIC 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BSIC.jpg" alt="BSIC" /></a>
-                  <a href="banque.html" class="unique-image unique-image-10" data-country="togo" title="BSIC 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BSIC (2).jpg" alt="BSIC 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-11" data-country="togo" title="Coris Bank 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Coris Bank.jpg" alt="Coris Bank" /></a>
-                  <a href="banque.html" class="unique-image unique-image-12" data-country="togo" title="Coris Bank 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Coris Bank (2).jpg" alt="Coris Bank 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-13" data-country="togo" title="Ecobank 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Ecobank.jpg" alt="Ecobank" /></a>
-                  <a href="banque.html" class="unique-image unique-image-14" data-country="togo" title="Ecobank 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Ecobank (2).jpg" alt="Ecobank 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-15" data-country="togo" title="Bank Atlantique 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Bank Atlantique.jpg" alt="Bank Atlantique" /></a>
-                  <a href="banque.html" class="unique-image unique-image-16" data-country="togo" title="Bank Atlantique 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Bank Atlantique (2).jpg" alt="Bank Atlantique 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-17" data-country="togo" title="IB Bank 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/IB Bank.jpg" alt="IB Bank" /></a>
-                  <a href="banque.html" class="unique-image unique-image-18" data-country="togo" title="IB Bank 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/IB Bank (2).jpg" alt="IB Bank 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-19" data-country="togo" title="NSIA 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/NSIA.jpg" alt="NSIA" /></a>
-                  <a href="banque.html" class="unique-image unique-image-20" data-country="togo" title="NSIA 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/NSIA (2).jpg" alt="NSIA 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-21" data-country="togo" title="SGB 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/SGB.jpg" alt="SGB" /></a>
-                  <a href="banque.html" class="unique-image unique-image-22" data-country="togo" title="SGB 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/SGB (2).jpg" alt="SGB 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-23" data-country="togo" title="SIAB 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/SIAB.jpg" alt="SIAB" /></a>
-                  <a href="banque.html" class="unique-image unique-image-24" data-country="togo" title="SIAB 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/SIAB (2).jpg" alt="SIAB 2" /></a>
-                  <a href="banque.html" class="unique-image unique-image-25" data-country="togo" title="UTB 1"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/UTB.jpg" alt="UTB" /></a>
-                  <a href="banque.html" class="unique-image unique-image-26" data-country="togo" title="UTB 2"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/UTB (2).jpg" alt="UTB 2" /></a>
+                  <a href="#" class="unique-image unique-image-1" data-country="togo" data-bank="orabank-togo" title="Orabank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Orabank.jpg" alt="Orabank" /></a>
+                  <a href="#" class="unique-image unique-image-2" data-country="togo" data-bank="bdm-togo" title="BDM"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BDM.jpg" alt="BDM" /></a>
+                  <a href="#" class="unique-image unique-image-3" data-country="togo" data-bank="bia-togo" title="BIA"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BIA.jpg" alt="BIA" /></a>
+                  <a href="#" class="unique-image unique-image-4" data-country="togo" data-bank="boa-togo" title="BOA"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BOA.jpg" alt="BOA" /></a>
+                  <a href="#" class="unique-image unique-image-5" data-country="togo" data-bank="bsic-togo" title="BSIC"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BSIC.jpg" alt="BSIC" /></a>
+                  <a href="#" class="unique-image unique-image-6" data-country="togo" data-bank="coris-togo" title="Coris Bank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Coris Bank.jpg" alt="Coris Bank" /></a>
+                  <a href="#" class="unique-image unique-image-7" data-country="togo" data-bank="ecobank-togo" title="Ecobank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Ecobank.jpg" alt="Ecobank" /></a>
+                  <a href="#" class="unique-image unique-image-8" data-country="togo" data-bank="bank-atlantique-togo" title="Bank Atlantique"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Bank Atlantique.jpg" alt="Bank Atlantique" /></a>
+                  <a href="#" class="unique-image unique-image-9" data-country="togo" data-bank="ib-bank-togo" title="IB Bank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/IB Bank.jpg" alt="IB Bank" /></a>
+                  <a href="#" class="unique-image unique-image-10" data-country="togo" data-bank="nsia-togo" title="NSIA"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/NSIA.jpg" alt="NSIA" /></a>
+                  <a href="#" class="unique-image unique-image-11" data-country="togo" data-bank="sgb-togo" title="SGB"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/SGB.jpg" alt="SGB" /></a>
+                  <a href="#" class="unique-image unique-image-12" data-country="togo" data-bank="siab-togo" title="SIAB"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/SIAB.jpg" alt="SIAB" /></a>
+                  <a href="#" class="unique-image unique-image-13" data-country="togo" data-bank="utb-togo" title="UTB"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/UTB.jpg" alt="UTB" /></a>
                   <!-- Images Bénin -->
                   <a href="banque.html" class="unique-image unique-image-27" data-country="benin" title="Bank Atlantique 1"><img src="AFFICHES%20BANQUE%20PAYS/BENIN/BANK ATLANTIQUE (1).png" alt="Bank Atlantique 1" /></a>
                   <a href="banque.html" class="unique-image unique-image-28" data-country="benin" title="Bank Atlantique 2"><img src="AFFICHES%20BANQUE%20PAYS/BENIN/BANK ATLANTIQUE (2).png" alt="Bank Atlantique 2" /></a>
