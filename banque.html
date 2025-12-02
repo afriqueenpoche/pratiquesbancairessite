@@ -3006,12 +3006,18 @@
       // Ouvrir la popup au clic sur une image (seulement si pas de data-bank)
       images.forEach(img => {
         img.addEventListener('click', function(e) {
-          // Vérifier si l'image parente a un attribut data-bank
-          const parentLink = this.closest('.unique-image[data-bank]');
-          if (parentLink) {
-            // Si oui, ne pas ouvrir la popup (le flipbook sera géré par l'autre gestionnaire)
+          const parentLink = this.closest('.unique-image');
+
+          // Si c'est une banque (data-bank) OU si l'image n'est pas au centre (unique-image-3), on bloque tout clic
+          if (
+            parentLink &&
+            (parentLink.hasAttribute('data-bank') || !parentLink.classList.contains('unique-image-3'))
+          ) {
+            e.preventDefault();
+            e.stopPropagation();
             return;
           }
+
           // Sinon, ouvrir la popup comme avant
           e.preventDefault();
           e.stopPropagation();
