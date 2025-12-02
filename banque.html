@@ -2916,7 +2916,7 @@
         'biic-bank-benin': 'https://online.fliphtml5.com/fhqot/podd/',
         'boa-bank-benin': 'https://online.fliphtml5.com/fhqot/zkno/',
         'bsic-benin': 'https://online.fliphtml5.com/fhqot/dchl/',
-        'cbao-benin': 'https://online.fliphtml5.com/fhqot/vmom/',
+        'cbao-benin': 'https://online.fliphtml5.com/fhqot/hgql/',
         'ccei-bank-benin': 'https://online.fliphtml5.com/fhqot/oybs/',
         'coris-bank-benin': 'https://online.fliphtml5.com/fhqot/vmom/',
         'ecobank-benin': 'https://online.fliphtml5.com/fhqot/vmom/',
@@ -5511,6 +5511,23 @@
       } else {
         initLessonsVideoCarousel();
       }
+    })();
+  </script>
+
+  <!-- Optimisation du chargement des images : lazy-loading automatique -->
+  <script>
+    (function() {
+      if (!('loading' in HTMLImageElement.prototype)) {
+        // Le navigateur ne supporte pas nativement loading="lazy"
+        return;
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('img:not([loading])');
+        images.forEach(function(img) {
+          img.setAttribute('loading', 'lazy');
+        });
+      });
     })();
   </script>
 </body>
