@@ -10,6 +10,12 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <!-- Préchargement des premières images du slider iPad (Togo par défaut) -->
+  <link rel="preload" as="image" href="AFFICHES%20BANQUE%20PAYS/TOGO/Orabank_resultat.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="AFFICHES%20BANQUE%20PAYS/TOGO/BDM_resultat.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="AFFICHES%20BANQUE%20PAYS/TOGO/BIA_resultat.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="AFFICHES%20BANQUE%20PAYS/TOGO/BOA_resultat.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="AFFICHES%20BANQUE%20PAYS/TOGO/BSIC_resultat.webp" fetchpriority="high">
   <style>
     * {
       font-family: 'Inter', sans-serif;
@@ -2483,11 +2489,11 @@
       <div class="unique-ipad-holder">
           <div>
               <div class="unique-ipad">
-                  <a href="#" class="unique-image unique-image-1" data-country="togo" data-bank="orabank-togo" title="Orabank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Orabank_resultat.webp" alt="Orabank" loading="lazy" /></a>
-                  <a href="#" class="unique-image unique-image-2" data-country="togo" data-bank="bdm-togo" title="BDM"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BDM_resultat.webp" alt="BDM" loading="lazy" /></a>
-                  <a href="#" class="unique-image unique-image-3" data-country="togo" data-bank="bia-togo" title="BIA"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BIA_resultat.webp" alt="BIA" loading="lazy" /></a>
-                  <a href="#" class="unique-image unique-image-4" data-country="togo" data-bank="boa-togo" title="BOA"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BOA_resultat.webp" alt="BOA" loading="lazy" /></a>
-                  <a href="#" class="unique-image unique-image-5" data-country="togo" data-bank="bsic-togo" title="BSIC"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BSIC_resultat.webp" alt="BSIC" loading="lazy" /></a>
+                  <a href="#" class="unique-image unique-image-1" data-country="togo" data-bank="orabank-togo" title="Orabank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Orabank_resultat.webp" alt="Orabank" fetchpriority="high" /></a>
+                  <a href="#" class="unique-image unique-image-2" data-country="togo" data-bank="bdm-togo" title="BDM"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BDM_resultat.webp" alt="BDM" fetchpriority="high" /></a>
+                  <a href="#" class="unique-image unique-image-3" data-country="togo" data-bank="bia-togo" title="BIA"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BIA_resultat.webp" alt="BIA" fetchpriority="high" /></a>
+                  <a href="#" class="unique-image unique-image-4" data-country="togo" data-bank="boa-togo" title="BOA"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BOA_resultat.webp" alt="BOA" fetchpriority="high" /></a>
+                  <a href="#" class="unique-image unique-image-5" data-country="togo" data-bank="bsic-togo" title="BSIC"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/BSIC_resultat.webp" alt="BSIC" fetchpriority="high" /></a>
                   <a href="#" class="unique-image unique-image-6" data-country="togo" data-bank="coris-togo" title="Coris Bank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Coris Bank_resultat.webp" alt="Coris Bank" loading="lazy" /></a>
                   <a href="#" class="unique-image unique-image-7" data-country="togo" data-bank="ecobank-togo" title="Ecobank"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Ecobank_resultat.webp" alt="Ecobank" loading="lazy" /></a>
                   <a href="#" class="unique-image unique-image-8" data-country="togo" data-bank="bank-atlantique-togo" title="Bank Atlantique"><img src="AFFICHES%20BANQUE%20PAYS/TOGO/Bank Atlantique_resultat.webp" alt="Bank Atlantique" loading="lazy" /></a>
@@ -2815,7 +2821,7 @@
       let isAutoPlay = true;
       const MAX_ACTIVE_IMAGES = 5;
 
-      // Préparer les images du slider : ne garder chargées que les premières, les autres passent en data-src
+      // Préparer les images du slider : optimisé pour charger rapidement les premières images
       function prepareSliderImages() {
         const allImages = Array.from(document.querySelectorAll('.unique-ipad .unique-image img'));
         if (!allImages.length) return;
@@ -2827,11 +2833,33 @@
           const src = img.getAttribute('src');
           if (!src) return;
 
-          // On garde le src réel uniquement pour les toutes premières images,
-          // les autres seront chargées à la demande quand elles deviennent visibles.
+          // Les 5 premières images visibles gardent leur src direct pour chargement immédiat
+          // Les images 6-10 sont préchargées en arrière-plan
+          // Les autres passent en data-src pour chargement à la demande
           if (index < MAX_ACTIVE_IMAGES) {
+            // Garder le src direct, retirer lazy loading, ajouter fetchpriority
+            img.removeAttribute('loading');
+            img.setAttribute('fetchpriority', 'high');
+            // Précharger l'image immédiatement
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'image';
+            preloadLink.href = src;
+            document.head.appendChild(preloadLink);
+          } else if (index < MAX_ACTIVE_IMAGES + 5) {
+            // Images 6-10 : précharger en arrière-plan mais garder en data-src
             img.dataset.src = src;
+            img.removeAttribute('src');
+            img.removeAttribute('loading');
+            // Précharger en arrière-plan avec priorité faible
+            const preloadLink = document.createElement('link');
+            preloadLink.rel = 'preload';
+            preloadLink.as = 'image';
+            preloadLink.href = src;
+            preloadLink.setAttribute('fetchpriority', 'low');
+            document.head.appendChild(preloadLink);
           } else {
+            // Images suivantes : lazy loading classique
             img.dataset.src = src;
             img.removeAttribute('src');
           }
@@ -2862,6 +2890,11 @@
           const img = imageWrapper.querySelector('img');
           if (img && !img.getAttribute('src') && img.dataset.src) {
             img.setAttribute('src', img.dataset.src);
+            // Retirer lazy loading et ajouter fetchpriority pour les images visibles
+            img.removeAttribute('loading');
+            if (i === 2) { // Image centrale (la plus importante)
+              img.setAttribute('fetchpriority', 'high');
+            }
           }
         }
         
@@ -3286,6 +3319,31 @@
             visibleImages.push(img);
           } else {
             img.style.display = 'none';
+          }
+        });
+        
+        // Précharger les premières images du pays sélectionné pour affichage rapide
+        const firstVisibleImages = visibleImages.slice(0, 5);
+        firstVisibleImages.forEach((imgWrapper, index) => {
+          const img = imgWrapper.querySelector('img');
+          if (img) {
+            const src = img.getAttribute('src') || img.getAttribute('data-src');
+            if (src) {
+              // Précharger avec priorité haute pour les premières images
+              const preloadLink = document.createElement('link');
+              preloadLink.rel = 'preload';
+              preloadLink.as = 'image';
+              preloadLink.href = src;
+              if (index === 2) { // Image centrale (la plus importante)
+                preloadLink.setAttribute('fetchpriority', 'high');
+              }
+              document.head.appendChild(preloadLink);
+              // Charger immédiatement si pas encore chargée
+              if (!img.getAttribute('src') && img.dataset.src) {
+                img.setAttribute('src', img.dataset.src);
+                img.removeAttribute('loading');
+              }
+            }
           }
         });
         
@@ -4537,9 +4595,9 @@
       });
     })();
     
-    // Diaporama hero section - optimisé (5 slides max, moins d'animations, désactivé sur mobile / préférences "réduction des animations")
+    // Diaporama hero section - toutes les slides actives (affichage d'origine restauré, optimisé pour mobile / préférences "réduction des animations")
     (function() {
-      const INTERVAL_DELAY = 20000; // 20 secondes entre chaque transition
+      const INTERVAL_DELAY = 30000; // 30 secondes entre chaque transition
       let slides = [];
       let order = [];
       let pointer = 0;
@@ -4606,8 +4664,7 @@
           console.warn('Aucune slide hero trouvée');
           return;
         }
-        // On limite le diaporama aux 5 premières slides pour alléger le chargement
-        slides = slides.slice(0, 5);
+        // Toutes les slides sont utilisées (affichage d'origine restauré)
         
         heroInitialized = true;
         order = slides.map((_, index) => index);
