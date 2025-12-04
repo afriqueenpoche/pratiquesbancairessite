@@ -573,16 +573,8 @@
     </div>
   </nav>
 
-  <!-- Pagination verticale -->
-  <ul class="pagination">
-    <li data-section="#intro" class=""><span class="hover-text">Introduction</span></li>
-    <li data-section="#parcours" class=""><span class="hover-text">Parcours</span></li>
-    <li data-section="#video" class=""><span class="hover-text">Tuto vidéos</span></li>
-    <li data-section="#cta-repertoire" class=""><span class="hover-text">Répertoire</span></li>
-  </ul>
-
   <!-- Hero Section Éducation Financière (copie de banque.html) -->
-  <section id="intro" class="hero-section-edu" data-aos="fade-in">
+  <section class="hero-section-edu" data-aos="fade-in">
     <!-- Diaporama d'images en arrière-plan -->
     <div class="hero-slide hero-slide-1 active"></div>
     <div class="hero-slide hero-slide-2"></div>
@@ -932,7 +924,7 @@
     </section>
 
     <!-- CTA vers répertoire banques -->
-    <section id="cta-repertoire" class="py-16 bg-white border-t border-slate-100">
+    <section class="py-16 bg-white border-t border-slate-100">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
         <h2 class="section-title text-gradient">Besoin de voir les banques de votre pays ?</h2>
         <p class="mt-6 text-lg text-slate-600 max-w-3xl mx-auto">
@@ -961,64 +953,6 @@
         easing: 'ease-out'
       });
     }
-
-    // Pagination verticale (même logique que sur banque.html)
-    (function() {
-      const paginationItems = document.querySelectorAll('.pagination li');
-      const sections = document.querySelectorAll('section[id]');
-      if (paginationItems.length > 0 && sections.length > 0) {
-        // Navigation smooth scroll
-        paginationItems.forEach(item => {
-          item.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-section');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-              const offsetTop = targetSection.offsetTop - 80;
-              window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-              });
-            }
-          });
-        });
-
-        // Détection de la section active lors du scroll
-        function updateActiveSection() {
-          let current = '';
-          sections.forEach(section => {
-            const sectionTop = section.offsetTop - 150;
-            const sectionHeight = section.offsetHeight;
-            if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-              current = section.getAttribute('id');
-            }
-          });
-
-          paginationItems.forEach(item => {
-            const sectionId = item.getAttribute('data-section').substring(1);
-            if (sectionId === current) {
-              item.classList.add('active');
-            } else {
-              item.classList.remove('active');
-            }
-          });
-        }
-
-        // Initialiser au chargement
-        updateActiveSection();
-
-        // Mettre à jour lors du scroll
-        let ticking = false;
-        window.addEventListener('scroll', function() {
-          if (!ticking) {
-            window.requestAnimationFrame(function() {
-              updateActiveSection();
-              ticking = false;
-            });
-            ticking = true;
-          }
-        });
-      }
-    })();
 
     // Mini Language Switcher Logic (même logique que sur banque.html)
     (function(){
