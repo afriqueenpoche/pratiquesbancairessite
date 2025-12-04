@@ -1120,10 +1120,8 @@
               <div class="py-1">
                 <a href="comptes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Comptes bancaires</a>
                 <a href="paiements.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Paiements & Mobile Money</a>
-                <a href="transferts.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Transferts</a>
                 <a href="credits.html" class="block px-4 py-2 text-sm text-gray-900 bg-blue-50 hover:bg-blue-100 transition-colors font-semibold">Crédits & Financements</a>
                 <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Assurances</a>
-                <a href="securite-financiere.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Sécurité financière</a>
                 <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Projets de vie</a>
               </div>
             </div>
@@ -2571,6 +2569,122 @@
       // Synchroniser toutes les 6 heures
       // Synchroniser toutes les 10 heures
       setInterval(syncBCEAONews, 36000000); // 10 heures
+    })();
+  </script>
+
+  <style>
+    /* Mini Language Switcher Styles (copie de banque.html) */
+    .lang-switcher-mini {
+      position: relative;
+      margin-left: 0.5rem;
+      visibility: hidden;
+    }
+    .lang-menu-mini {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      border-radius: 9999px;
+      padding: 0.25rem 0.4rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-menu-mini:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,.1);
+      transform: translateY(-1px);
+    }
+    .lang-badge-mini {
+      width: 16px;
+      height: 16px;
+      border-radius: 9999px;
+      background: #0b5d2a;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .lang-label-mini {
+      font-size: 0.75rem;
+      color: #111827;
+      font-weight: 500;
+    }
+    .lang-dropdown-mini {
+      position: absolute;
+      right: 0;
+      top: 120%;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      box-shadow: 0 8px 25px rgba(0,0,0,.12);
+      padding: 0.25rem;
+      width: 160px;
+      z-index: 50;
+      display: none;
+    }
+    .lang-dropdown-mini.open {
+      display: block;
+    }
+    .lang-option-mini {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.4rem;
+      border-radius: 0.375rem;
+      color: #111827;
+      font-size: 0.8rem;
+      width: 100%;
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .lang-option-mini:hover {
+      background: #f3f4f6;
+    }
+    .lang-option-mini .lang-badge-mini {
+      width: 14px;
+      height: 14px;
+      font-size: 0.45rem;
+    }
+  </style>
+  <script>
+    // Mini Language Switcher Logic (copie de banque.html)
+    (function(){
+      const menu = document.getElementById('lang-menu-mini');
+      const dropdown = document.getElementById('lang-dropdown-mini');
+      const label = document.getElementById('lang-label-mini');
+      const badge = document.getElementById('lang-badge-mini');
+      const storageKey = 'aep_lang';
+      const labels = { fr:'FR', en:'EN', es:'ES', de:'DE', pt:'PT', it:'IT', tr:'TR', ar:'AR', ha:'HA', sw:'SW', zh:'ZH' };
+
+      if (!menu || !dropdown || !label || !badge) return;
+
+      function setLang(code){
+        localStorage.setItem(storageKey, code);
+        document.documentElement.setAttribute('lang', code);
+        label.textContent = labels[code] || code.toUpperCase();
+        badge.textContent = (code || 'fr').toUpperCase();
+        closeDropdown();
+      }
+      function openDropdown(){ dropdown.classList.add('open'); menu.setAttribute('aria-expanded','true'); }
+      function closeDropdown(){ dropdown.classList.remove('open'); menu.setAttribute('aria-expanded','false'); }
+      menu.addEventListener('click', (e)=>{ e.stopPropagation(); dropdown.classList.contains('open')? closeDropdown(): openDropdown(); });
+      document.addEventListener('click', (e)=>{ if(!dropdown.contains(e.target)) closeDropdown(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDropdown(); });
+      dropdown.querySelectorAll('.lang-option-mini').forEach(btn=>{
+        btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-lang')));
+      });
+      const saved = localStorage.getItem(storageKey) || 'fr';
+      setLang(saved);
+      const wrapper = menu ? menu.closest('.lang-switcher-mini') : null;
+      if (wrapper) {
+        wrapper.style.visibility = 'visible';
+      }
     })();
   </script>
 </body>
