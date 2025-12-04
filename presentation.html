@@ -1296,93 +1296,87 @@
   <nav class="fixed top-0 w-full z-50 glass-effect-blue shadow-lg">
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
       <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
         <div class="flex items-center flex-shrink-0 -ml-2">
           <a href="presentation.html" class="flex items-center">
             <img class="h-10 w-auto" src="https://huggingface.co/spaces/arhaniger/afrique-en-poche/resolve/main/images/logo%20afrique%20en%20poche%20fond%20blanc.png" alt="Logo" loading="lazy">
             <span class="ml-3 text-xl font-bold animated-brand">Pratiques Bancaires</span>
           </a>
         </div>
-        <div class="hidden lg:flex space-x-6 items-center ml-4">
-          <a href="presentation.html" class="text-blue-500 font-semibold px-2 py-2 whitespace-nowrap">Accueil</a>
-          <a href="banque.html" class="text-gray-700 hover:text-blue-400 transition-colors font-medium px-2 py-2 whitespace-nowrap">Pratiques Bancaires</a>
-          
+
+        <!-- Liens principaux desktop -->
+        <div class="hidden lg:flex items-center space-x-6 ml-4">
+          <a href="presentation.html" class="text-gray-900 font-semibold hover:text-blue-600 transition-colors px-2 py-2 whitespace-nowrap">
+            Accueil
+          </a>
+
+          <a href="ecole-bancaire.html" class="text-gray-700 hover:text-blue-500 transition-colors font-medium px-2 py-2 whitespace-nowrap">
+            École
+          </a>
+
+          <!-- Menu Guides -->
           <div class="relative group">
-            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
-              Les Comptes  
+            <button class="text-gray-700 hover:text-blue-500 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
+              Guides
               <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </button>
             <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
               <div class="py-1">
-                <a href="comptes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Comptes</a>
-                <a href="comptes.html#services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Services</a>
+                <a href="comptes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Comptes bancaires</a>
+                <a href="paiements.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Paiements & Mobile Money</a>
+                <a href="transferts.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Transferts</a>
+                <a href="credits.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Crédits & Financements</a>
+                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Assurances</a>
+                <a href="securite-financiere.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Sécurité financière</a>
+                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Projets de vie</a>
               </div>
             </div>
           </div>
-          
-          <div class="relative group">
-            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
-              Les Paiements  
-              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div class="py-1">
-                <a href="paiements.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Paiements</a>
-                <a href="paiements.html#transferts" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Transferts</a>
+
+          <a href="banque.html" class="text-gray-700 hover:text-blue-500 transition-colors font-medium px-2 py-2 whitespace-nowrap">
+            Répertoire & Actualités
+          </a>
+
+          <a href="tutos-videos.html" class="text-gray-700 hover:text-blue-500 transition-colors font-medium px-2 py-2 whitespace-nowrap">
+            Tutos vidéos
+          </a>
+
+          <!-- Mini language switcher -->
+          <div class="ml-4">
+            <div class="lang-switcher-mini">
+              <div class="lang-menu-mini" id="lang-menu-mini" role="button" aria-haspopup="listbox" aria-expanded="false">
+                <div class="lang-badge-mini" id="lang-badge-mini">FR</div>
+                <span class="lang-label-mini" id="lang-label-mini">FR</span>
               </div>
-            </div>
-          </div>
-          
-          <div class="relative group">
-            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
-              Les Crédits  
-              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div class="py-1">
-                <a href="credits.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Crédits</a>
-                <a href="credits.html#financements" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Financements</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="relative group">
-            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
-              Les Assurances 
-              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div class="py-1">
-                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Assurance</a>
-                <a href="assurance.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Sécurité Financière</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="relative group">
-            <button class="text-gray-700 hover:text-blue-400 transition-colors flex items-center font-medium px-2 py-2 whitespace-nowrap">
-              Projets de Vie
-              <svg class="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div class="absolute left-0 mt-2 w-64 glass-effect rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-              <div class="py-1">
-                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Études & Formations</a>
-                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Mariage & Famille</a>
-                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Retraite & Assurance Vie</a>
-                <a href="projets-de-vie.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 transition-colors">Voyages & Migrations</a>
+              <div class="lang-dropdown-mini" id="lang-dropdown-mini" role="listbox" aria-label="Choisir la langue">
+                <button class="lang-option-mini" data-lang="fr">
+                  <div class="lang-badge-mini">FR</div>
+                  <span>Français</span>
+                </button>
+                <button class="lang-option-mini" data-lang="en">
+                  <div class="lang-badge-mini">EN</div>
+                  <span>English</span>
+                </button>
+                <button class="lang-option-mini" data-lang="es">
+                  <div class="lang-badge-mini">ES</div>
+                  <span>Español</span>
+                </button>
+                <button class="lang-option-mini" data-lang="pt">
+                  <div class="lang-badge-mini">PT</div>
+                  <span>Português</span>
+                </button>
+                <button class="lang-option-mini" data-lang="ar">
+                  <div class="lang-badge-mini">AR</div>
+                  <span>العربية</span>
+                </button>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Bouton menu mobile (placeholder, pourra être amélioré plus tard) -->
         <button class="cta-button md:hidden">
           Menu
         </button>
