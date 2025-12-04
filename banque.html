@@ -2639,6 +2639,16 @@
       // Démarrer le slider initial
       startSlider();
       
+      // Exposer des fonctions globales pour pouvoir mettre en pause / reprendre le slider (ex: pendant un flipbook)
+      window.pauseIpadSlider = function() {
+        isAutoPlay = false;
+        stopAutoPlay();
+      };
+      window.resumeIpadSlider = function() {
+        isAutoPlay = true;
+        startAutoPlay();
+      };
+      
       // Redémarrer le slider quand le pays change
       window.restartSlider = startSlider;
     })();
@@ -2692,6 +2702,10 @@
           if (window.pauseBannerSlider) {
             window.pauseBannerSlider();
           }
+          // Mettre aussi en pause le slider d'images de l'iPad pendant la lecture du flipbook
+          if (window.pauseIpadSlider) {
+            window.pauseIpadSlider();
+          }
         } else {
           console.warn('Aucun flipbook trouvé pour la banque:', bankId);
         }
@@ -2704,6 +2718,10 @@
         // Reprendre le slider de bannières après la fermeture du flipbook
         if (window.resumeBannerSlider) {
           window.resumeBannerSlider();
+        }
+        // Reprendre aussi le slider d'images de l'iPad après la fermeture du flipbook
+        if (window.resumeIpadSlider) {
+          window.resumeIpadSlider();
         }
       }
 
